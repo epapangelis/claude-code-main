@@ -405,3 +405,27 @@ No changes recorded for this date.
 ## 2026-05-04
 
 Created log/03-05-2026.md — no file changes detected for that date.
+
+---
+
+## 2026-05-14 -- Atomic Design ingest
+
+**Ingested**: atomic-design.pdf (Brad Frost, 2016)
+
+**Created**: wiki/atomic-design.md
+
+**Updated**: wiki/index.md (added atomic-design entry under [concepts] section, updated last updated date)
+
+**Summary**: Full read and digest of Atomic Design by Brad Frost. Wiki page covers the 5-level hierarchy with instafleet-mapped examples, the interface inventory workflow, Pattern Lab purpose and key features, the design-systems-not-pages mental shift and its implications for engineer handoff, a ten-point governance framework for long-term maintenance, and all of Frost's key memorable principles. Includes a direct mapping of instafleet's current design tokens and components to Frost's five levels, plus a gap analysis noting absent lineage documentation, under-documented pattern variations, and lack of formal governance.
+
+---
+
+## 2026-05-14 -- Building Mobile Apps at Scale ingest
+
+**Ingested**: Building Mobile Apps at Scale - 39 Engineering Challenges v1.02.pdf (Gergely Orosz)
+
+**Created**: wiki/building-mobile-apps-at-scale.md
+
+**Updated**: wiki/index.md (added building-mobile-apps-at-scale entry under [concepts] section)
+
+**Summary**: Full read and digest of all 39 engineering challenges across 5 parts. Wiki page is structured for a product designer: each challenge has key insight, tradeoff, and product implication in scannable table format. Notable product implications captured: IAP limitations (no cancel/refund tooling), forced upgrade as a strategy requiring early investment, binary distribution as an irreversible constraint, the long tail of old app versions as a planning factor, analytics certification process to prevent metric drift, performance budgets and why APMs are less useful on mobile than backend, and cross-platform tradeoffs (Flutter, React Native, KMM). Includes a section of cross-cutting mental models directly applicable to product decisions at instacar.
