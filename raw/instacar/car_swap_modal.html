@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Swap Modal — instafleet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --font-sans: 'Geologica', -apple-system, BlinkMacSystemFont, sans-serif;
+    --color-text-primary: #0F172A;
+    --color-text-secondary: #64748B;
+    --color-text-info: #2563EB;
+    --color-text-danger: #DC2626;
+    --color-text-warning: #B45309;
+    --color-text-success: #166534;
+    --color-background-primary: #FFFFFF;
+    --color-background-secondary: #F8FAFC;
+    --color-background-info: #EFF6FF;
+    --color-background-warning: #FFFBEB;
+    --color-background-success: #F0FDF4;
+    --color-background-danger: #FEF2F2;
+    --color-border-primary: #E2E8F0;
+    --color-border-secondary: #CBD5E1;
+    --color-border-tertiary: #E2E8F0;
+    --color-border-info: #BFDBFE;
+    --color-border-warning: #FDE68A;
+    --color-border-danger: #FECACA;
+    --color-blue-100: #DBEAFE;
+    --color-blue-500: #3B82F6;
+    --color-blue-600: #2563EB;
+    --border-radius-sm: 4px;
+    --border-radius-md: 6px;
+    --border-radius-lg: 10px;
+    --border-radius-xl: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); background: #E2E8F0; padding: 24px; color: var(--color-text-primary); }
+
+  /* ── Annotation ── */
+  .annotation {
+    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px;
+  }
+  .annotation-pill {
+    font-size: 10px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase;
+    color: var(--color-text-info); background: var(--color-background-info);
+    padding: 3px 12px; border-radius: 100px; border: 0.5px solid var(--color-border-info);
+  }
+  .annotation-sub { font-size: 11px; color: var(--color-text-secondary); }
+
+  /* ── Modal shell ── */
+  .modal {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-primary);
+    border-radius: var(--border-radius-xl);
+    overflow: hidden;
+    max-width: 1200px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.12);
+  }
+
+  /* ── Header ── */
+  .modal-header {
+    padding: 14px 24px;
+    border-bottom: 0.5px solid var(--color-border-primary);
+    background: var(--color-background-primary);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .modal-header-icon {
+    width: 30px; height: 30px; border-radius: var(--border-radius-md);
+    background: var(--color-background-info); border: 0.5px solid var(--color-border-info);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .modal-title { font-size: 15px; font-weight: 600; }
+  .modal-sub-id { font-size: 12px; color: var(--color-text-secondary); font-family: monospace; }
+  .swap-badge {
+    padding: 3px 10px; background: var(--color-background-info); border: 0.5px solid var(--color-border-info);
+    border-radius: 100px; font-size: 11px; font-weight: 600; color: var(--color-text-info);
+  }
+  .header-spacer { flex: 1; }
+  .swap-reason-label { font-size: 12px; color: var(--color-text-secondary); white-space: nowrap; }
+  .swap-reason-select {
+    padding: 6px 10px; border: 0.5px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-md); font-size: 12px; font-family: var(--font-sans);
+    background: var(--color-background-primary); color: var(--color-text-primary); cursor: pointer;
+  }
+  .close-btn {
+    width: 28px; height: 28px; border: 0.5px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-md); background: var(--color-background-primary);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background .15s;
+  }
+  .close-btn:hover { background: var(--color-background-secondary); }
+
+  /* ── Body ── */
+  .modal-body {
+    display: grid;
+    grid-template-columns: 1fr 0.5px 1fr;
+    min-height: 580px;
+  }
+
+  /* ── LEFT PANEL ── */
+  .panel-left {
+    padding: 20px;
+    overflow-y: auto;
+    background: var(--color-background-secondary);
+  }
+  .panel-header {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 16px;
+  }
+  .panel-title { font-size: 13px; font-weight: 600; }
+  .readonly-chip {
+    font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: var(--border-radius-sm);
+    background: var(--color-border-primary); color: var(--color-text-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+  }
+
+  /* Vehicle card */
+  .vehicle-card {
+    background: var(--color-background-primary); border: 0.5px solid var(--color-border-primary);
+    border-radius: var(--border-radius-lg); padding: 14px; margin-bottom: 14px;
+  }
+  .vehicle-card-top {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+  }
+  .vehicle-icon {
+    width: 36px; height: 36px; background: var(--color-background-secondary);
+    border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .vehicle-name { font-size: 14px; font-weight: 600; }
+  .vehicle-plate { font-size: 11px; color: var(--color-text-secondary); margin-top: 1px; }
+  .vehicle-price { margin-left: auto; text-align: right; }
+  .vehicle-price-val { font-size: 16px; font-weight: 600; }
+  .vehicle-price-label { font-size: 10px; color: var(--color-text-secondary); }
+  .vehicle-meta {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+  }
+  .meta-cell {
+    padding: 8px; background: var(--color-background-secondary); border-radius: var(--border-radius-md);
+    border: 0.5px solid var(--color-border-tertiary);
+  }
+  .meta-cell.info { background: var(--color-background-info); border-color: var(--color-border-info); }
+  .meta-label { font-size: 10px; color: var(--color-text-secondary); }
+  .meta-val { font-size: 12px; font-weight: 500; margin-top: 2px; }
+  .swap-pips { display: flex; align-items: center; gap: 4px; margin-top: 3px; }
+  .pip { width: 9px; height: 9px; border-radius: 50%; }
+  .pip.used { background: var(--color-text-info); }
+  .pip.empty { border: 1.5px solid var(--color-border-info); }
+  .pip-label { font-size: 11px; font-weight: 500; color: var(--color-text-info); }
+
+  /* Section label */
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase;
+    color: var(--color-text-secondary); margin-bottom: 10px;
+  }
+
+  /* Product card */
+  .product-card {
+    background: var(--color-background-primary); border: 0.5px solid var(--color-border-primary);
+    border-radius: var(--border-radius-lg); overflow: hidden; margin-bottom: 14px;
+  }
+  .product-card-header {
+    display: grid; grid-template-columns: 1fr 68px 60px 32px;
+    gap: 0; padding: 6px 14px; border-bottom: 0.5px solid var(--color-border-primary);
+    font-size: 10px; font-weight: 600; letter-spacing: .4px; text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+  .col-right { text-align: right; }
+  .col-center { text-align: center; }
+
+  /* Clickable product row */
+  .product-row {
+    display: grid; grid-template-columns: 1fr 68px 60px 32px;
+    gap: 0; padding: 10px 14px; border-bottom: 0.5px solid var(--color-border-primary);
+    font-size: 12px; align-items: center; cursor: pointer;
+    transition: background .15s; position: relative;
+  }
+  .product-row:last-child { border-bottom: none; }
+  .product-row.transferable:hover { background: var(--color-blue-100); }
+  .product-row.transferable:hover .transfer-hint { opacity: 1; }
+  .product-row.locked { cursor: default; opacity: .45; }
+  .product-row.auto-carried { cursor: default; background: #F0FDF4; }
+  .product-row.transferred {
+    background: var(--color-blue-100);
+    border-left: 3px solid var(--color-blue-600);
+  }
+  .product-name { font-weight: 500; }
+  .product-sub { font-size: 10px; color: var(--color-text-secondary); margin-top: 1px; }
+  .product-val { text-align: right; color: var(--color-text-secondary); }
+  .product-val.bold { color: var(--color-text-primary); font-weight: 500; }
+  .transfer-hint {
+    opacity: 0; transition: opacity .15s;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Bundles card */
+  .bundles-card {
+    background: var(--color-background-primary); border: 0.5px solid var(--color-border-primary);
+    border-radius: var(--border-radius-lg); padding: 14px;
+  }
+  .no-bundles {
+    font-size: 12px; color: var(--color-text-secondary);
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  /* ── DIVIDER ── */
+  .panel-divider { background: var(--color-border-primary); }
+
+  /* ── RIGHT PANEL ── */
+  .panel-right {
+    padding: 20px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .panel-right-header {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .panel-right-hint { font-size: 11px; color: var(--color-text-secondary); }
+
+  /* Step card */
+  .step-card {
+    background: var(--color-background-primary); border: 0.5px solid var(--color-border-primary);
+    border-radius: var(--border-radius-lg); padding: 14px;
+  }
+  .step-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .step-num {
+    width: 20px; height: 20px; border-radius: 50%; background: var(--color-blue-600);
+    color: #fff; font-size: 10px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+
+  /* Booking search */
+  .booking-search { border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); overflow: hidden; margin-bottom: 10px; }
+  .search-bar {
+    padding: 8px 12px; display: flex; align-items: center; gap: 8px;
+    border-bottom: 0.5px solid var(--color-border-primary); background: var(--color-background-secondary);
+  }
+  .search-placeholder { font-size: 12px; color: #94A3B8; }
+  .booking-result {
+    padding: 10px 12px; display: flex; align-items: center; gap: 10px;
+  }
+  .result-dot { width: 7px; height: 7px; border-radius: 50%; background: #F59E0B; flex-shrink: 0; box-shadow: 0 0 0 2px rgba(245,158,11,.15); }
+  .result-id { font-weight: 600; font-size: 13px; }
+  .result-meta { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; }
+  .chip { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 100px; }
+  .chip-warning { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .chip-info { background: var(--color-background-info); color: var(--color-text-info); }
+  .chip-success { background: #DCFCE7; color: var(--color-text-success); }
+  .search-hint { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; }
+
+  /* Carry-over table */
+  .carry-header {
+    display: grid; grid-template-columns: 24px 1fr 100px 72px;
+    gap: 8px; padding: 0 12px 8px; border-bottom: 0.5px solid var(--color-border-primary);
+    font-size: 10px; font-weight: 600; letter-spacing: .4px; text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+  .carry-row {
+    display: grid; grid-template-columns: 24px 1fr 100px 72px;
+    gap: 8px; padding: 10px 12px; border-bottom: 0.5px solid var(--color-border-primary);
+    font-size: 12px; align-items: center;
+    transition: background .2s, border-left .2s;
+  }
+  .carry-row:last-child { border-bottom: none; }
+  .carry-row.auto { background: linear-gradient(to right, #F0FDF4, transparent 80px); }
+  .carry-row.agent { background: var(--color-background-primary); }
+  .carry-row.na { opacity: .4; }
+  .carry-row.tbd { background: var(--color-background-warning); }
+  .carry-row.highlighted {
+    background: var(--color-blue-100) !important;
+    border-left: 3px solid var(--color-blue-600);
+    animation: pulse-highlight .5s ease;
+  }
+  @keyframes pulse-highlight {
+    0% { background: #BFDBFE; }
+    100% { background: var(--color-blue-100); }
+  }
+  .carry-name { font-weight: 500; }
+  .carry-sub { font-size: 10px; margin-top: 1px; }
+  .carry-sub.auto { color: var(--color-text-success); }
+  .carry-sub.agent { color: var(--color-text-warning); }
+  .carry-sub.tbd { color: var(--color-text-warning); }
+  .carry-val { font-size: 12px; font-weight: 500; }
+  .carry-delta { font-size: 10px; color: #16A34A; margin-top: 1px; }
+  .carry-input {
+    width: 100%; padding: 4px 8px; border: 0.5px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-md); font-size: 12px; font-family: var(--font-sans);
+    transition: border-color .15s;
+  }
+  .carry-input:focus { border-color: var(--color-blue-600); outline: none; box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
+
+  /* Legend */
+  .carry-legend {
+    margin-top: 12px; padding-top: 10px; border-top: 0.5px solid var(--color-border-primary);
+    display: flex; gap: 14px; flex-wrap: wrap; font-size: 10px; color: var(--color-text-secondary);
+  }
+  .legend-item { display: flex; align-items: center; gap: 4px; }
+
+  /* Pricing comparison */
+  .pricing-row { display: flex; align-items: stretch; gap: 0; }
+  .pricing-side {
+    flex: 1; text-align: center; padding: 12px;
+    border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-primary);
+  }
+  .pricing-side.current { background: var(--color-background-secondary); }
+  .pricing-side.new { background: var(--color-background-info); border-color: var(--color-border-info); }
+  .pricing-side-label { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 4px; }
+  .pricing-amount { font-size: 22px; font-weight: 600; }
+  .pricing-amount.new { color: var(--color-text-info); }
+  .pricing-car { font-size: 10px; color: var(--color-text-secondary); margin-top: 2px; }
+  .pricing-arrow { padding: 0 10px; display: flex; align-items: center; color: var(--color-text-secondary); flex-shrink: 0; }
+  .pricing-divider { width: 0.5px; background: var(--color-border-primary); margin: 0 14px; flex-shrink: 0; }
+  .pricing-delta { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 110px; }
+  .delta-val { font-size: 22px; font-weight: 600; color: #16A34A; }
+  .delta-chip { margin-top: 4px; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px; background: #DCFCE7; color: var(--color-text-success); }
+
+  /* Warning banner */
+  .warning-banner {
+    border: 0.5px solid #BBF7D0; border-radius: var(--border-radius-md);
+    padding: 12px 14px; background: var(--color-background-success);
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .warning-title { font-size: 12px; font-weight: 600; color: var(--color-text-success); margin-bottom: 3px; }
+  .warning-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; }
+
+  /* ── Footer ── */
+  .modal-footer {
+    padding: 14px 24px; border-top: 0.5px solid var(--color-border-primary);
+    background: var(--color-background-secondary);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-right { display: flex; align-items: center; gap: 10px; }
+  .footer-hint { font-size: 11px; color: var(--color-text-secondary); }
+  .btn {
+    padding: 8px 16px; border-radius: var(--border-radius-md); font-size: 13px;
+    font-family: var(--font-sans); font-weight: 500; cursor: pointer; transition: background .15s;
+  }
+  .btn-secondary {
+    border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary);
+    color: var(--color-text-secondary);
+  }
+  .btn-secondary:hover { background: var(--color-background-secondary); }
+  .btn-primary {
+    padding: 8px 20px; background: var(--color-blue-600); color: #fff; border: none;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .btn-primary:hover { background: #1554DC; }
+  .btn-disabled {
+    padding: 8px 20px; background: var(--color-border-primary); color: #94A3B8;
+    border: none; cursor: not-allowed;
+  }
+
+  /* ── Open questions ── */
+  .open-questions {
+    max-width: 1200px; margin-top: 24px; padding: 16px;
+    background: var(--color-background-warning); border: 0.5px solid var(--color-border-warning);
+    border-radius: var(--border-radius-lg);
+  }
+  .oq-title { font-size: 11px; font-weight: 700; color: #92400E; margin-bottom: 10px; letter-spacing: .5px; text-transform: uppercase; }
+  .oq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .oq-list { font-size: 11px; color: #78350F; line-height: 2.2; padding-left: 16px; }
+</style>
+</head>
+<body>
+
+<!-- Annotation -->
+<div class="annotation">
+  <span class="annotation-pill">Car Swap Modal — Full Screen Overlay</span>
+  <span class="annotation-sub">Opens when agent clicks "Initiate Car Swap" on an active subscription</span>
+</div>
+
+<!-- Modal -->
+<div class="modal">
+
+  <!-- Header -->
+  <div class="modal-header">
+    <div class="modal-header-icon">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M4 2L8 7L4 12" stroke="var(--color-text-info)" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M1 2L5 7L1 12" stroke="var(--color-text-info)" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
+      </svg>
+    </div>
+    <span class="modal-title">Car Swap</span>
+    <span class="modal-sub-id">SUB-HSPXQ3KIM9</span>
+    <span class="swap-badge">Swap 2 of 2</span>
+    <div class="header-spacer"></div>
+    <span class="swap-reason-label">Swap reason</span>
+    <select class="swap-reason-select">
+      <option>Upgrade</option>
+      <option>Customer request</option>
+      <option>Vehicle issue / defect</option>
+      <option>Downgrade</option>
+      <option>Family / lifestyle change</option>
+      <option>Vehicle unavailable (ops)</option>
+      <option>Other</option>
+    </select>
+    <button class="close-btn">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2L10 10M10 2L2 10" stroke="#64748B" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <!-- Body -->
+  <div class="modal-body">
+
+    <!-- ─── LEFT PANEL ─── -->
+    <div class="panel-left">
+      <div class="panel-header">
+        <span class="panel-title">Current subscription</span>
+        <span class="readonly-chip">Read-only</span>
+      </div>
+
+      <!-- Vehicle card -->
+      <div class="vehicle-card">
+        <div class="vehicle-card-top">
+          <div class="vehicle-icon">
+            <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+              <rect x="1" y="5" width="18" height="7" rx="2" stroke="#94A3B8" stroke-width="1"/>
+              <path d="M4 5V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V5" stroke="#94A3B8" stroke-width="1"/>
+              <circle cx="5" cy="12" r="1.5" stroke="#94A3B8" stroke-width="1"/>
+              <circle cx="15" cy="12" r="1.5" stroke="#94A3B8" stroke-width="1"/>
+            </svg>
+          </div>
+          <div>
+            <div class="vehicle-name">OPEL CORSA</div>
+            <div class="vehicle-plate">XZ85869 · Active</div>
+          </div>
+          <div class="vehicle-price">
+            <div class="vehicle-price-val">290,00 €</div>
+            <div class="vehicle-price-label">/month</div>
+          </div>
+        </div>
+        <div class="vehicle-meta">
+          <div class="meta-cell">
+            <div class="meta-label">Contract type</div>
+            <div class="meta-val">Standard · 4 Years</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-label">Ends</div>
+            <div class="meta-val">13/03/2030</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-label">Remaining months</div>
+            <div class="meta-val">47 months</div>
+          </div>
+          <div class="meta-cell info">
+            <div class="meta-label">Swap entitlement</div>
+            <div class="swap-pips">
+              <div class="pip used"></div>
+              <div class="pip empty"></div>
+              <span class="pip-label">1 of 2 used</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Products — clickable -->
+      <div class="product-card">
+        <div class="section-label" style="padding: 0 14px; padding-top: 12px;">Products — click to transfer</div>
+        <div class="product-card-header">
+          <div>Product</div>
+          <div class="col-right">Net</div>
+          <div class="col-right">Gross</div>
+          <div class="col-center"></div>
+        </div>
+
+        <!-- Sign Up Fee — locked, not transferable -->
+        <div class="product-row locked" data-product="signup-fee" title="Not transferred on swaps">
+          <div>
+            <div class="product-name">Sign Up Fee Normal</div>
+            <div class="product-sub">Not transferred</div>
+          </div>
+          <div class="product-val">270,00 €</div>
+          <div class="product-val">334,80 €</div>
+          <div class="transfer-hint">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="3" y="5.5" width="7" height="5.5" rx="1" stroke="#94A3B8" stroke-width="1"/><path d="M4.5 5.5V4C4.5 2.6 5.3 2 6.5 2C7.7 2 8.5 2.6 8.5 4V5.5" stroke="#94A3B8" stroke-width="1"/></svg>
+          </div>
+        </div>
+
+        <!-- Monthly Fee — auto-carried -->
+        <div class="product-row auto-carried" data-product="monthly-fee" title="Auto-filled from linked booking">
+          <div>
+            <div class="product-name">Monthly Fee Car/Van</div>
+            <div class="product-sub" style="color: var(--color-text-success)">Auto from booking</div>
+          </div>
+          <div class="product-val bold">290,00 €</div>
+          <div class="product-val bold">359,60 €</div>
+          <div style="text-align:center">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 7L5 10L11 3" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <!-- User's Deposit — agent decides, clickable -->
+        <div class="product-row transferable" data-product="deposit" onclick="transferProduct('deposit')" title="Click to transfer to new subscription">
+          <div>
+            <div class="product-name">User's Deposit</div>
+            <div class="product-sub" style="color: var(--color-text-warning)">Agent decides</div>
+          </div>
+          <div class="product-val bold">0,00 €</div>
+          <div class="product-val bold">0,00 €</div>
+          <div class="transfer-hint">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L8 4M11 7L8 10" stroke="var(--color-blue-600)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+
+        <!-- Instastart — auto-prorated -->
+        <div class="product-row auto-carried" data-product="instastart" title="Auto-prorated">
+          <div>
+            <div class="product-name">Instastart</div>
+            <div class="product-sub" style="color: var(--color-text-success)">6 months · prorated</div>
+          </div>
+          <div class="product-val bold">290,00 €</div>
+          <div class="product-val bold">359,60 €</div>
+          <div style="text-align:center">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 7L5 10L11 3" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <!-- Extra Months — TBD, clickable -->
+        <div class="product-row transferable" data-product="extra-months" onclick="transferProduct('extra-months')" title="Click to transfer — rule TBD">
+          <div>
+            <div class="product-name">Extra Months</div>
+            <div class="product-sub" style="color: var(--color-text-warning)">Rule TBD</div>
+          </div>
+          <div class="product-val">—</div>
+          <div class="product-val">—</div>
+          <div class="transfer-hint">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7H11M11 7L8 4M11 7L8 10" stroke="var(--color-blue-600)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bundles -->
+      <div class="bundles-card">
+        <div class="section-label">Bundles — current</div>
+        <div class="no-bundles">
+          <div style="width:6px;height:6px;border-radius:50%;background:#CBD5E1;flex-shrink:0"></div>
+          No active bundles on this subscription
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="panel-divider"></div>
+
+    <!-- ─── RIGHT PANEL ─── -->
+    <div class="panel-right">
+
+      <div class="panel-right-header">
+        <span class="panel-title">New subscription</span>
+        <span class="panel-right-hint">Click a product on the left to transfer it</span>
+      </div>
+
+      <!-- Step 1: Link booking -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <span class="section-label" style="margin-bottom:0">Link new booking</span>
+        </div>
+        <div class="booking-search">
+          <div class="search-bar">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="5.5" cy="5.5" r="4" stroke="#94A3B8" stroke-width="1.2"/><path d="M9 9L12 12" stroke="#94A3B8" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span class="search-placeholder">Search by booking ID, plate, or vehicle...</span>
+          </div>
+          <div class="booking-result">
+            <div class="result-dot"></div>
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+                <span class="result-id">HWYU3M0OQF</span>
+                <span class="chip chip-warning">For Delivery</span>
+                <span class="chip chip-info">Car Swap Same Contract</span>
+              </div>
+              <div class="result-meta">CITROEN C3 PLUS · ZTE6438 · <strong>394,00 €/mo</strong> · 24-month</div>
+            </div>
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="cursor:pointer;color:#94A3B8"><path d="M3 3L10 10M10 3L3 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <p class="search-hint">Only bookings labelled "Car Swap Same Contract", "Renewal No Swap", or "Renewal With Swap" will appear.</p>
+      </div>
+
+      <!-- Step 2: Product carry-over -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <span class="section-label" style="margin-bottom:0">Product carry-over</span>
+        </div>
+
+        <div class="carry-header">
+          <div></div>
+          <div>Product</div>
+          <div>New value</div>
+          <div style="text-align:center">Transfer</div>
+        </div>
+
+        <!-- Sign Up Fee — locked -->
+        <div class="carry-row na" id="carry-signup-fee" data-product="signup-fee">
+          <div style="display:flex;justify-content:center">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="3" y="5.5" width="7" height="5.5" rx="1" stroke="#94A3B8" stroke-width="1"/><path d="M4.5 5.5V4C4.5 2.6 5.3 2 6.5 2C7.7 2 8.5 2.6 8.5 4V5.5" stroke="#94A3B8" stroke-width="1"/></svg>
+          </div>
+          <div>
+            <div class="carry-name">Sign Up Fee Normal</div>
+            <div class="carry-sub agent">Not transferred on swaps</div>
+          </div>
+          <div style="font-size:12px;color:#94A3B8">—</div>
+          <div style="text-align:center"><input type="checkbox" disabled style="accent-color:var(--color-blue-600)"></div>
+        </div>
+
+        <!-- Monthly Fee — auto -->
+        <div class="carry-row auto" id="carry-monthly-fee" data-product="monthly-fee">
+          <div style="display:flex;justify-content:center">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 7L5 10L11 3" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="carry-name">Monthly Fee Car/Van</div>
+            <div class="carry-sub auto">From linked booking</div>
+          </div>
+          <div>
+            <div class="carry-val">394,00 €</div>
+            <div class="carry-delta">▲ +104,00 €</div>
+          </div>
+          <div style="text-align:center"><input type="checkbox" checked disabled style="accent-color:var(--color-blue-600)"></div>
+        </div>
+
+        <!-- User's Deposit — agent decides -->
+        <div class="carry-row agent" id="carry-deposit" data-product="deposit">
+          <div style="display:flex;justify-content:center">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="#F59E0B" stroke-width="1"/><path d="M6.5 4V7M6.5 9V8.8" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="carry-name">User's Deposit</div>
+            <div class="carry-sub agent">Agent decides</div>
+          </div>
+          <div>
+            <input type="text" value="0,00 €" class="carry-input" id="deposit-input">
+          </div>
+          <div style="text-align:center"><input type="checkbox" id="deposit-check" style="accent-color:var(--color-blue-600)"></div>
+        </div>
+
+        <!-- Instastart — auto-prorated -->
+        <div class="carry-row auto" id="carry-instastart" data-product="instastart">
+          <div style="display:flex;justify-content:center">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 7L5 10L11 3" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="carry-name">Instastart</div>
+            <div class="carry-sub auto">Prorated automatically</div>
+          </div>
+          <div>
+            <div class="carry-val">226,74 €</div>
+            <div style="font-size:10px;color:var(--color-text-secondary);margin-top:1px">290 × 47/60 mo</div>
+          </div>
+          <div style="text-align:center"><input type="checkbox" checked disabled style="accent-color:var(--color-blue-600)"></div>
+        </div>
+
+        <!-- Extra Months — TBD -->
+        <div class="carry-row tbd" id="carry-extra-months" data-product="extra-months">
+          <div style="display:flex;justify-content:center">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="#F59E0B" stroke-width="1" stroke-dasharray="2 1.5"/><path d="M6.5 4V7M6.5 9V8.8" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="carry-name">Extra Months</div>
+            <div class="carry-sub tbd">Rule TBD — open question</div>
+          </div>
+          <div style="font-size:12px;color:#94A3B8">—</div>
+          <div style="text-align:center"><input type="checkbox" id="extra-months-check" disabled style="accent-color:var(--color-blue-600)"></div>
+        </div>
+
+        <div class="carry-legend">
+          <div class="legend-item">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 6L4 8.5L9.5 2.5" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Auto-carried
+          </div>
+          <div class="legend-item">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><circle cx="5.5" cy="5.5" r="4" stroke="#F59E0B" stroke-width="1"/></svg>
+            Agent decides
+          </div>
+          <div class="legend-item">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><rect x="2" y="4.5" width="7" height="5" rx="1" stroke="#94A3B8" stroke-width="1"/></svg>
+            Not transferred
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Pricing comparison -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <span class="section-label" style="margin-bottom:0">Pricing comparison</span>
+        </div>
+        <div class="pricing-row">
+          <div class="pricing-side current">
+            <div class="pricing-side-label">Current</div>
+            <div class="pricing-amount">290,00 €</div>
+            <div class="pricing-car">OPEL CORSA</div>
+          </div>
+          <div class="pricing-arrow">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11H18M18 11L13.5 6.5M18 11L13.5 15.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="pricing-side new">
+            <div class="pricing-side-label">New</div>
+            <div class="pricing-amount new">394,00 €</div>
+            <div class="pricing-car">CITROEN C3 PLUS</div>
+          </div>
+          <div class="pricing-divider"></div>
+          <div class="pricing-delta">
+            <div class="delta-val">+104 €</div>
+            <div class="delta-chip">Upsale +35.9%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Warning: significant upsale -->
+      <div class="warning-banner">
+        <span style="font-size:14px;flex-shrink:0;color:var(--color-text-success)">▲</span>
+        <div>
+          <div class="warning-title">Significant upsale detected (+35.9%)</div>
+          <div class="warning-body">Monthly fee increases from <strong>290,00 €</strong> to <strong>394,00 €</strong>. Confirm the customer is aware of the pricing change before continuing.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="modal-footer">
+    <button class="btn btn-secondary">Cancel</button>
+    <div class="footer-right">
+      <span class="footer-hint">Linking booking <strong>HWYU3M0OQF</strong> to <strong>SUB-HSPXQ3KIM9</strong></span>
+      <button class="btn btn-primary">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M4 2L8 6.5L4 11" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M1 2L5 6.5L1 11" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg>
+        Confirm Car Swap
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Open questions -->
+<div class="open-questions">
+  <div class="oq-title">Open Questions — Resolve Before Final Design</div>
+  <div class="oq-grid">
+    <ul class="oq-list">
+      <li><strong>Extra Months:</strong> Does it carry over? Get voided? Recalculated?</li>
+      <li><strong>Bundles:</strong> Do active bundles (roadside, GPS) transfer automatically or does the agent decide?</li>
+      <li><strong>Sign Up Fee:</strong> Is there ever a case where it's recharged on a swap?</li>
+    </ul>
+    <ul class="oq-list">
+      <li><strong>Display To Offer toggle:</strong> Do carry-over products inherit toggle state from origin sub?</li>
+      <li><strong>Who can initiate:</strong> CS only, or Sales too?</li>
+      <li><strong>Instastart months:</strong> Does the month count reset or continue on the new sub?</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Footer state: no booking linked -->
+<div style="max-width:1200px;margin-top:32px">
+  <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:12px">
+    <span style="font-size:10px;font-weight:600;color:var(--color-text-secondary);background:var(--color-border-primary);padding:3px 12px;border-radius:100px;text-transform:uppercase;letter-spacing:.4px">Footer state — no booking linked yet</span>
+  </div>
+  <div style="padding:14px 24px;border:0.5px solid var(--color-border-primary);border-radius:var(--border-radius-xl);background:var(--color-background-secondary);display:flex;align-items:center;justify-content:space-between">
+    <button class="btn btn-secondary">Cancel</button>
+    <div class="footer-right">
+      <span class="footer-hint">Link a booking to continue</span>
+      <button class="btn btn-disabled">Confirm Car Swap</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function transferProduct(productKey) {
+    // Map product keys to carry-row IDs and checkbox IDs
+    const map = {
+      'deposit':      { row: 'carry-deposit',      check: 'deposit-check' },
+      'extra-months': { row: 'carry-extra-months',  check: 'extra-months-check' },
+    };
+
+    const target = map[productKey];
+    if (!target) return;
+
+    // Mark left panel row as transferred
+    const leftRow = document.querySelector(`.product-row[data-product="${productKey}"]`);
+    if (leftRow) leftRow.classList.add('transferred');
+
+    // Highlight right panel carry-row
+    const rightRow = document.getElementById(target.row);
+    if (rightRow) {
+      rightRow.classList.add('highlighted');
+      rightRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // Check the checkbox for agent-decides products
+      const checkbox = document.getElementById(target.check);
+      if (checkbox && !checkbox.disabled) checkbox.checked = true;
+
+      // Remove highlight after 2s
+      setTimeout(() => rightRow.classList.remove('highlighted'), 2000);
+    }
+  }
+</script>
+
+</body>
+</html>

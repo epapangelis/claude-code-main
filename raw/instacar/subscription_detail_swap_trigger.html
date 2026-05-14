@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscription Detail — Car Swap Trigger</title>
+<style>
+  :root {
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --color-text-primary: #111827;
+    --color-text-secondary: #6B7280;
+    --color-text-info: #1D6AE5;
+    --color-text-danger: #DC2626;
+    --color-text-warning: #B45309;
+    --color-text-success: #166534;
+    --color-background-primary: #FFFFFF;
+    --color-background-secondary: #F9FAFB;
+    --color-background-info: #EFF6FF;
+    --color-background-warning: #FFFBEB;
+    --color-background-success: #F0FDF4;
+    --color-border-primary: #E5E7EB;
+    --color-border-secondary: #D1D5DB;
+    --color-border-tertiary: #E5E7EB;
+    --color-border-info: #BFDBFE;
+    --border-radius-md: 6px;
+    --border-radius-lg: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); background: #F3F4F6; padding: 24px; }
+</style>
+</head>
+<body>
+
+<!-- ANNOTATION LABEL -->
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+  <span style="font-size:11px;font-weight:600;color:var(--color-text-info);background:var(--color-background-info);padding:3px 12px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-info)">SUBSCRIPTION DETAIL — HEADER AREA</span>
+  <span style="font-size:11px;color:var(--color-text-secondary)">New "Initiate Car Swap" button added to existing header + swap eligibility pill in General section</span>
+</div>
+
+<!-- SUBSCRIPTION DETAIL SHELL (cropped to header + general section) -->
+<div style="max-width:900px;background:var(--color-background-primary);border:0.5px solid var(--color-border-primary);border-radius:var(--border-radius-lg);overflow:hidden">
+
+  <!-- TOP BREADCRUMB / HEADER BAR -->
+  <div style="padding:10px 20px;border-bottom:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:8px">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2H12V5M12 2L7.5 6.5" stroke="#6B7280" stroke-width="1.2" stroke-linecap="round"/><path d="M6 3H3C2.45 3 2 3.45 2 4V11C2 11.55 2.45 12 3 12H10C10.55 12 11 11.55 11 11V8" stroke="#6B7280" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <span style="font-size:12px;color:var(--color-text-secondary);font-family:monospace">69b70fe4e642265e67b02</span>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M8 1H11V4M11 1L6.5 5.5" stroke="#6B7280" stroke-width="1" stroke-linecap="round"/><path d="M5 2H2.5C2.22 2 2 2.22 2 2.5V9.5C2 9.78 2.22 10 2.5 10H9.5C9.78 10 10 9.78 10 9.5V7" stroke="#6B7280" stroke-width="1" stroke-linecap="round"/></svg>
+    </div>
+
+    <!-- ACTION BUTTONS — right side of header -->
+    <div style="display:flex;align-items:center;gap:8px">
+
+      <!-- EXISTING: kebab / more options button -->
+      <div style="width:28px;height:28px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--color-background-primary)">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="3" r="1" fill="#6B7280"/><circle cx="7" cy="7" r="1" fill="#6B7280"/><circle cx="7" cy="11" r="1" fill="#6B7280"/></svg>
+      </div>
+
+      <!-- NEW: Initiate Car Swap primary CTA -->
+      <div style="position:relative">
+        <button style="display:flex;align-items:center;gap:6px;padding:6px 14px;background:var(--color-text-info);color:#fff;border:none;border-radius:var(--border-radius-md);font-size:12px;font-weight:500;cursor:pointer;font-family:var(--font-sans)">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M4 2L8 6.5L4 11" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M1 2L5 6.5L1 11" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg>
+          Initiate Car Swap
+        </button>
+        <!-- RED DOT annotation -->
+        <div style="position:absolute;top:-6px;right:-6px;background:#EF4444;color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px;white-space:nowrap">NEW</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:380px 1fr">
+
+    <!-- LEFT PANEL: General + Subscription info (cropped) -->
+    <div style="padding:20px;border-right:0.5px solid var(--color-border-tertiary)">
+
+      <!-- Status -->
+      <div style="margin-bottom:20px">
+        <div style="font-size:11px;font-weight:600;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Status</div>
+        <div style="padding:7px 12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);font-size:13px;display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:6px">
+            <div style="width:7px;height:7px;border-radius:50%;background:#22C55E"></div>
+            Active
+          </div>
+          <svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 4.5L6 7.5L9 4.5" stroke="#6B7280" stroke-width="1" fill="none"/></svg>
+        </div>
+      </div>
+
+      <!-- General section -->
+      <div style="margin-bottom:20px">
+        <div style="font-size:11px;font-weight:600;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">General</div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px"><span style="color:var(--color-text-secondary)">Type</span><span>Standard</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px"><span style="color:var(--color-text-secondary)">Internal ID</span><span style="font-family:monospace">SUB-HSPXQ3KIM9</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px"><span style="color:var(--color-text-secondary)">Tags</span><span style="font-size:10px;padding:2px 6px;border-radius:4px;background:#F3F4F6;color:#374151;border:0.5px solid #E5E7EB">existing_customer_extra_car</span></div>
+
+          <!-- NEW: Swap Eligibility row inside General -->
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;font-size:12px;background:var(--color-background-info);margin:0 -4px;padding:7px 4px;border-radius:4px;margin-top:2px">
+            <span style="color:var(--color-text-secondary)">Swap eligibility</span>
+            <div style="display:flex;align-items:center;gap:6px">
+              <!-- Pips showing used/remaining swaps -->
+              <div style="display:flex;gap:3px">
+                <div style="width:10px;height:10px;border-radius:50%;background:var(--color-text-info)" title="Swap 1 — used"></div>
+                <div style="width:10px;height:10px;border-radius:50%;border:1.5px solid var(--color-border-info)" title="Swap 2 — available"></div>
+              </div>
+              <span style="font-size:11px;color:var(--color-text-info);font-weight:500">1 of 2 used</span>
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-top:0.5px solid var(--color-border-tertiary);font-size:12px"><span style="color:var(--color-text-secondary)">Booking Agent</span><span style="color:var(--color-text-secondary)">—</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px"><span style="color:var(--color-text-secondary)">Pipedrive ID</span><span style="color:var(--color-text-info)">249245</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:12px"><span style="color:var(--color-text-secondary)">Renewal</span><span><input type="checkbox" disabled></span></div>
+        </div>
+      </div>
+
+      <!-- Subscription section (abbreviated) -->
+      <div style="margin-bottom:20px">
+        <div style="font-size:11px;font-weight:600;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Subscription</div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px"><span style="color:var(--color-text-secondary)">Billing Period</span><span>1 Month</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px"><span style="color:var(--color-text-secondary)">Contract Duration</span><span>4 Years</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px"><span style="color:var(--color-text-secondary)">End Contract Date</span><span>13/03/2030</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:12px"><span style="color:var(--color-text-secondary)">Contract Value</span><span>290,00 €</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT PANEL: Products tab (abbreviated for context) -->
+    <div style="padding:20px">
+      <div style="display:flex;align-items:center;gap:0;margin-bottom:16px;border-bottom:0.5px solid var(--color-border-tertiary)">
+        <div style="padding:8px 14px;border-bottom:2px solid var(--color-text-info);font-size:13px;font-weight:500;color:var(--color-text-info);cursor:pointer">Products</div>
+        <div style="padding:8px 14px;font-size:13px;color:var(--color-text-secondary);cursor:pointer">Bundles</div>
+        <div style="padding:8px 14px;font-size:13px;color:var(--color-text-secondary);cursor:pointer">Members</div>
+        <div style="padding:8px 14px;font-size:13px;color:var(--color-text-secondary);cursor:pointer">Delivery/Return</div>
+        <div style="padding:8px 14px;font-size:13px;color:var(--color-text-secondary);cursor:pointer">Documents</div>
+        <div style="padding:8px 14px;font-size:13px;color:var(--color-text-secondary);cursor:pointer">History</div>
+        <div style="margin-left:auto">
+          <button style="padding:6px 14px;background:var(--color-text-info);color:#fff;border:none;border-radius:var(--border-radius-md);font-size:12px;font-weight:500;cursor:pointer">Save Products</button>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--color-text-secondary)">Products section (existing, unchanged)...</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DISABLED STATE EXAMPLE -->
+<div style="margin-top:24px;display:flex;align-items:center;gap:8px;margin-bottom:12px">
+  <span style="font-size:11px;font-weight:600;color:var(--color-text-warning);background:var(--color-background-warning);padding:3px 12px;border-radius:var(--border-radius-md);border:0.5px solid #FDE68A">STATE — SWAP LIMIT REACHED</span>
+  <span style="font-size:11px;color:var(--color-text-secondary)">Button is disabled; tooltip explains why</span>
+</div>
+<div style="max-width:900px;background:var(--color-background-primary);border:0.5px solid var(--color-border-primary);border-radius:var(--border-radius-lg);overflow:hidden">
+  <div style="padding:10px 20px;background:var(--color-background-secondary);display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:12px;color:var(--color-text-secondary);font-family:monospace">69b70fe4e642265e67b02</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div style="width:28px;height:28px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);display:flex;align-items:center;justify-content:center;background:var(--color-background-primary)">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="3" r="1" fill="#6B7280"/><circle cx="7" cy="7" r="1" fill="#6B7280"/><circle cx="7" cy="11" r="1" fill="#6B7280"/></svg>
+      </div>
+      <!-- Disabled button with tooltip -->
+      <div style="position:relative" title="Swap limit reached (2/2) — 24-month contract allows 2 swaps">
+        <button disabled style="display:flex;align-items:center;gap:6px;padding:6px 14px;background:#E5E7EB;color:#9CA3AF;border:none;border-radius:var(--border-radius-md);font-size:12px;font-weight:500;cursor:not-allowed;font-family:var(--font-sans)">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M4 2L8 6.5L4 11" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/><path d="M1 2L5 6.5L1 11" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg>
+          Initiate Car Swap
+        </button>
+      </div>
+      <!-- Swap limit exhausted pill -->
+      <span style="font-size:10px;padding:3px 8px;border-radius:4px;background:#FEF2F2;color:#DC2626;border:0.5px solid #FECACA;font-weight:500">2/2 swaps used</span>
+    </div>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div style="max-width:900px;margin-top:24px;padding:16px;background:#FFFBEB;border:0.5px solid #FDE68A;border-radius:var(--border-radius-lg)">
+  <div style="font-size:11px;font-weight:600;color:#92400E;margin-bottom:8px">SPEC NOTES FOR DESIGNER</div>
+  <ul style="font-size:11px;color:#78350F;line-height:2;padding-left:16px">
+    <li>Button placement: top-right of the subscription detail header bar, to the left of the kebab (⋮) menu</li>
+    <li>Button only visible on <strong>Active</strong> subscriptions — hidden entirely on Ended/inactive</li>
+    <li>Button disabled (grey) when swap limit is exhausted; pair with a "N/N swaps used" pill</li>
+    <li>Swap eligibility row in General section: filled pips = used swaps, empty pips = remaining</li>
+    <li>Contract type determines limit: M2M = unlimited, 12mo = 1, 24mo = 2, 36mo = 2</li>
+  </ul>
+</div>
+
+</body>
+</html>

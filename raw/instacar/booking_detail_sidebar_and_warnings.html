@@ -1,0 +1,98 @@
+<div style="padding:1rem 0">
+<div style="max-width:660px;font-family:var(--font-sans);font-size:14px;color:var(--color-text-primary)">
+
+<!-- BOOKING DETAIL SIDEBAR -->
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+<span style="font-size:11px;font-weight:500;color:var(--color-text-info);background:var(--color-background-info);padding:2px 10px;border-radius:var(--border-radius-md)">BOOKING DETAIL — RIGHT SIDEBAR</span>
+<span style="font-size:11px;color:var(--color-text-secondary)">New card below Ticket Details</span>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px">
+
+<!-- Existing Ticket Details card (for context) -->
+<div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:16px">
+<div style="display:flex;align-items:center;gap:6px;margin-bottom:12px;font-size:13px;font-weight:500">
+<span style="font-size:14px">📋</span> Ticket details
+</div>
+<div style="font-size:12px">
+<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary)"><span style="color:var(--color-text-secondary)">Assignee:</span><span>Zoi Trivkeli</span></div>
+<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary)"><span style="color:var(--color-text-secondary)">Status:</span><span>Lead In</span></div>
+<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary)"><span style="color:var(--color-text-secondary)">Request date:</span><span>16/03/2026</span></div>
+<div style="display:flex;justify-content:space-between;padding:4px 0"><span style="color:var(--color-text-secondary)">Pipedrive ID:</span><span style="color:var(--color-text-info)">254981</span></div>
+</div>
+</div>
+
+<!-- NEW: Swap Information Card -->
+<div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-info);border-radius:var(--border-radius-lg);padding:16px;position:relative;overflow:hidden">
+<div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--color-text-info)"></div>
+
+<div style="display:flex;align-items:center;gap:6px;margin-bottom:12px;font-size:13px;font-weight:500">
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3L9 7L5 11" stroke="var(--color-text-info)" stroke-width="1.5" stroke-linecap="round"/><path d="M1 3L5 7L1 11" stroke="var(--color-text-secondary)" stroke-width="1.5" stroke-linecap="round" opacity=".4"/></svg>
+Swap information
+</div>
+
+<!-- Badge -->
+<div style="margin-bottom:10px">
+<span style="font-size:11px;font-weight:500;padding:3px 8px;border-radius:var(--border-radius-md);background:#EAF3DE;color:#3B6D11">Car swap (same contract)</span>
+</div>
+
+<div style="font-size:12px">
+<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary)"><span style="color:var(--color-text-secondary)">Linked sub:</span><span style="color:var(--color-text-info);cursor:pointer">SUB-WIRS009WQ4</span></div>
+<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary)"><span style="color:var(--color-text-secondary)">Swap #:</span><span style="font-weight:500">1 of 2</span></div>
+<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary)"><span style="color:var(--color-text-secondary)">Reason:</span><span>Upgrade</span></div>
+<div style="display:flex;justify-content:space-between;padding:4px 0"><span style="color:var(--color-text-secondary)">Pricing delta:</span><span style="color:#27AE60;font-weight:500">▲ +70,00 €/mo</span></div>
+</div>
+</div>
+</div>
+
+<!-- WARNING STATES -->
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+<span style="font-size:11px;font-weight:500;color:var(--color-text-warning);background:var(--color-background-warning);padding:2px 10px;border-radius:var(--border-radius-md)">WARNING STATES</span>
+<span style="font-size:11px;color:var(--color-text-secondary)">Alert banners that appear contextually</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+
+<!-- Warning 1: Swap limit exceeded -->
+<div style="border:0.5px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:14px 16px;background:var(--color-background-warning);display:flex;gap:12px;align-items:flex-start">
+<div style="width:20px;height:20px;border-radius:50%;background:var(--color-text-warning);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0">!</div>
+<div style="flex:1">
+<div style="font-size:13px;font-weight:500;color:var(--color-text-warning);margin-bottom:4px">Swap limit exceeded</div>
+<div style="font-size:12px;color:var(--color-text-secondary);line-height:1.5">This customer has used all <strong>2 allowed swaps</strong> for their 24-month contract. Proceeding will exceed the contractual limit.</div>
+<div style="margin-top:8px;display:flex;gap:8px">
+<button style="font-size:11px;padding:4px 12px;border-radius:var(--border-radius-md);background:var(--color-text-warning);color:#fff;border:none;cursor:pointer;font-weight:500">Acknowledge & continue</button>
+<button style="font-size:11px;padding:4px 12px;border-radius:var(--border-radius-md);background:transparent;color:var(--color-text-secondary);border:0.5px solid var(--color-border-secondary);cursor:pointer">Cancel</button>
+</div>
+</div>
+</div>
+
+<!-- Warning 2: Significant upsale -->
+<div style="border:0.5px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:14px 16px;background:var(--color-background-success);display:flex;gap:12px;align-items:flex-start">
+<div style="font-size:16px;flex-shrink:0">▲</div>
+<div style="flex:1">
+<div style="font-size:13px;font-weight:500;color:var(--color-text-success);margin-bottom:4px">Significant upsale detected (+43%)</div>
+<div style="font-size:12px;color:var(--color-text-secondary);line-height:1.5">Monthly fee increases from <strong>275,00 €</strong> to <strong>394,00 €</strong>. Confirm the customer is aware of the pricing change.</div>
+</div>
+</div>
+
+<!-- Warning 3: Significant downsale -->
+<div style="border:0.5px solid var(--color-border-danger);border-radius:var(--border-radius-md);padding:14px 16px;background:var(--color-background-danger);display:flex;gap:12px;align-items:flex-start">
+<div style="font-size:16px;flex-shrink:0">▼</div>
+<div style="flex:1">
+<div style="font-size:13px;font-weight:500;color:var(--color-text-danger);margin-bottom:4px">Significant downsale detected (-38%)</div>
+<div style="font-size:12px;color:var(--color-text-secondary);line-height:1.5">Monthly fee decreases from <strong>394,00 €</strong> to <strong>245,00 €</strong>. Review contract terms for early termination or adjustment clauses.</div>
+</div>
+</div>
+
+<!-- Warning 4: Pending swap exists -->
+<div style="border:0.5px solid var(--color-border-info);border-radius:var(--border-radius-md);padding:14px 16px;background:var(--color-background-info);display:flex;gap:12px;align-items:flex-start">
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;margin-top:1px"><circle cx="9" cy="9" r="7" stroke="var(--color-text-info)" stroke-width="1.2"/><path d="M9 6V10M9 12.5V12" stroke="var(--color-text-info)" stroke-width="1.5" stroke-linecap="round"/></svg>
+<div style="flex:1">
+<div style="font-size:13px;font-weight:500;color:var(--color-text-info);margin-bottom:4px">Pending swap booking exists</div>
+<div style="font-size:12px;color:var(--color-text-secondary);line-height:1.5">There is already a pending swap booking (<span style="color:var(--color-text-info);cursor:pointer">HWYU3M0OQF</span>) for this subscription. Creating another may cause conflicts.</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>

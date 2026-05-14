@@ -1,0 +1,29 @@
+# Obsidian & Claude Code
+.obsidian/
+.claude/
+
+# Exclude folders
+Product Management skill/
+team-wiki-template/
+design/
+
+# Exclude raw content (keep only instacar)
+raw/blog/
+raw/personal/
+raw/.DS_Store
+
+# Exclude daily logs
+log/
+
+# Exclude blog-related wiki pages
+wiki/blog-*.md
+
+# OS files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Node/package files (if any)
+node_modules/
+package-lock.json

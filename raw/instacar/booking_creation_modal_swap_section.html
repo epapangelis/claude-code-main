@@ -1,0 +1,230 @@
+<style>
+  .swap-root { padding: 1rem 0; }
+  .swap-root * { box-sizing: border-box; }
+  .swap-root { font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif); font-size: 14px; color: var(--color-text-primary, #111); max-width: 660px; }
+
+  /* Badge */
+  .sw-badge { display: inline-flex; align-items: center; gap: 6px; }
+  .sw-badge-pill { font-size: 10px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; }
+  .sw-badge-pill.info { background: var(--color-background-info, #EEF4FF); color: var(--color-text-info, #3366CC); }
+  .sw-badge-context { font-size: 11px; color: var(--color-text-secondary, #666); }
+
+  /* Main card */
+  .sw-card { background: var(--color-background-primary, #fff); border: 1px solid var(--color-border-tertiary, #E5E7EB); border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04); margin-top: 10px; }
+
+  /* Collapsed row (vehicle details / products) */
+  .sw-row-collapsed { padding: 11px 20px; background: var(--color-background-secondary, #F9FAFB); border-bottom: 1px solid var(--color-border-tertiary, #E5E7EB); display: flex; align-items: center; gap: 10px; opacity: .55; cursor: pointer; transition: opacity .15s; }
+  .sw-row-collapsed:hover { opacity: .75; }
+  .sw-row-collapsed-label { font-size: 13px; font-weight: 500; }
+  .sw-row-collapsed-meta { font-size: 11px; color: var(--color-text-secondary, #666); margin-left: auto; }
+  .sw-row-collapsed-bottom { border-bottom: none; border-top: 1px solid var(--color-border-tertiary, #E5E7EB); margin-top: 0; }
+
+  /* Section body */
+  .sw-body { padding: 22px 20px; }
+
+  /* Section header */
+  .sw-section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .sw-section-icon { width: 28px; height: 28px; border-radius: 8px; background: var(--color-background-info, #EEF4FF); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .sw-section-title { font-size: 13px; font-weight: 600; color: var(--color-text-primary, #111); }
+
+  /* Field label */
+  .sw-label { font-size: 11px; font-weight: 600; letter-spacing: .3px; color: var(--color-text-secondary, #666); text-transform: uppercase; display: block; margin-bottom: 6px; }
+  .sw-required { color: var(--color-text-danger, #E53935); margin-left: 2px; }
+
+  /* Select */
+  .sw-select { width: 100%; padding: 9px 12px; border: 1px solid var(--color-border-secondary, #D1D5DB); border-radius: 8px; font-size: 13px; background: var(--color-background-primary, #fff); color: var(--color-text-primary, #111); appearance: auto; cursor: pointer; outline: none; transition: border-color .15s, box-shadow .15s; }
+  .sw-select:focus { border-color: var(--color-text-info, #3366CC); box-shadow: 0 0 0 3px rgba(51,102,204,.1); }
+
+  /* Swap fields container */
+  .sw-fields { border: 1px solid var(--color-border-info, #C7D9F8); border-radius: 10px; padding: 16px; background: var(--color-background-info, #EEF4FF); background: linear-gradient(160deg, var(--color-background-info, #EEF4FF) 0%, transparent 80px); }
+
+  /* Subscription picker */
+  .sw-sub-picker { border: 1px solid var(--color-border-secondary, #D1D5DB); border-radius: 8px; overflow: hidden; background: var(--color-background-primary, #fff); }
+  .sw-sub-search { padding: 9px 12px; border-bottom: 1px solid var(--color-border-tertiary, #E5E7EB); display: flex; align-items: center; gap: 8px; background: var(--color-background-secondary, #F9FAFB); }
+  .sw-sub-search-text { font-size: 12px; color: var(--color-text-secondary, #666); }
+  .sw-sub-selected { padding: 12px 14px; display: flex; align-items: center; gap: 12px; background: var(--color-background-primary, #fff); }
+  .sw-sub-dot { width: 8px; height: 8px; border-radius: 50%; background: #22C55E; flex-shrink: 0; box-shadow: 0 0 0 3px rgba(34,197,94,.15); }
+  .sw-sub-info { flex: 1; min-width: 0; }
+  .sw-sub-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .sw-sub-id { font-weight: 600; font-size: 13px; }
+  .sw-chip { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 100px; }
+  .sw-chip.active { background: #DCFCE7; color: #166534; }
+  .sw-chip.suggested { background: var(--color-background-info, #EEF4FF); color: var(--color-text-info, #3366CC); }
+  .sw-sub-meta { font-size: 11px; color: var(--color-text-secondary, #666); margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sw-sub-clear { cursor: pointer; padding: 4px; border-radius: 4px; color: var(--color-text-secondary, #666); transition: background .15s, color .15s; flex-shrink: 0; }
+  .sw-sub-clear:hover { background: var(--color-background-secondary, #F9FAFB); color: var(--color-text-primary, #111); }
+  .sw-sub-more { padding: 7px 12px; border-top: 1px solid var(--color-border-tertiary, #E5E7EB); font-size: 11px; color: var(--color-text-secondary, #666); cursor: pointer; display: flex; align-items: center; gap: 5px; background: var(--color-background-secondary, #F9FAFB); transition: background .15s; }
+  .sw-sub-more:hover { background: var(--color-background-primary, #fff); }
+
+  /* Grid row */
+  .sw-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* Read-only display field */
+  .sw-field-display { padding: 9px 12px; border: 1px solid var(--color-border-tertiary, #E5E7EB); border-radius: 8px; background: var(--color-background-secondary, #F9FAFB); font-size: 13px; display: flex; align-items: center; justify-content: space-between; }
+  .sw-field-val { font-weight: 600; font-size: 15px; }
+  .sw-field-sub { color: var(--color-text-secondary, #666); font-size: 12px; }
+  .sw-auto-chip { font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 100px; background: var(--color-background-primary, #fff); color: var(--color-text-secondary, #666); border: 1px solid var(--color-border-tertiary, #E5E7EB); }
+
+  /* Pricing card */
+  .sw-pricing { padding: 14px 16px; border: 1px solid var(--color-border-tertiary, #E5E7EB); border-radius: 10px; background: var(--color-background-primary, #fff); }
+  .sw-pricing-label { font-size: 10px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; color: var(--color-text-secondary, #666); margin-bottom: 14px; }
+  .sw-pricing-row { display: flex; align-items: center; gap: 0; }
+  .sw-pricing-side { flex: 1; text-align: center; }
+  .sw-pricing-side-label { font-size: 11px; color: var(--color-text-secondary, #666); margin-bottom: 4px; }
+  .sw-pricing-amount { font-size: 18px; font-weight: 700; letter-spacing: -.3px; }
+  .sw-pricing-arrow { padding: 0 10px; color: var(--color-text-secondary, #666); flex-shrink: 0; }
+  .sw-pricing-divider { width: 1px; background: var(--color-border-tertiary, #E5E7EB); align-self: stretch; margin: 0 16px; }
+  .sw-pricing-delta { text-align: center; min-width: 110px; }
+  .sw-pricing-delta-val { font-size: 18px; font-weight: 700; color: #16A34A; letter-spacing: -.3px; }
+  .sw-pricing-delta-chip { display: inline-block; margin-top: 4px; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px; background: #DCFCE7; color: #166534; letter-spacing: .3px; }
+
+  /* Field spacing */
+  .sw-field { margin-bottom: 14px; }
+  .sw-field:last-child { margin-bottom: 0; }
+</style>
+
+<div class="swap-root">
+
+  <!-- Context label -->
+  <div class="sw-badge" style="margin-bottom:10px">
+    <span class="sw-badge-pill info">Add New Booking Modal</span>
+    <span class="sw-badge-context">New section below Vehicle Details</span>
+  </div>
+
+  <!-- Modal card -->
+  <div class="sw-card">
+
+    <!-- Vehicle Details (collapsed) -->
+    <div class="sw-row-collapsed">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3L9 7L5 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="sw-row-collapsed-label">Vehicle details</span>
+      <span class="sw-row-collapsed-meta">CITROEN C3 PLUS &middot; Closed Contract &middot; 24 months</span>
+    </div>
+
+    <!-- Subscription Linking section -->
+    <div class="sw-body">
+
+      <!-- Section header -->
+      <div class="sw-section-header">
+        <div class="sw-section-icon">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M6 4L10 8L6 12" stroke="var(--color-text-info, #3366CC)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 4L6 8L2 12" stroke="var(--color-text-info, #3366CC)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".35"/>
+          </svg>
+        </div>
+        <span class="sw-section-title">Subscription linking</span>
+      </div>
+
+      <!-- Booking label -->
+      <div class="sw-field">
+        <label class="sw-label">Booking label <span class="sw-required">*</span></label>
+        <select class="sw-select" id="booking-label-select" onchange="handleLabelChange(this.value)">
+          <option value="new">New</option>
+          <option value="carswap" selected>Car swap (same contract)</option>
+          <option value="renewal_no">Renewal (no swap)</option>
+          <option value="renewal_swap">Renewal (with swap)</option>
+          <option value="temp">Temp</option>
+          <option value="predel">Predel</option>
+        </select>
+      </div>
+
+      <!-- Conditional swap fields -->
+      <div id="swap-fields" class="sw-fields">
+
+        <!-- Related active subscription -->
+        <div class="sw-field">
+          <label class="sw-label">Related active subscription <span class="sw-required">*</span></label>
+          <div class="sw-sub-picker">
+            <!-- Search bar -->
+            <div class="sw-sub-search">
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4.5" stroke="var(--color-text-secondary, #666)" stroke-width="1.2"/><path d="M9.5 9.5L13 13" stroke="var(--color-text-secondary, #666)" stroke-width="1.2" stroke-linecap="round"/></svg>
+              <span class="sw-sub-search-text">Search by plate, vehicle, or sub ID&hellip;</span>
+            </div>
+            <!-- Selected sub -->
+            <div class="sw-sub-selected">
+              <div class="sw-sub-dot"></div>
+              <div class="sw-sub-info">
+                <div class="sw-sub-row">
+                  <span class="sw-sub-id">SUB-WIRS009WQ4</span>
+                  <span class="sw-chip active">Active</span>
+                  <span class="sw-chip suggested">Suggested</span>
+                </div>
+                <div class="sw-sub-meta">SEAT ARONA &middot; ZTE6438 &middot; 324,00 &euro;/mo &middot; Ends 03/02/2028</div>
+              </div>
+              <div class="sw-sub-clear" title="Clear selection">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 4L10 10M10 4L4 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <!-- More subs -->
+            <div class="sw-sub-more">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 4L5 6L7 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              2 other subscriptions available
+            </div>
+          </div>
+        </div>
+
+        <!-- Swap sequence + reason -->
+        <div class="sw-field sw-grid2">
+          <div>
+            <label class="sw-label">Swap sequence #</label>
+            <div class="sw-field-display">
+              <span><span class="sw-field-val">1</span> <span class="sw-field-sub">of 2</span></span>
+              <span class="sw-auto-chip">Auto</span>
+            </div>
+          </div>
+          <div>
+            <label class="sw-label">Swap reason</label>
+            <select class="sw-select">
+              <option>Upgrade</option>
+              <option>Customer request</option>
+              <option>Vehicle issue / defect</option>
+              <option>Downgrade</option>
+              <option>Family / lifestyle change</option>
+              <option>Vehicle unavailable (ops)</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Pricing delta card -->
+        <div class="sw-field">
+          <div class="sw-pricing">
+            <div class="sw-pricing-label">Pricing comparison</div>
+            <div class="sw-pricing-row">
+              <div class="sw-pricing-side">
+                <div class="sw-pricing-side-label">Old sub</div>
+                <div class="sw-pricing-amount">324,00 &euro;</div>
+              </div>
+              <div class="sw-pricing-arrow">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10H15M15 10L11.5 6.5M15 10L11.5 13.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="sw-pricing-side">
+                <div class="sw-pricing-side-label">New sub</div>
+                <div class="sw-pricing-amount">394,00 &euro;</div>
+              </div>
+              <div class="sw-pricing-divider"></div>
+              <div class="sw-pricing-delta">
+                <div class="sw-pricing-delta-val">+70,00 &euro;</div>
+                <div class="sw-pricing-delta-chip">Upsale</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Products (collapsed) -->
+    <div class="sw-row-collapsed sw-row-collapsed-bottom">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3L9 7L5 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="sw-row-collapsed-label">Products</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function handleLabelChange(val) {
+  document.getElementById('swap-fields').style.display = val === 'new' ? 'none' : 'block';
+}
+</script>
