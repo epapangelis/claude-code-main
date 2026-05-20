@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>instafleet – Email Template Editor</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #F8F9FA;
+      color: #1a1a2e;
+      font-size: 14px;
+    }
+
+    /* NAV */
+    .nav {
+      background: #fff;
+      border-bottom: 1px solid #E5E7EB;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 16px;
+      color: #111;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo span {
+      background: #F97316;
+      color: #fff;
+      border-radius: 6px;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .nav-breadcrumb {
+      color: #9CA3AF;
+      font-size: 13px;
+    }
+
+    .nav-breadcrumb a {
+      color: #6B7280;
+      text-decoration: none;
+    }
+
+    .nav-breadcrumb a:hover {
+      color: #F97316;
+    }
+
+    .nav-actions {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all .15s;
+    }
+
+    .btn-ghost {
+      background: #fff;
+      border-color: #E5E7EB;
+      color: #374151;
+    }
+
+    .btn-ghost:hover {
+      background: #F9FAFB;
+    }
+
+    .btn-primary {
+      background: #F97316;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #EA6C0A;
+    }
+
+    /* LAYOUT */
+    .page {
+      display: flex;
+      gap: 0;
+      min-height: calc(100vh - 52px);
+    }
+
+    .sidebar {
+      width: 220px;
+      background: #fff;
+      border-right: 1px solid #E5E7EB;
+      padding: 16px 0;
+      flex-shrink: 0;
+    }
+
+    .sidebar-item {
+      padding: 7px 20px;
+      color: #6B7280;
+      font-size: 13px;
+      cursor: pointer;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sidebar-item:hover {
+      background: #FFF7ED;
+      color: #F97316;
+    }
+
+    .sidebar-item.active {
+      background: #FFF7ED;
+      color: #F97316;
+      font-weight: 600;
+      border-right: 2px solid #F97316;
+    }
+
+    .sidebar-section {
+      font-size: 11px;
+      font-weight: 600;
+      color: #9CA3AF;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      padding: 12px 20px 4px;
+    }
+
+    .main {
+      flex: 1;
+      padding: 24px;
+      overflow: auto;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .page-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .page-subtitle {
+      color: #6B7280;
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .editor-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 16px;
+    }
+
+    /* CARD */
+    .card {
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 14px 18px;
+      border-bottom: 1px solid #E5E7EB;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-body {
+      padding: 18px;
+    }
+
+    /* LANG SELECT */
+    .lang-select {
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 13px;
+      color: #374151;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    /* FIELD */
+    .field {
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    .field label span {
+      color: #EF4444;
+    }
+
+    .subject-input {
+      width: 100%;
+      border: 1px solid #E5E7EB;
+      border-radius: 7px;
+      padding: 8px 12px;
+      font-size: 13px;
+      color: #111;
+      outline: none;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+      min-height: 38px;
+      cursor: text;
+    }
+
+    .subject-input:focus-within {
+      border-color: #F97316;
+      box-shadow: 0 0 0 3px rgba(249, 115, 22, .1);
+    }
+
+    .subject-text {
+      outline: none;
+      min-width: 40px;
+    }
+
+    /* CHIP */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #FFF7ED;
+      border: 1px solid #FED7AA;
+      border-radius: 20px;
+      padding: 2px 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #C2410C;
+      cursor: pointer;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .chip:hover {
+      background: #FFEDD5;
+    }
+
+    .chip-remove {
+      color: #FDA974;
+      font-size: 14px;
+      line-height: 1;
+      margin-left: 2px;
+    }
+
+    .chip-remove:hover {
+      color: #EF4444;
+    }
+
+    /* TOOLBAR */
+    .toolbar-wrap {
+      border: 1px solid #E5E7EB;
+      border-radius: 7px;
+      overflow: hidden;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 6px 8px;
+      border-bottom: 1px solid #E5E7EB;
+      background: #F9FAFB;
+      flex-wrap: wrap;
+    }
+
+    .tb-btn {
+      background: none;
+      border: none;
+      border-radius: 5px;
+      padding: 4px 7px;
+      font-size: 13px;
+      color: #6B7280;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .tb-btn:hover {
+      background: #E5E7EB;
+      color: #111;
+    }
+
+    .tb-sep {
+      width: 1px;
+      height: 18px;
+      background: #E5E7EB;
+      margin: 0 4px;
+    }
+
+    .tb-select {
+      border: 1px solid #E5E7EB;
+      border-radius: 5px;
+      padding: 3px 6px;
+      font-size: 12px;
+      background: #fff;
+      color: #374151;
+      cursor: pointer;
+    }
+
+    /* INSERT FIELD BUTTON */
+    .insert-field-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFF7ED;
+      border: 1px solid #FED7AA;
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #C2410C;
+      cursor: pointer;
+      transition: all .15s;
+      position: relative;
+    }
+
+    .insert-field-btn:hover {
+      background: #FFEDD5;
+    }
+
+    .insert-field-btn .icon {
+      font-size: 14px;
+    }
+
+    /* DROPDOWN */
+    .field-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      width: 320px;
+      background: #fff;
+      border: 1px solid #E5E7EB;
+      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, .12);
+      z-index: 200;
+      display: none;
+    }
+
+    .field-dropdown.open {
+      display: block;
+    }
+
+    .dropdown-search {
+      padding: 10px 12px;
+      border-bottom: 1px solid #F3F4F6;
+    }
+
+    .dropdown-search input {
+      width: 100%;
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .dropdown-search input:focus {
+      border-color: #F97316;
+    }
+
+    .dropdown-body {
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 8px 0;
+    }
+
+    .dropdown-group-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #9CA3AF;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      padding: 8px 14px 4px;
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 7px 14px;
+      cursor: pointer;
+      gap: 10px;
+    }
+
+    .dropdown-item:hover {
+      background: #FFF7ED;
+    }
+
+    .dropdown-item.disabled {
+      opacity: .4;
+      cursor: not-allowed;
+    }
+
+    .dropdown-item:hover.disabled {
+      background: none;
+    }
+
+    .di-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .di-key {
+      font-family: monospace;
+      font-size: 12px;
+      color: #C2410C;
+      background: #FFF7ED;
+      border: 1px solid #FED7AA;
+      border-radius: 4px;
+      padding: 1px 5px;
+    }
+
+    .di-label {
+      font-size: 12px;
+      color: #6B7280;
+    }
+
+    .di-badge {
+      font-size: 10px;
+      background: #F3F4F6;
+      color: #9CA3AF;
+      border-radius: 4px;
+      padding: 1px 5px;
+    }
+
+    /* EDITOR BODY */
+    .editor-body {
+      padding: 14px;
+      min-height: 260px;
+      outline: none;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #374151;
+    }
+
+    .editor-body p {
+      margin-bottom: 8px;
+    }
+
+    .editor-body strong {
+      font-weight: 700;
+    }
+
+    /* RIGHT PANEL */
+    .detail-row {
+      margin-bottom: 14px;
+    }
+
+    .detail-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #9CA3AF;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      margin-bottom: 3px;
+    }
+
+    .detail-value {
+      font-size: 13px;
+      color: #111;
+      font-weight: 500;
+    }
+
+    .guide-box {
+      background: #FFF7ED;
+      border: 1px solid #FED7AA;
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 16px;
+    }
+
+    .guide-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #C2410C;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .guide-text {
+      font-size: 12px;
+      color: #9A3412;
+      line-height: 1.5;
+    }
+
+    .fields-used {
+      margin-top: 16px;
+    }
+
+    .fields-used-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 8px;
+    }
+
+    .fields-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #111;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all .2s;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="nav-logo"><span>if</span> instafleet</div>
+    <div class="nav-breadcrumb">/ <a href="#">Unified</a> / <a href="#">Templates</a> / Box Now Key Delivery</div>
+    <div class="nav-actions">
+      <button class="btn btn-ghost" onclick="showToast('Reset to last saved')">Reset All</button>
+      <button class="btn btn-primary" onclick="showToast('✓ Template saved successfully')">Save</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-section">Workspace</div>
+      <div class="sidebar-item">📊 Overview</div>
+      <div class="sidebar-item">📋 Sales</div>
+      <div class="sidebar-item">📦 Fleet</div>
+      <div class="sidebar-section">Communications</div>
+      <div class="sidebar-item active">✉️ Templates</div>
+      <div class="sidebar-item">📬 Sent Emails</div>
+      <div class="sidebar-section">Admin</div>
+      <div class="sidebar-item">⚙️ Utilities</div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+      <div class="page-header">
+        <div>
+          <div class="page-title">Box Now Key Delivery</div>
+          <div class="page-subtitle">Email Template · Greek · Last saved 20/03/2026</div>
+        </div>
+      </div>
+
+      <div class="editor-layout">
+        <!-- LEFT: EDITOR -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">✉️ Template Content</div>
+            <select class="lang-select">
+              <option>Greek</option>
+              <option>English</option>
+            </select>
+          </div>
+          <div class="card-body">
+
+            <!-- SUBJECT -->
+            <div class="field">
+              <label>Subject (GR) <span>*</span></label>
+              <div class="subject-input" id="subject-field" onclick="focusLast(this)">
+                <span contenteditable="true" class="subject-text">instacar | Παραλάβετε κλειδιά οχήματος&nbsp;</span>
+                <span class="chip" title="Vehicle brand">🚗 {{vehicle_brand}}<span class="chip-remove"
+                    onclick="removeChip(this)">×</span></span>
+                <span contenteditable="true" class="subject-text">&nbsp;Box Now -&nbsp;</span>
+                <span class="chip" title="License plate">📋 {{vehicle_plate}}<span class="chip-remove"
+                    onclick="removeChip(this)">×</span></span>
+              </div>
+            </div>
+
+            <!-- BODY -->
+            <div class="field">
+              <label>Body (GR) <span>*</span></label>
+              <div class="toolbar-wrap">
+                <div class="toolbar">
+                  <select class="tb-select">
+                    <option>Normal</option>
+                    <option>H1</option>
+                    <option>H2</option>
+                  </select>
+                  <div class="tb-sep"></div>
+                  <button class="tb-btn" onclick="fmt('bold')"><b>B</b></button>
+                  <button class="tb-btn" onclick="fmt('italic')"><i>I</i></button>
+                  <button class="tb-btn" onclick="fmt('underline')"><u>U</u></button>
+                  <div class="tb-sep"></div>
+                  <button class="tb-btn">≡</button>
+                  <button class="tb-btn">№</button>
+                  <div class="tb-sep"></div>
+                  <!-- INSERT DYNAMIC FIELD -->
+                  <div style="position:relative; margin-left:4px;">
+                    <button class="insert-field-btn" id="insert-btn" onclick="toggleDropdown(event)">
+                      <span class="icon">{x}</span> Insert Dynamic Field ▾
+                    </button>
+                    <div class="field-dropdown" id="field-dropdown">
+                      <div class="dropdown-search">
+                        <input type="text" placeholder="Search fields…" id="search-input" oninput="filterFields()" />
+                      </div>
+                      <div class="dropdown-body" id="dropdown-body">
+                        <div class="dropdown-group-title">👤 User</div>
+                        <div class="dropdown-item" onclick="insertField('customer_first_name','Customer first name')">
+                          <div class="di-left"><span class="di-key">{{customer_first_name}}</span></div><span
+                            class="di-label">First name</span>
+                        </div>
+                        <div class="dropdown-item" onclick="insertField('customer_last_name','Customer last name')">
+                          <div class="di-left"><span class="di-key">{{customer_last_name}}</span></div><span
+                            class="di-label">Last name</span>
+                        </div>
+                        <div class="dropdown-item" onclick="insertField('customer_email','Customer email')">
+                          <div class="di-left"><span class="di-key">{{customer_email}}</span></div><span
+                            class="di-label">Email</span>
+                        </div>
+                        <div class="dropdown-item" onclick="insertField('customer_phone','Customer phone')">
+                          <div class="di-left"><span class="di-key">{{customer_phone}}</span></div><span
+                            class="di-label">Phone</span>
+                        </div>
+
+                        <div class="dropdown-group-title">🚗 Vehicle</div>
+                        <div class="dropdown-item" onclick="insertField('vehicle_brand','Vehicle brand')">
+                          <div class="di-left"><span class="di-key">{{vehicle_brand}}</span></div><span
+                            class="di-label">Brand</span>
+                        </div>
+                        <div class="dropdown-item" onclick="insertField('vehicle_model','Vehicle model')">
+                          <div class="di-left"><span class="di-key">{{vehicle_model}}</span></div><span
+                            class="di-label">Model</span>
+                        </div>
+                        <div class="dropdown-item" onclick="insertField('vehicle_edition','Vehicle edition')">
+                          <div class="di-left"><span class="di-key">{{vehicle_edition}}</span></div><span
+                            class="di-label">Edition</span>
+                        </div>
+                        <div class="dropdown-item" onclick="insertField('vehicle_plate','License plate')">
+                          <div class="di-left"><span class="di-key">{{vehicle_plate}}</span></div><span
+                            class="di-label">Plate</span>
+                        </div>
+
+                        <div class="dropdown-group-title">📋 Booking / Subscription</div>
+                        <div class="dropdown-item" onclick="insertField('booking_id','Booking ID')">
+                          <div class="di-left"><span class="di-key">{{booking_id}}</span></div><span
+                            class="di-label">Booking ID</span>
+                        </div>
+                        <div class="dropdown-item" onclick="insertField('subscription_id','Subscription ID')">
+                          <div class="di-left"><span class="di-key">{{subscription_id}}</span></div><span
+                            class="di-label">Subscription ID</span>
+                        </div>
+
+                        <div class="dropdown-group-title">📦 Delivery</div>
+                        <div class="dropdown-item" onclick="insertField('box_now_address','Box Now address')">
+                          <div class="di-left"><span class="di-key">{{box_now_address}}</span></div><span
+                            class="di-label">Box Now address</span>
+                        </div>
+                        <div class="dropdown-item" onclick="insertField('box_now_station_address','Parking address')">
+                          <div class="di-left"><span class="di-key">{{box_now_station_address}}</span></div><span
+                            class="di-label">Parking address</span>
+                        </div>
+                        <div class="dropdown-item disabled">
+                          <div class="di-left"><span class="di-key">{{locker_pin}}</span></div><span
+                            class="di-badge">Not available</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- EDITOR BODY -->
+                <div class="editor-body" id="editor" contenteditable="true">
+                  <p>Καλημέρα σας,</p>
+                  <p>Θα θέλαμε να σας ενημερώσουμε ότι τα κλειδιά του οχήματός σας έχα τοποθετηθεί στο Box Now της
+                    επιλογής σας, ενώ τo άρμα βρίσκεται σταθμευμένo στο κοντινό σημείο.</p>
+                  <p>Παρακάτω θα βρείτε τις σχετικές λεπτομέρειες:</p>
+                  <p><strong>Διεύθυνση Box Now:</strong><br>
+                    <span class="chip" title="Box Now address">📍 {{box_now_address}}<span class="chip-remove"
+                        onclick="removeChip(this)">×</span></span>
+                  </p>
+                  <p><strong>Διεύθυνση στάθμευσης οχήματος:</strong><br>
+                    <span class="chip" title="Parking address">🚗 {{box_now_station_address}}<span class="chip-remove"
+                        onclick="removeChip(this)">×</span></span>
+                  </p>
+                  <p>Σας υπενθυμίζουμε ότι η θυρίδα θα παραμείνει διαθέσιμη για 48 ώρες από την ώρα τοποθέτησης του
+                    κλειδιού.</p>
+                  <p>Για οτιδήποτε χρειαστείτε, παραμένουμε στη διάθεσή σας.</p>
+                  <p>Με εκτίμηση,<br>
+                    <span class="chip" title="Customer first name">👤 {{customer_first_name}}<span class="chip-remove"
+                        onclick="removeChip(this)">×</span></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RIGHT: DETAILS -->
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">📄 Template Details</div>
+            </div>
+            <div class="card-body">
+              <div class="detail-row">
+                <div class="detail-label">Template Name</div>
+                <div class="detail-value">Box Now Key Delivery</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">Created At</div>
+                <div class="detail-value">20/03/2026</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">Created By</div>
+                <div class="detail-value">Zeta Tsiftelidou</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">Language</div>
+                <div class="detail-value">Greek (GR)</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label">Used In Flows</div>
+                <div class="detail-value">Bookings, Logistics</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🧩 Dynamic Fields Used</div>
+            </div>
+            <div class="card-body">
+              <div class="fields-list" id="fields-used-list">
+                <span class="chip">📍 {{box_now_address}}</span>
+                <span class="chip">🚗 {{box_now_station_address}}</span>
+                <span class="chip">🚗 {{vehicle_brand}}</span>
+                <span class="chip">📋 {{vehicle_plate}}</span>
+                <span class="chip">👤 {{customer_first_name}}</span>
+              </div>
+              <div class="guide-box">
+                <div class="guide-title">ℹ️ How dynamic fields work</div>
+                <div class="guide-text">
+                  Fields shown as <strong>orange chips</strong> are replaced with real values when the email is
+                  sent.<br><br>
+                  Click <strong>Insert Dynamic Field</strong> in the toolbar to add one. Click <strong>×</strong> on a
+                  chip to remove it.<br><br>
+                  Fields marked <em>"Not available"</em> are not yet supported for this template flow.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    let savedRange = null;
+
+    // Save cursor position before dropdown opens
+    function saveSelection() {
+      const sel = window.getSelection();
+      if (sel && sel.rangeCount > 0) {
+        savedRange = sel.getRangeAt(0);
+      }
+    }
+
+    function restoreSelection() {
+      if (savedRange) {
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(savedRange);
+      }
+    }
+
+    document.getElementById('editor').addEventListener('keyup', saveSelection);
+    document.getElementById('editor').addEventListener('mouseup', saveSelection);
+    document.getElementById('editor').addEventListener('focus', saveSelection);
+
+    function toggleDropdown(e) {
+      e.stopPropagation();
+      saveSelection();
+      const dd = document.getElementById('field-dropdown');
+      dd.classList.toggle('open');
+      if (dd.classList.contains('open')) {
+        document.getElementById('search-input').focus();
+      }
+    }
+
+    document.addEventListener('click', () => {
+      document.getElementById('field-dropdown').classList.remove('open');
+    });
+
+    document.getElementById('field-dropdown').addEventListener('click', e => e.stopPropagation());
+
+    function filterFields() {
+      const q = document.getElementById('search-input').value.toLowerCase();
+      document.querySelectorAll('.dropdown-item').forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(q) ? '' : 'none';
+      });
+      document.querySelectorAll('.dropdown-group-title').forEach(g => {
+        const next = g.nextElementSibling;
+        let hasVisible = false;
+        let el = g.nextElementSibling;
+        while (el && !el.classList.contains('dropdown-group-title')) {
+          if (el.style.display !== 'none') hasVisible = true;
+          el = el.nextElementSibling;
+        }
+        g.style.display = hasVisible ? '' : 'none';
+      });
+    }
+
+    const ICONS = {
+      customer_first_name: '👤', customer_last_name: '👤',
+      customer_email: '📧', customer_phone: '📞',
+      vehicle_brand: '🚗', vehicle_model: '🚗', vehicle_edition: '🚗', vehicle_plate: '📋',
+      booking_id: '📋', subscription_id: '📋',
+      box_now_address: '📍', box_now_station_address: '🚗', locker_pin: '🔑'
+    };
+
+    function insertField(key, label) {
+      if (document.getElementById('field-dropdown').classList.contains('open')) {
+        document.getElementById('field-dropdown').classList.remove('open');
+      }
+
+      const editor = document.getElementById('editor');
+      editor.focus();
+
+      const chip = document.createElement('span');
+      chip.className = 'chip';
+      chip.title = label;
+      chip.innerHTML = `${ICONS[key] || '🔤'} {{${key}}}<span class="chip-remove" onclick="removeChip(this)">×</span>`;
+      chip.contentEditable = 'false';
+
+      restoreSelection();
+      const sel = window.getSelection();
+      if (sel && sel.rangeCount > 0 && editor.contains(sel.getRangeAt(0).commonAncestorContainer)) {
+        const range = sel.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(chip);
+        range.setStartAfter(chip);
+        range.collapse(true);
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } else {
+        editor.appendChild(chip);
+      }
+
+      updateFieldsList();
+      showToast(`✓ Inserted {{${key}}}`);
+      savedRange = null;
+    }
+
+    function removeChip(el) {
+      el.closest('.chip').remove();
+      updateFieldsList();
+    }
+
+    function updateFieldsList() {
+      const chips = document.querySelectorAll('#editor .chip, #subject-field .chip');
+      const seen = new Set();
+      const list = document.getElementById('fields-used-list');
+      list.innerHTML = '';
+      chips.forEach(c => {
+        const text = c.textContent.replace('×', '').trim();
+        if (!seen.has(text)) {
+          seen.add(text);
+          const cl = document.createElement('span');
+          cl.className = 'chip';
+          cl.textContent = text;
+          list.appendChild(cl);
+        }
+      });
+      if (!seen.size) list.innerHTML = '<span style="color:#9CA3AF;font-size:12px">No dynamic fields used yet.</span>';
+    }
+
+    function fmt(cmd) {
+      document.execCommand(cmd, false, null);
+      document.getElementById('editor').focus();
+    }
+
+    function focusLast(el) {
+      const spans = el.querySelectorAll('.subject-text');
+      if (spans.length) {
+        const last = spans[spans.length - 1];
+        last.focus();
+        const range = document.createRange();
+        range.selectNodeContents(last);
+        range.collapse(false);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+      }
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2200);
+    }
+  </script>
+</body>
+
+</html>
