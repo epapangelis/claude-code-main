@@ -119,6 +119,8 @@ Cross-context reusable frameworks and mental models that apply across instacar, 
 
 - [[atomic-design]] -- Brad Frost's methodology for building UI design systems via a 5-level hierarchy (atoms, molecules, organisms, templates, pages); covers interface inventory, Pattern Lab, design-systems-not-pages mental model, and long-term governance
 - [[building-mobile-apps-at-scale]] -- digest of Gergely Orosz's book on 39 engineering challenges for large native mobile apps, reframed for a product designer; covers binary distribution constraints, long tail of versions, feature flags, IAP complexity, performance, experimentation, forced upgrades, and cross-platform tradeoffs; includes cross-cutting mental models and product implications per challenge
+- [[ios-18-design-system]] -- system-level specs for iOS 18 and iPadOS 18: tinted icons, Control Center extensions, Apple Intelligence integration, and SF Symbols 6 animation framework
+- [[material-3-design-system]] -- Google's Material You (M3) standards: dynamic color tonal palettes, updated component library for Android, and compact density specs for data-heavy interfaces
 
 ---
 
@@ -138,5 +140,5 @@ Work summaries are tracked in `/log/` with daily files (DD-MM-YYYY.md format). T
 
 ---
 
-**Last updated**: 2026-05-14
+**Last updated**: 2026-05-25
 **Source documents**: instacar_claude_project_instructions.md, instafleet_team_usage.md, PRD_n8n_Workflow_Automation_instacar_v2.pdf, instacar-uk-launch-spec.md, swagger.json, subs export.csv, subs report.csv

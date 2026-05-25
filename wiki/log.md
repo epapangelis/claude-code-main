@@ -429,3 +429,15 @@ Created log/03-05-2026.md — no file changes detected for that date.
 **Updated**: wiki/index.md (added building-mobile-apps-at-scale entry under [concepts] section)
 
 **Summary**: Full read and digest of all 39 engineering challenges across 5 parts. Wiki page is structured for a product designer: each challenge has key insight, tradeoff, and product implication in scannable table format. Notable product implications captured: IAP limitations (no cancel/refund tooling), forced upgrade as a strategy requiring early investment, binary distribution as an irreversible constraint, the long tail of old app versions as a planning factor, analytics certification process to prevent metric drift, performance budgets and why APMs are less useful on mobile than backend, and cross-platform tradeoffs (Flutter, React Native, KMM). Includes a section of cross-cutting mental models directly applicable to product decisions at instacar.
+
+---
+
+## 2026-05-25 (Session 20 - Design Kit Ingest)
+
+**Ingested**: ins-ios 18 and ipados 18.fig, ins-material 3 deisgn kit.fig
+
+**Created**: 
+- wiki/ios-18-design-system.md -- iOS 18/iPadOS 18 specs, Control Center API, SF Symbols 6
+- wiki/material-3-design-system.md -- Material You standards, dynamic color, M3 component density
+
+**Updated**: wiki/index.md -- added both kits under [concepts] section
