@@ -16,19 +16,11 @@ Append-only record of all wiki changes.
 
 ## 2026-04-15 (Session 2 -- Full Raw Ingest)
 
-**Ingested**: instacar-uk-launch-spec.md, PRD_n8n_Workflow_Automation_instacar_v2.pdf (full), swagger.json, subs export.csv, subs report.csv
+2026-06-02 (Session 3)
 
-**Not ingested (too large / binary)**: Kill Pipedrive Plan.pdf, instacar Booking Flow.pdf, instacar_offer_16_03_2026.pdf, n8n-documentation.pdf, all image files (png, jpg)
-
-**Created**:
-- wiki/instacar-uk-launch-spec.md -- Phase 1 UK launch spec (buy + sell-to-us verticals, Instacar Promise, action items)
-- wiki/n8n-workflow-automation.md -- full PRD for n8n financial document automation
-- wiki/instafleet.md -- instafleet overview, teams, workspaces
-- wiki/instafleet-sales.md -- Sales team screens and Pipedrive dependency
-- wiki/instafleet-subscriptions.md -- CS team subscription module and tabs
-- wiki/instafleet-arm.md -- ARM team ticket management
-- wiki/kill-pipedrive.md -- initiative to migrate Sales off Pipedrive
-- wiki/kill-trello.md -- initiative to migrate Trello usage
+**Ingested**: raw/articles/slack-discussion-release-timeline-2026-06-02.md
+**Created**: wiki/mobile-app-launch-dependencies.md
+**Summary**: Formalized knowledge regarding mobile product launch dependencies, emphasizing the need for staged feature rollouts (e.g., prioritizing Login flow) and scheduling necessary time buffers for comprehensive QA testing.
 - wiki/defleet.md -- fleet end-of-life process initiative
 - wiki/booking-flow-redesign.md -- booking flow redesign initiative
 - wiki/instacar-api.md -- API endpoint reference from swagger

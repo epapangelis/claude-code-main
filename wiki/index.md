@@ -35,7 +35,7 @@ Pages related to my Head of Product role at instacar greece.
 
 ### Roadmap Initiatives
 
-- [[kill-pipedrive]] -- migrate Sales team fully into instafleet; v1 in QA (April 2026): 13 features shipped; QA Session 1 found 2 blockers (filters/views, credit validation) and a list of non-blockers; v2 covers labels, filter views, lost/won tracking
+- [[mobile-app-launch-dependencies]] -- Best practices for coordinating mobile app releases, focusing on dependency sequencing and mandatory QA buffers.
 - [[instafleet-approval-mechanism]] -- reusable system-triggered "Needs Approval" ticket pattern; first use case: instastart quantity lock (approver: Zoi); also covers change-vehicle resubmission and commercial override routing; async-friendly design
 - [[bundle-sales-spec]] -- 3-component bundle spec from CGO: upfront bundle at booking creation (in progress), monthly charging for existing customers (pending spec), commercial overrides via approval mechanism
 - [[defleet]] -- define fleet-end-of-life process and team handoffs (Ops, Sales, ARM, Finance); system-level "defleeted" stage and "fordefleet" reservation type already exist; workflow formalization in progress
