@@ -432,12 +432,14 @@ Created log/03-05-2026.md — no file changes detected for that date.
 
 ---
 
-## 2026-05-25 (Session 20 - Design Kit Ingest)
+## 2026-06-02 (Session 21 - Test Demo Ticket Creation)
 
-**Ingested**: ins-ios 18 and ipados 18.fig, ins-material 3 deisgn kit.fig
+**Source**: User request for a test demo Linear ticket.
 
 **Created**: 
-- wiki/ios-18-design-system.md -- iOS 18/iPadOS 18 specs, Control Center API, SF Symbols 6
-- wiki/material-3-design-system.md -- Material You standards, dynamic color, M3 component density
+- Tickets/test-demo-ticket.md -- demo ticket following the standard Linear ticket structure.
 
-**Updated**: wiki/index.md -- added both kits under [concepts] section
+**Linear tickets created**:
+- PRO-3148 -- Test Demo Ticket - UI Consistency Audit: https://linear.app/instacar/issue/PRO-3148/test-demo-ticket-ui-consistency-audit
+
+**Summary**: Created a test demo ticket in the `Tickets/` directory to validate the Linear ticket creation workflow. The ticket follows the standard structure (Description, What to do, Acceptance Criteria, etc.) and uses default settings (Assignee: Dimos Avgeris, Team: Product, Status: Ready for Tech). Pushed directly to Linear via GraphQL API using provided API key.

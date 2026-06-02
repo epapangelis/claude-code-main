@@ -140,5 +140,5 @@ Work summaries are tracked in `/log/` with daily files (DD-MM-YYYY.md format). T
 
 ---
 
-**Last updated**: 2026-05-25
+**Last updated**: 2026-06-02
 **Source documents**: instacar_claude_project_instructions.md, instafleet_team_usage.md, PRD_n8n_Workflow_Automation_instacar_v2.pdf, instacar-uk-launch-spec.md, swagger.json, subs export.csv, subs report.csv
