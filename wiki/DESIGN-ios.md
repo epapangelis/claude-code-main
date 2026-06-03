@@ -1,157 +1,168 @@
 # iOS Design System — DESIGN-ios.md
 
-Sourced from Figma file: INS - iOS 18 and iPadOS 18 (hR1EnHgz1LvBwQJyq4mGMF)
-Last synced: 2026-06-03
-
----
+Sourced from Figma JSON tokens: `ios-18-design-tokens.json`
 
 ## 1. Visual Theme
-
-Native Apple ecosystem aesthetics optimized for iOS 18 and iPadOS 18. Emphasizes depth, translucency, and large, legible typography. Interfaces adapt gracefully across Light, Dark, and the new Tinted display modes.
+A tailored iOS aesthetic adopting native structure but extending the typography and specific color scales to match custom brand attributes.
 
 ---
 
-## 2. Color Palette
+## 2. Color Palette (Exact Codes)
 
-*Values below represent conceptual system-level colors from Apple's HIG and the Figma extraction. Specific Hex codes vary based on Light/Dark/Tinted environments; the system relies heavily on semantic color mapping and material blurs.*
+### Neutrals
+- **White**: `#ffffffff`
+- **Gray 50**: `#f8fafcff`
+- **Gray 100**: `#f1f5f9ff`
+- **Gray 200**: `#e2e8f0ff`
+- **Gray 300**: `#cbd5e1ff`
+- **Gray 400**: `#94a3b8ff`
+- **Gray 500**: `#64748bff`
+- **Gray 600**: `#475569ff`
+- **Gray 700**: `#334155ff`
+- **Gray 800**: `#1e293bff`
+- **Gray 900**: `#04070eff`
+- **Black**: `#000000ff`
 
-### Primary Brands / System Colors
-```
-Blue 500:   #3B82F6 (System Blue) ← Interactive elements, default links
-Orange 400: #FF6500 (System Orange)
-Green 600:  #00B341 (System Green) ← Success states, active toggles
-```
+### Oranges (Primary Brand)
+- **Orange 5**: `#fff9f6ff`
+- **Orange 10**: `#fff3edff`
+- **Orange 50**: `#ffe7d9ff`
+- **Orange 100**: `#ffcaa7ff`
+- **Orange 200**: `#ffa164ff`
+- **Orange 300**: `#ff8636ff`
+- **Orange 400**: `#ff6500ff`
+- **Orange 500**: `#d45400ff`
+- **Orange 600**: `#a94201ff`
+- **Orange 700**: `#7e3200ff`
+- **Orange 800**: `#542100ff`
+- **Orange 900**: `#291000ff`
 
-### Grays & Neutrals
-```
-White:      #FFFFFF
-Black:      #000000
-Gray 400:   #94A3B8 (System Gray 4)
-Gray 900:   #04070E (System Gray 6)
-```
+### Blues
+- **Blue 50**: `#eff5ffff`
+- **Blue 100**: `#dbe8feff`
+- **Blue 200**: `#bfd7feff`
+- **Blue 300**: `#93bbfdff`
+- **Blue 400**: `#609afaff`
+- **Blue 500**: `#3b82f6ff`
+- **Blue 600**: `#1d64d8ff`
+- **Blue 700**: `#1e55afff`
+- **Blue 800**: `#1e478aff`
+- **Blue 900**: `#172e54ff`
+- **Baby Blue 50**: `#bae6fdff`
+- **Baby Blue 400**: `#38bdf8ff`
+- **Baby Blue 600**: `#0091d1ff`
+- **Baby Blue 900**: `#0c4a6eff`
 
-### Semantic / Labels & Fills
-```
-Labels/Primary:        #04070E (Standard text color)
-Labels/Secondary:      #3C3C43 with 60% opacity (Subtitles, secondary information)
-Labels/Tertiary:       #3C3C43 with 30% opacity (Placeholder text, disabled text)
-Labels/Quaternary:     #3C3C43 with 18% opacity (Subtle text elements)
+### Violets
+- **Violet 50**: `#ddd6feff`
+- **Violet 400**: `#a78bfaff`
+- **Violet 600**: `#6b3bf9ff`
+- **Violet 900**: `#4c1d95ff`
 
-Fills/Primary:         #787880 with 20% opacity (Solid interactive elements)
-Fills/Secondary:       #787880 with 16% opacity (Secondary buttons, list backgrounds)
-Fills/Tertiary:        #787880 with 12% opacity (Search fields, segmented controls)
+### Reds (Destructive)
+- **Red 5**: `#fff8f8ff`
+- **Red 50**: `#ffdedeff`
+- **Red 400**: `#f87171ff`
+- **Red 600**: `#ff2121ff`
+- **Red 900**: `#ba1a1aff`
 
-Separators/Opaque:     #C6C6C8 (Hard dividers)
-Separators/Non-opaque: #545456 with 34% opacity (Subtle dividers using alpha channels)
-```
+### Greens (Success)
+- **Green 50**: `#d4ffe3ff`
+- **Green 400**: `#4ade80ff`
+- **Green 600**: `#00b341ff`
+- **Green 900**: `#14532dff`
+
+### Yellows (Warning)
+- **Yellow 50**: `#fff7baff`
+- **Yellow 400**: `#fde047ff`
+- **Yellow 600**: `#dfbb00ff`
+- **Yellow 900**: `#68380dff`
+
+### UI Semantic Colors
+**Fills:**
+- **Primary**: `#78788033` (20% opacity)
+- **Secondary**: `#78788029` (16% opacity)
+- **Tertiary**: `#7878801f` (12% opacity)
+- **Quaternary**: `#78788014` (8% opacity)
+
+**Labels:**
+- **Primary**: `#04070eff`
+- **Secondary**: `#3c3c4399` (60% opacity)
+- **Tertiary**: `#3c3c434d` (30% opacity)
+- **Quaternary**: `#3c3c432e` (18% opacity)
+
+**Separators:**
+- **Opaque**: `#c6c6c8ff`
+- **Non-Opaque**: `#54545657` (34% opacity)
 
 ---
 
 ## 3. Typography
+Font family: **Geologica**  
+*(Note: Replaces default SF Pro with Geologica for all hierarchy levels)*
 
-Font family: **San Francisco (SF Pro)**
-Uses Dynamic Type sizes that scale automatically based on user accessibility settings.
-
-### Scale (Default "Large" sizes)
-```
-Large Title:   Emphasized
-Title 1:       Emphasized
-Title 2:       Regular
-Title 3:       Regular / Emphasized
-
-Headline:      Regular
-Subheadline:   Regular / Emphasized
-
-Body:          Regular / Emphasized   ← Main reading text
-
-Callout:       Regular
-Footnote:      Regular / Emphasized
-
-Caption 1:     Regular
-Caption 2:     Regular
-```
-
-### Usage rules
-- Body copy: Use `Body/Regular` for all standard readable text.
-- Large Headers: Use `Large Title` for main view headers.
-- Buttons: Typically use `Headline` or `Body/Emphasized`.
-- Metadata: Use `Footnote` or `Caption 1` for timestamps and secondary data.
-
----
-
-## 4. Components
-
-### Borders & Radius
-Apple uses continuous curves (superellipses) rather than standard rounded corners.
-```
-Default Corner Radius: Varies continuously, standard is ~10-14pt for cards/modals.
-Border width: Standard 0.33pt or 0.5pt for separators.
-```
-
-### Buttons
-```
-Primary:   Filled button (Tint color bg, White text), rounded corners
-Secondary: Tonal or Gray filled button
-Text Only: Tint color text with no background
-```
-
-### Inputs / Selects
-```
-Search Fields: Fills/Tertiary background with corner radius. Magnifying glass icon in tertiary label color.
-Pickers:       Native scrolling wheels or inline date/time spinners.
-```
-
-### Navigation
-```
-Navigation Bars: Translucent background with a hair-line border. Titles scale down on scroll.
-Tab Bars:        Translucent background at the bottom. Active icon is tinted.
-```
+### Scale Data (Size / Line Height / Letter Spacing)
+- **Large Title**
+  - Regular: 34pt / 41pt / 0.4px (Weight: 400)
+  - Emphasized: 34pt / 41pt / 0.4px (Weight: 700)
+- **Title 1**
+  - Regular: 28pt / 34pt / 0.38px (Weight: 400)
+  - Emphasized: 28pt / 34pt / 0.38px (Weight: 700)
+- **Title 2**
+  - Regular: 22pt / 28pt / -0.26px (Weight: 400)
+  - Emphasized: 22pt / 28pt / -0.26px (Weight: 700)
+- **Title 3**
+  - Regular: 20pt / 25pt / -0.45px (Weight: 400)
+  - Emphasized: 20pt / 25pt / -0.45px (Weight: 600)
+- **Headline**
+  - Regular: 17pt / 22pt / -0.43px (Weight: 600)
+  - Italic: 17pt / 22pt / -0.43px (Weight: 600, Italic)
+- **Body**
+  - Regular: 17pt / 22pt / -0.43px (Weight: 400)
+  - Emphasized: 17pt / 22pt / -0.43px (Weight: 600)
+  - Italic: 17pt / 22pt / -0.43px (Weight: 400, Italic)
+  - Emphasized Italic: 17pt / 22pt / -0.43px (Weight: 600, Italic)
+- **Callout**
+  - Regular: 16pt / 21pt / -0.31px (Weight: 400)
+  - Emphasized: 16pt / 21pt / -0.31px (Weight: 600)
+- **Subheadline**
+  - Regular: 15pt / 20pt / -0.23px (Weight: 400)
+  - Emphasized: 15pt / 20pt / -0.23px (Weight: 600)
+- **Footnote**
+  - Regular: 13pt / 18pt / -0.08px (Weight: 400)
+  - Emphasized: 13pt / 18pt / -0.08px (Weight: 600)
+- **Caption 1**
+  - Regular: 12pt / 16pt / 0px (Weight: 400)
+  - Emphasized: 12pt / 16pt / 0px (Weight: 500)
+- **Caption 2**
+  - Regular: 11pt / 13pt / 0.06px (Weight: 400)
+  - Emphasized: 11pt / 13pt / 0.06px (Weight: 600)
 
 ---
 
-## 5. Layout
+## 4. Depth & Elevation
+Drop Shadows extracted from the token file:
 
-### Sheets & Modals
-- **Standard Sheets**: Partially cover the screen, allowing users to pull down to dismiss.
-- **Action Sheets**: Slide up from the bottom for destructive/secondary actions.
-- **Popover**: Used extensively on iPad for contextual menus attached to buttons.
-
-### Margins
-- Standard layout margins: 16pt or 20pt depending on device size.
-
----
-
-## 6. Depth & Elevation
-
-Depth is created primarily using **Materials (Blurs)** rather than drop shadows.
-```
-Thick Material:  Used for prominent overlays (Keyboards, Action Sheets).
-Regular Material: Used for Navigation Bars, Tab Bars.
-Thin Material:   Subtle overlays.
-Shadows:         Soft, diffused shadows are used sparingly, mostly on floating elements (Widgets, Context Menus).
-```
+- **Elevation 1**:
+  - Shadow 1: Y: 2, Blur: 3, Spread: 1, Color: `#0000000d`
+  - Shadow 2: Y: 1, Blur: 1, Spread: 0, Color: `#0000000d`
+- **Elevation 2**:
+  - Shadow 1: Y: 2, Blur: 6, Spread: 2, Color: `#00000026`
+  - Shadow 2: Y: 1, Blur: 2, Spread: 0, Color: `#0000004d`
+- **Elevation 3**:
+  - Shadow 1: Y: 1, Blur: 3, Spread: 0, Color: `#0000004d`
+  - Shadow 2: Y: 4, Blur: 8, Spread: 3, Color: `#00000026`
+- **Elevation 4**:
+  - Shadow 1: Y: 2, Blur: 3, Spread: 0, Color: `#0000004d`
+  - Shadow 2: Y: 6, Blur: 10, Spread: 4, Color: `#00000026`
+- **Elevation 5**:
+  - Shadow 1: Y: 4, Blur: 4, Spread: 0, Color: `#0000004d`
+  - Shadow 2: Y: 8, Blur: 12, Spread: 6, Color: `#00000026`
 
 ---
 
-## 7. Guidelines
-
-- **Tinted Icons (iOS 18)**: Ensure app icons have an alpha-channel "stencil" version to support user-applied monochromatic tints.
-- **Control Center APIs**: Support 1x1, 2x1, or 2x2 widget actions for quick tasks.
-- **Translucency**: Always use standard iOS materials rather than opaque gray backgrounds for toolbars and overlays so content can bleed through.
-- **Hit Targets**: Minimum interactive area must be 44x44pt.
-
----
-
-## 8. Responsive Behavior
-
-Must adapt to various iPhone aspect ratios, Dynamic Island cutouts, and scale significantly for iPadOS 18 (utilizing floating tab bars and sidebars).
-
----
-
-## 9. Agent Prompts
-
-When building iOS UI components:
-- Utilize `SF Pro` and Dynamic Type scaling exclusively.
-- Replace hex values with semantic iOS UI colors (e.g., `systemBlue`, `label`, `secondarySystemBackground`).
-- Implement safe area layout guides to avoid overlapping the Dynamic Island or Home Indicator.
-- Favor Materials (background blurs) over standard shadows to create depth.
+## 5. Agent Prompts
+When building iOS UI components using these tokens:
+- **Font**: Must use `Geologica` instead of `SF Pro`. Use explicit weights (400, 500, 600, 700) matching the token hierarchy.
+- **Colors**: Utilize the exact hex codes over generic native colors. Reference the specific transparency levels for Semantic Fills and Labels.
+- **Elevation**: Replicate standard drop shadows using the 5 defined Elevation levels.
