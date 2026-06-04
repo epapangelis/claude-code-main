@@ -435,3 +435,17 @@ Created log/03-05-2026.md — no file changes detected for that date.
 - PRO-3148 -- Test Demo Ticket - UI Consistency Audit: https://linear.app/instacar/issue/PRO-3148/test-demo-ticket-ui-consistency-audit
 
 **Summary**: Created a test demo ticket in the `Tickets/` directory to validate the Linear ticket creation workflow. The ticket follows the standard structure (Description, What to do, Acceptance Criteria, etc.) and uses default settings (Assignee: Dimos Avgeris, Team: Product, Status: Ready for Tech). Pushed directly to Linear via GraphQL API using provided API key.
+
+---
+
+## 2026-06-04 (Session - Premium Bundle Mobile Ticket Creation)
+
+**Source**: User request for a linear ticket.
+
+**Created**: 
+- Tickets/mobile-premium-bundle-badge.md -- Linear ticket markdown file following standard structure.
+
+**Linear tickets created**:
+- PRO-3154 -- Premium Bundle Badge on Mobile Apps: https://linear.app/instacar/issue/PRO-3154/premium-bundle-badge-on-mobile-apps
+
+**Summary**: Created a linear ticket for implementing a premium bundle badge/chip on the mobile applications (iOS/Android) for both car listing and car detail screens, along with a dedicated bundle details screen. The ticket follows the standard linear structure including ACs and exclusions (no buying/renewing). Pushed directly to Linear via GraphQL API to the "product" team backlog using the provided API key.
