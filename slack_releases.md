@@ -81,3 +81,10 @@
 
 ### Vangelis Papangelis
 * **iOS Release 3.4.2:** Ανανεωμένο Checkout (sticky bottom CTA), UI Polish (Sale details), επίλυση προβλημάτων πλοήγησης και flickering, διόρθωση λίστας deliverables στις συνδρομές, και συμβατότητα με iOS 26.
+* **iOS Release 3.5.1:**
+  * **Private Vehicles:** Πλήρης υλοποίηση του flow για τα ιδιωτικά οχήματα! Πλέον οι χρήστες μπορούν να προσθέσουν το δικό τους όχημα (Private Vehicle creation), να συμπληρώσουν επιπλέον στοιχεία (π.χ. VIN, έγγραφα), και να διαχειριστούν το όχημά τους μέσα από τη νέα σελίδα λεπτομερειών (Vehicle Details Page).
+  * **Login & Account Management:** Προσθήκη λειτουργικότητας Login και υλοποίηση της δυνατότητας διαγραφής λογαριασμού (Delete request).
+  * **UI/UX Βελτιώσεις:**
+    * Αντικατάσταση των alerts με snackbars/toasts και προσθήκη bottom action banners στη ροή των private vehicles.
+    * Διόρθωση του UI στο vehicles tab bar για μη συνδεδεμένους χρήστες (σωστή εμφάνιση της λίστας leasing πίσω από το tab bar).
+    * Ανανέωση των εικονιδίων για τα verticals στην αρχική σελίδα μαζί με ενημέρωση του αντίστοιχου φωτογραφικού υλικού στο App Store.
