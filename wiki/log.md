@@ -449,3 +449,15 @@ Created log/03-05-2026.md — no file changes detected for that date.
 - PRO-3154 -- Premium Bundle Badge on Mobile Apps: https://linear.app/instacar/issue/PRO-3154/premium-bundle-badge-on-mobile-apps
 
 **Summary**: Created a linear ticket for implementing a premium bundle badge/chip on the mobile applications (iOS/Android) for both car listing and car detail screens, along with a dedicated bundle details screen. The ticket follows the standard linear structure including ACs and exclusions (no buying/renewing). Pushed directly to Linear via GraphQL API to the "product" team backlog using the provided API key.
+
+---
+
+## 2026-08-12 (Session - Package Availability Chips Ticket Draft)
+
+**Source**: User request for marketing ticket draft without posting to Linear.
+
+**Created**: 
+- Tickets/package-availability-chips-car-cards.md -- Linear ticket markdown draft for package availability chips on Car Cards.
+
+**Summary**: Created ticket draft for adding package availability chips (ΜΗΝΑ-ΜΗΝΑ, ΕΩΣ 12/24/36 ΜΗΝΕΣ) to Car Cards on Home Page and Listing Pages. Tag values managed manually in Car Catalogue properties. Draft saved to Tickets/ directory and presented to Evangelos without executing Linear API push.
+
