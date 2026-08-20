@@ -36,7 +36,7 @@
             color: var(--text-main);
             font-family: var(--font-main);
             margin: 0;
-            padding: 40px 20px;
+            padding: 40px 20px 120px;
             display: flex;
             justify-content: center;
             -webkit-font-smoothing: antialiased;
@@ -111,6 +111,7 @@
         }
 
         .vehicle-img {
+            position: relative;
             flex: 1;
             display: flex;
             align-items: center;
@@ -125,21 +126,25 @@
             filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.08));
         }
 
+        .vehicle-img img.vehicle-promo-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 64px;
+            max-width: 64px;
+            height: auto;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+        }
+
         /* html2canvas struggles with filters and flex-centering offsets.
-           Disable them during export to prevent cropped left edges. */
+           Applied only to the off-screen export clone (see exportOfferPdf()),
+           never to the live page, so there is no visible flicker. */
         .pdf-exporting,
         .pdf-exporting * {
             filter: none !important;
         }
 
-        body.pdf-exporting {
-            display: block !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            background: white !important;
-        }
-
-        body.pdf-exporting .pdf-document {
+        .pdf-document.pdf-exporting {
             margin: 0 !important;
             box-shadow: none !important;
             border-radius: 0 !important;
@@ -414,7 +419,7 @@
             display: flex;
             align-items: flex-start;
             gap: 16px;
-            padding: 18px 24px;
+            padding: 18px 48px;
             border: 1.5px solid var(--border-light);
             border-radius: 12px;
             background: #f8fafc;
@@ -476,7 +481,7 @@
 
         .submit-btn {
             width: 100%;
-            padding: 16px 28px;
+            padding: 16px 48px;
             background: var(--primary);
             color: white;
             border: none;
@@ -1081,6 +1086,95 @@
             }
         }
 
+        /* Sticky bottom bar — floating "island", same on desktop and mobile (see media query below for sizing) */
+        .mobile-sticky-bar {
+            position: fixed;
+            left: 50%;
+            bottom: 24px;
+            transform: translateX(-50%);
+            z-index: 1500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            min-height: 52px;
+            width: max-content;
+            max-width: calc(100vw - 48px);
+            padding: 14px 20px;
+            background: var(--bg-paper);
+            border: 1px solid var(--border-light);
+            border-radius: 9999px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+            transition: gap 0.3s ease;
+        }
+
+        .mobile-sticky-bar.hidden {
+            display: none !important;
+        }
+
+        /* No button = no gap to reserve, otherwise the total sits
+           off-center inside the shrunk pill/bar. */
+        .mobile-sticky-bar.msb-compact {
+            gap: 0;
+        }
+
+        .mobile-sticky-bar .msb-total {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+        }
+
+        .mobile-sticky-bar .msb-label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .mobile-sticky-bar .msb-value {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+
+        .mobile-sticky-bar .msb-btn {
+            flex-shrink: 0;
+            padding: 12px 22px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 9999px;
+            font-family: var(--font-main);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            opacity: 1;
+            transition: opacity 0.3s ease, padding-left 0.3s ease, padding-right 0.3s ease, width 0.3s ease;
+        }
+
+        .mobile-sticky-bar .msb-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Compact state: button shrinks away instead of snapping out,
+           keeping the bar's height fixed throughout. */
+        .mobile-sticky-bar.msb-compact .msb-btn {
+            width: 0;
+            padding-left: 0;
+            padding-right: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
         @media screen and (max-width: 768px) {
 
             body {
@@ -1090,6 +1184,7 @@
             .pdf-document {
                 border-radius: 0;
                 box-shadow: none;
+                padding-bottom: 76px;
             }
 
             /* Header responsive */
@@ -1108,16 +1203,91 @@
                 height: 24px;
             }
 
-            /* Table horizontal scroll — wrapper does the scrolling, table stays native */
+            /* Cost table → stacked cards on mobile, no horizontal scroll */
             .table-scroll-wrap {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                margin: 0 -20px;
-                padding: 0 20px;
+                overflow-x: visible;
+                margin: 0;
+                padding: 0;
             }
 
             .modern-table {
-                min-width: 520px;
+                min-width: 0;
+                width: 100%;
+                border-spacing: 0 10px;
+            }
+
+            .modern-table thead {
+                display: none;
+            }
+
+            .modern-table tbody,
+            .modern-table tr,
+            .modern-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .modern-table tr {
+                background: var(--bg-surface);
+                border: 1px solid var(--border-light);
+                border-radius: 12px;
+                padding: 16px;
+                margin-bottom: 10px;
+            }
+
+            .modern-table tr:last-child {
+                margin-bottom: 0;
+            }
+
+            .modern-table td {
+                border-bottom: none;
+                padding: 0;
+                text-align: left;
+            }
+
+            .modern-table td:first-child {
+                padding-bottom: 12px;
+                margin-bottom: 12px;
+                border-bottom: 1px dashed var(--border-dark);
+            }
+
+            .modern-table td.val-net,
+            .modern-table td.val-vat,
+            .modern-table td.val-total {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+                padding: 5px 0;
+                font-size: 13px;
+            }
+
+            .modern-table td.val-total {
+                margin-top: 4px;
+                padding-top: 10px;
+                border-top: 1px solid var(--border-light);
+            }
+
+            .modern-table td.val-net::before,
+            .modern-table td.val-vat::before,
+            .modern-table td.val-total::before {
+                font-size: 11px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.3px;
+                color: var(--text-muted);
+            }
+
+            .modern-table td.val-net::before {
+                content: "Καθαρή Αξία";
+            }
+
+            .modern-table td.val-vat::before {
+                content: "ΦΠΑ (24%)";
+            }
+
+            .modern-table td.val-total::before {
+                content: "Τελική Αξία";
             }
 
             .hero-section {
@@ -1176,14 +1346,17 @@
             .acceptance-row {
                 flex-direction: column;
                 align-items: stretch;
-                padding: 16px 20px;
                 gap: 16px;
+            }
+
+            .acceptance-check {
+                padding: 16px 20px;
             }
 
             .submit-btn {
                 width: 100%;
                 justify-content: center;
-                padding: 14px;
+                padding: 14px 20px;
                 font-size: 15px;
             }
 
@@ -1209,6 +1382,13 @@
             .upload-modal-primary-btn {
                 font-size: 14px;
             }
+
+            /* --- Sticky CTA bar: same floating island, sized for small screens --- */
+            .mobile-sticky-bar {
+                bottom: calc(16px + env(safe-area-inset-bottom));
+                max-width: calc(100vw - 32px);
+                padding: 12px 16px;
+            }
         }
     </style>
 </head>
@@ -1216,6 +1396,22 @@
 <body>
 
     <div class="pdf-document" id="pdf-document-root">
+
+        <!-- Mobile-only sticky bottom bar -->
+        <div class="mobile-sticky-bar" id="mobile-sticky-bar">
+            <div class="msb-total">
+                <span class="msb-label">αρχικο συνολο</span>
+                <span class="msb-value">11.634,30€</span>
+            </div>
+            <button class="msb-btn" onclick="scrollToAcceptance()">
+                Συνέχεια στην Αποδοχή
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+            </button>
+        </div>
 
         <div class="print-header-wrapper">
             <div class="header">
@@ -1243,13 +1439,16 @@
                         <div class="vehicle-img">
                             <img src="../raw/instacar/land-rover-defender-2024.png" alt="Land Rover Defender"
                                 onerror="this.src='https://d10ax2wcinhk08.cloudfront.net/images/11fc8eaf-0a35-4c4f-9df2-aca979f50440_mercedes-glc-300d-4matic-2024.webp'" />
+                            <img class="vehicle-promo-badge"
+                                src="../raw/instacar/https___d10ax2wcinhk08.cloudfront.net_campaigns_summer-deals_27c05797-eb8f-44ac-90be-7f7babcd505e_badge.webp"
+                                alt="Summer Deals" />
                         </div>
                     </div>
 
                     <!-- Right: 2×2 stat boxes -->
                     <div class="hero-stats">
                         <div class="stat-box">
-                            <div class="s-label">Τυπος Συμβολαιου</div>
+                            <div class="s-label">Τυπος Συνδρομης</div>
                             <div class="s-value">Μήνα-Μήνα</div>
                         </div>
                         <div class="stat-box highlight">
@@ -1268,8 +1467,8 @@
                         </div>
                         <div class="stat-box">
                             <div class="s-label">Προσφορά</div>
-                            <div class="s-value" style="color: var(--primary);">2 Μήνες</div>
-                            <div class="s-sub">-50% στο μίσθωμα</div>
+                            <div class="s-value" style="color: var(--primary);">3 Μήνες</div>
+                            <div class="s-sub">-30% στο μίσθωμα</div>
                         </div>
                     </div>
 
@@ -1282,11 +1481,11 @@
                         <line x1="12" y1="16" x2="12" y2="12"></line>
                         <line x1="12" y1="8" x2="12.01" y2="8"></line>
                     </svg>
-                    <span>Μετά την πάροδο της προσφοράς των 2 μηνών, το μίσθωμα διαμορφώνεται στο αρχικό ποσό των
+                    <span>Μετά την πάροδο της προσφοράς των 3 μηνών, το μίσθωμα διαμορφώνεται στο αρχικό ποσό των
                         <b>2.613€ + ΦΠΑ</b>.</span>
                 </div>
 
-                <div class="section-title">Ανάλυση κόστους έναρξης</div>
+                <div class="section-title">Ποσό εκκίνησης & Μηνιαίες χρεώσεις</div>
 
                 <div class="table-scroll-wrap">
                     <table class="modern-table">
@@ -1351,7 +1550,7 @@
                                 <td>
                                     <span class="item-name">Κατάθεση από Πώληση Οχήματος</span>
                                     <span class="item-desc">Ποσό που προκύπτει από την πώληση του προηγούμενου οχήματος
-                                        και αφαιρείται από το κόστος έναρξης.</span>
+                                        και λειτουργεί ως προκαταβολή.</span>
                                 </td>
                                 <td class="val-net">0,00€</td>
                                 <td class="val-vat">0,00€</td>
@@ -1441,7 +1640,7 @@
                 </div>
 
                 <div class="total-row">
-                    <span class="t-label">Συνολικο Ποσο Εκκινησης</span>
+                    <span class="t-label">αρχικο συνολο</span>
                     <span class="t-value">11.634,30€</span>
                 </div>
 
@@ -1796,6 +1995,26 @@
                 document.getElementById('submit-btn').disabled = !accepted;
             }
 
+            // ── Mobile sticky bar: jump to checkbox ───────────────
+            function scrollToAcceptance() {
+                const checkbox = document.getElementById('accept-checkbox');
+                const row = document.getElementById('acceptance-row');
+                row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (checkbox) checkbox.focus({ preventScroll: true });
+            }
+
+            // Hide the sticky button whenever the real submit button is already
+            // visible on screen — no need for the shortcut when the user can
+            // already tap the real one.
+            const stickyBar = document.getElementById('mobile-sticky-bar');
+            const mainSubmitBtn = document.getElementById('submit-btn');
+            const stickyVisibilityObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    stickyBar.classList.toggle('msb-compact', entry.isIntersecting);
+                });
+            }, { threshold: 0.15 });
+            stickyVisibilityObserver.observe(mainSubmitBtn);
+
             // ── Submit ────────────────────────────────────────────
             function submitOffer() {
                 document.getElementById('accept-checkbox').disabled = true;
@@ -1805,6 +2024,7 @@
                 const confirmed = document.getElementById('signup-confirmed');
                 acceptanceRow.style.display = 'none';
                 confirmed.classList.add('visible');
+                document.getElementById('mobile-sticky-bar').classList.add('hidden');
 
                 const now = new Date();
                 const formatted = now.toLocaleDateString('el-GR', {
@@ -1816,8 +2036,40 @@
 
                 // Auto-generate & download PDF silently, then show upload modal
                 setTimeout(function () {
-                    document.body.classList.add('pdf-exporting');
-                    const element = document.getElementById('pdf-document-root');
+                    exportOfferPdf().then(function () {
+                        const toast = document.getElementById('pdf-toast');
+                        toast.classList.add('show');
+                        setTimeout(function () { toast.classList.remove('show'); }, 3500);
+                        setTimeout(openUploadModal, 800);
+                    }).catch(function (err) {
+                        console.error('PDF Generation Error:', err);
+                    });
+                }, 900);
+            }
+
+            // ── PDF export ────────────────────────────────────────
+            // Renders an off-screen clone of the offer instead of mutating the
+            // live page, so nothing visibly flickers while html2canvas works.
+            // The sticky bar and any modals/toasts are stripped from the clone
+            // since they're UI chrome, not part of the printable offer.
+            function exportOfferPdf() {
+                return new Promise(function (resolve, reject) {
+                    const source = document.getElementById('pdf-document-root');
+                    const clone = source.cloneNode(true);
+                    clone.removeAttribute('id');
+                    clone.classList.add('pdf-exporting');
+
+                    clone.querySelectorAll('.mobile-sticky-bar, .upload-modal-overlay, .modal-overlay, .pdf-toast')
+                        .forEach(function (el) { el.remove(); });
+
+                    const offscreen = document.createElement('div');
+                    // Keep it at the real (0,0) viewport origin — html2canvas mis-measures
+                    // and clips content when the source element sits at a large negative
+                    // offset. Opacity + z-index keep it invisible without moving it.
+                    offscreen.style.cssText = 'position:fixed; top:0; left:0; z-index:-9999; opacity:0; pointer-events:none; background:#ffffff;';
+                    offscreen.appendChild(clone);
+                    document.body.appendChild(offscreen);
+
                     const opt = {
                         margin: [10, 10, 10, 10],
                         filename: 'Προσφορά-instacar-BMYXE08SZZ.pdf',
@@ -1832,19 +2084,15 @@
                         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
                         pagebreak: { mode: 'avoid-all' }
                     };
-                    html2pdf().set(opt).from(element).save().then(function () {
-                        document.body.classList.remove('pdf-exporting');
-                        // Show toast
-                        const toast = document.getElementById('pdf-toast');
-                        toast.classList.add('show');
-                        setTimeout(function () { toast.classList.remove('show'); }, 3500);
-                        // Open upload modal after brief pause
-                        setTimeout(openUploadModal, 800);
+
+                    html2pdf().set(opt).from(clone).save().then(function () {
+                        offscreen.remove();
+                        resolve();
                     }).catch(function (err) {
-                        console.error('PDF Generation Error:', err);
-                        document.body.classList.remove('pdf-exporting');
+                        offscreen.remove();
+                        reject(err);
                     });
-                }, 900);
+                });
             }
 
             // ── Upload Documents Modal ────────────────────────────
@@ -1869,27 +2117,8 @@
 
             // ── 1. Print / Download PDF ───────────────────────────
             function printOffer() {
-                document.body.classList.add('pdf-exporting');
-                const element = document.getElementById('pdf-document-root');
-                const opt = {
-                    margin: [10, 10, 10, 10],
-                    filename: 'Προσφορά-instacar-BMYXE08SZZ.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: {
-                        scale: 2,
-                        useCORS: true,
-                        logging: false,
-                        scrollY: 0,
-                        windowWidth: 1200
-                    },
-                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                    pagebreak: { mode: 'avoid-all' }
-                };
-                html2pdf().set(opt).from(element).save().then(function () {
-                    document.body.classList.remove('pdf-exporting');
-                }).catch(function (err) {
+                exportOfferPdf().catch(function (err) {
                     console.error('PDF Generation Error:', err);
-                    document.body.classList.remove('pdf-exporting');
                 });
             }
 
