@@ -581,11 +581,30 @@
             flex-shrink: 0;
         }
 
+        .action-btns.stacked {
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        .action-btns.stacked .action-btn-text,
+        .action-btns.stacked .upload-modal-primary-btn {
+            width: 100%;
+            flex: none;
+        }
+
+        .action-btns.stacked .action-btn-text,
+        .action-btns.stacked .action-btn-text:hover,
+        .action-btns.stacked .upload-modal-primary-btn,
+        .action-btns.stacked .upload-modal-primary-btn:hover {
+            box-shadow: none;
+        }
+
         .action-btn {
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            border: 1.5px solid transparent;
+            border: 1.5px solid var(--border-light);
             background: white;
             display: flex;
             align-items: center;
@@ -609,7 +628,7 @@
             height: 44px;
             padding: 0 20px;
             border-radius: 999px;
-            border: 1.5px solid transparent;
+            border: 1.5px solid var(--border-light);
             background: white;
             display: flex;
             align-items: center;
@@ -655,7 +674,7 @@
         .upload-modal-card {
             background: white;
             border-radius: 24px;
-            padding: 44px 40px 40px;
+            padding: 44px 40px 32px;
             width: 100%;
             max-width: 480px;
             box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.08);
@@ -756,12 +775,14 @@
         }
 
         .upload-modal-primary-btn {
-            width: 100%;
-            padding: 16px;
+            flex: 1 1 auto;
+            min-width: 0;
+            height: 44px;
+            padding: 0 20px;
             background: var(--primary);
             color: white;
             border: none;
-            border-radius: 14px;
+            border-radius: 9999px;
             font-family: var(--font-main);
             font-size: 15px;
             font-weight: 800;
@@ -773,28 +794,12 @@
             transition: all 0.25s ease;
             box-shadow: 0 6px 20px rgba(255, 101, 0, 0.3);
             letter-spacing: 0.3px;
-            margin-bottom: 12px;
         }
 
         .upload-modal-primary-btn:hover {
             background: #e55a00;
             transform: translateY(-1px);
             box-shadow: 0 10px 28px rgba(255, 101, 0, 0.4);
-        }
-
-        .upload-modal-skip {
-            font-size: 12px;
-            color: var(--text-muted);
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-family: var(--font-main);
-            padding: 4px;
-            transition: color 0.2s;
-        }
-
-        .upload-modal-skip:hover {
-            color: var(--text-main);
         }
 
         .upload-modal-close {
@@ -1372,7 +1377,7 @@
             }
 
             .upload-modal-card {
-                padding: 36px 24px 28px;
+                padding: 36px 24px 20px;
             }
 
             .upload-modal-primary-btn {
@@ -1727,7 +1732,7 @@
                         <!-- 2 action buttons -->
                         <div class="action-btns">
                             <!-- Download PDF (Icon only) -->
-                            <button class="action-btn" onclick="printOffer()" title="Λήψη PDF">
+                            <button class="action-btn" onclick="downloadOfferPdf()" title="Λήψη PDF">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -1852,6 +1857,7 @@
                 </div>
                 <h2>Μεταφόρτωση Εγγράφων</h2>
                 <p>Για να ολοκληρωθεί η αίτησή σου, χρειάζεται να ανεβάσεις τα παρακάτω δικαιολογητικά.</p>
+
                 <div class="upload-doc-list">
                     <div class="upload-doc-item">
                         <div class="upload-doc-item-icon">
@@ -1888,90 +1894,20 @@
                         Οικονομικά Έγγραφα
                     </div>
                 </div>
-                <button class="upload-modal-primary-btn" onclick="goToDocUpload()">
-                    Ανέβασε δικαιολογητικά
-                </button>
-                <button class="upload-modal-skip" onclick="closeUploadModal()">Θα το κάνω αργότερα</button>
-            </div>
-        </div>
-
-        <!-- PDF download toast -->
-        <div class="pdf-toast" id="pdf-toast">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-            </svg>
-            Το PDF κατέβηκε επιτυχώς!
-        </div>
-
-        <!-- Upload Documents Modal -->
-        <div class="upload-modal-overlay" id="upload-modal">
-            <div class="upload-modal-card">
-                <button class="upload-modal-close" onclick="closeUploadModal()" title="Κλείσιμο">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-                <div class="upload-modal-icon-wrap">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                        <polyline points="17 8 12 3 7 8" />
-                        <line x1="12" y1="3" x2="12" y2="15" />
-                    </svg>
+                <div class="action-btns stacked">
+                    <button class="upload-modal-primary-btn" onclick="goToDocUpload()">
+                        Ανέβασμα Εγγράφων
+                    </button>
+                    <button class="action-btn-text" onclick="downloadOfferPdf()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Λήψη της προσφοράς σου
+                    </button>
                 </div>
-                <div class="upload-modal-badge">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    Επόμενο Βήμα
-                </div>
-                <h2>Ανέβασμα Εγγράφων</h2>
-                <p>Για να ολοκληρωθεί η αίτησή σου, χρειάζεται να ανεβάσεις τα παρακάτω δικαιολογητικά.</p>
-                <div class="upload-doc-list">
-                    <div class="upload-doc-item">
-                        <div class="upload-doc-item-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="3" width="18" height="18" rx="2" />
-                                <path d="M3 9h18M9 21V9" />
-                            </svg>
-                        </div>
-                        Αστυνομική Ταυτότητα / Διαβατήριο
-                    </div>
-                    <div class="upload-doc-item">
-                        <div class="upload-doc-item-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="3" width="18" height="18" rx="2" />
-                                <path d="M3 9h18M9 21V9" />
-                            </svg>
-                        </div>
-                        Άδεια Οδήγησης
-                    </div>
-                    <div class="upload-doc-item">
-                        <div class="upload-doc-item-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                <polyline points="14 2 14 8 20 8" />
-                            </svg>
-                        </div>
-                        Αποδεικτικό Εισοδήματος (Ε1)
-                    </div>
-                </div>
-                <button class="upload-modal-primary-btn" onclick="goToDocUpload()">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                        <polyline points="17 8 12 3 7 8" />
-                        <line x1="12" y1="3" x2="12" y2="15" />
-                    </svg>
-                    Μετάβαση στη Μεταφόρτωση
-                </button>
-                <button class="upload-modal-skip" onclick="closeUploadModal()">Θα το κάνω αργότερα</button>
             </div>
         </div>
 
@@ -2030,17 +1966,9 @@
                 document.getElementById('confirmed-details').textContent = `Η αποδοχή καταγράφηκε (${formatted}).`;
                 confirmed.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-                // Auto-generate & download PDF silently, then show upload modal
-                setTimeout(function () {
-                    exportOfferPdf().then(function () {
-                        const toast = document.getElementById('pdf-toast');
-                        toast.classList.add('show');
-                        setTimeout(function () { toast.classList.remove('show'); }, 3500);
-                        setTimeout(openUploadModal, 800);
-                    }).catch(function (err) {
-                        console.error('PDF Generation Error:', err);
-                    });
-                }, 900);
+                // No automatic PDF download — the person downloads explicitly via
+                // the "Λήψη PDF" button (confirmation banner or upload modal).
+                setTimeout(openUploadModal, 1200);
             }
 
             // ── PDF export ────────────────────────────────────────
@@ -2081,8 +2009,22 @@
                         pagebreak: { mode: 'avoid-all' }
                     };
 
-                    html2pdf().set(opt).from(clone).save().then(function () {
+                    // Build the PDF as a Blob and trigger the download via a hidden
+                    // <a download> link on a blob: URL — this saves the file directly
+                    // on tap, everywhere, with no intermediate share sheet or menu.
+                    html2pdf().set(opt).from(clone).outputPdf('blob').then(function (blob) {
                         offscreen.remove();
+                        const url = URL.createObjectURL(blob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.download = opt.filename;
+                        link.style.display = 'none';
+                        document.body.appendChild(link);
+                        link.click();
+                        setTimeout(function () {
+                            link.remove();
+                            URL.revokeObjectURL(url);
+                        }, 200);
                         resolve();
                     }).catch(function (err) {
                         offscreen.remove();
@@ -2111,9 +2053,13 @@
                 if (e.target === this) closeUploadModal();
             });
 
-            // ── 1. Print / Download PDF ───────────────────────────
-            function printOffer() {
-                exportOfferPdf().catch(function (err) {
+            // ── 1. Download PDF (confirmation banner + upload modal) ─
+            function downloadOfferPdf() {
+                exportOfferPdf().then(function () {
+                    const toast = document.getElementById('pdf-toast');
+                    toast.classList.add('show');
+                    setTimeout(function () { toast.classList.remove('show'); }, 3500);
+                }).catch(function (err) {
                     console.error('PDF Generation Error:', err);
                 });
             }
