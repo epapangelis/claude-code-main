@@ -242,7 +242,7 @@ When you're asked to create a Linear ticket, use these defaults unless I specify
 
 - **Assignee**: me (the user)
 - **Team**: product
-- **Status**: Ready for Tech
+- **Status**: Backlog
 
 Override any of these only if I explicitly say "assign to [person]", "team: [team]", or "status: [status]".
 
