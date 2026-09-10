@@ -37,7 +37,8 @@ Pages related to my Head of Product role at instacar greece.
 
 - [[mobile-app-launch-dependencies]] -- Best practices for coordinating mobile app releases, focusing on dependency sequencing and mandatory QA buffers.
 - [[instafleet-approval-mechanism]] -- reusable system-triggered "Needs Approval" ticket pattern; first use case: instastart quantity lock (approver: Zoi); also covers change-vehicle resubmission and commercial override routing; async-friendly design
-- [[bundle-sales-spec]] -- 3-component bundle spec from CGO: upfront bundle at booking creation (in progress), monthly charging for existing customers (pending spec), commercial overrides via approval mechanism
+- [[bundle-sales-spec]] -- 3-component bundle spec from CGO: upfront bundle at booking creation (in progress), monthly charging for existing customers (draft spec written, see [[bundle-monthly-charging-spec]]), commercial overrides via approval mechanism
+- [[bundle-monthly-charging-spec]] -- draft spec for silent monthly bundle rollover on existing subscriptions: trigger detection, payment mechanism (reuse existing recurring method), customer notification (email only, no self-service portal today), opt-out, termination/apalagi enforcement; unvalidated, pending sign-off from Chris/Togias/Zoi/Polina
 - [[defleet]] -- define fleet-end-of-life process and team handoffs (Ops, Sales, ARM, Finance); system-level "defleeted" stage and "fordefleet" reservation type already exist; workflow formalization in progress
 - [[carswaps]] -- CS-initiated vehicle swap flow inside instafleet; trigger button on subscription detail + full-screen modal with product carry-over, proration logic, and bidirectional subscription linking; part of kill-pipedrive; Linear project empty pending Finance validation
 - [[instafleet-billing-detail-selection]] -- allow users to select which billing detail is active for a booking, with auto-save and toast confirmation; minimal UI change for booking management; PRO-2996
@@ -140,5 +141,5 @@ Work summaries are tracked in `/log/` with daily files (DD-MM-YYYY.md format). T
 
 ---
 
-**Last updated**: 2026-06-02
-**Source documents**: instacar_claude_project_instructions.md, instafleet_team_usage.md, PRD_n8n_Workflow_Automation_instacar_v2.pdf, instacar-uk-launch-spec.md, swagger.json, subs export.csv, subs report.csv
+**Last updated**: 2026-09-09
+**Source documents**: instacar_claude_project_instructions.md, instafleet_team_usage.md, PRD_n8n_Workflow_Automation_instacar_v2.pdf, instacar-uk-launch-spec.md, swagger.json, subs export.csv, subs report.csv, Premium Changes in Pricing.md

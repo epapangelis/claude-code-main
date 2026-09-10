@@ -461,3 +461,47 @@ Created log/03-05-2026.md — no file changes detected for that date.
 
 **Summary**: Created ticket draft for adding package availability chips (ΜΗΝΑ-ΜΗΝΑ, ΕΩΣ 12/24/36 ΜΗΝΕΣ) to Car Cards on Home Page and Listing Pages. Tag values managed manually in Car Catalogue properties. Draft saved to Tickets/ directory and presented to Evangelos without executing Linear API push.
 
+---
+
+## 2026-09-09 (Session - Bundle Monthly Charging Spec)
+
+**Source**: User question on how a customer is notified when a monthly bundle is added to an existing instafleet subscription; raw/instacar/Premium Changes in Pricing.md (already ingested, revisited).
+
+**Created**: wiki/bundle-monthly-charging-spec.md -- draft spec for Component 2 of the bundle sales initiative (silent monthly bundle rollover for existing customers): trigger detection, payment mechanism, customer notification (email-only, no self-service portal exists today), opt-out, and apalagi-based termination enforcement, plus a table of open decisions and owners.
+
+**Updated**:
+- wiki/bundle-sales-spec.md -- Component 2 status now points to the draft spec instead of listing raw open questions; added related-page link.
+- wiki/index.md -- added bundle-monthly-charging-spec entry under Roadmap Initiatives; bumped Last updated and source documents.
+
+**Summary**: Drafted a proposed spec answering the previously-open questions on monthly bundle charging, most directly: customers are not currently notified via app (no subscription self-service portal exists) — proposal is a two-touchpoint transactional email flow (advance notice + charge confirmation) logged to the subscription's History tab, plus an optional SMS nudge. Entire spec is unvalidated and flagged for sign-off from Chris, Togias, Zoi, and Polina before going to engineering.
+
+**Linear tickets created**:
+- PRO-3563 -- Bundle Monthly Charging for Existing Customers (silent rollover + notification): https://linear.app/instacar/issue/PRO-3563/bundle-monthly-charging-for-existing-customers-silent-rollover
+
+**Created**: Tickets/bundle-monthly-charging-existing-customers.md -- Linear ticket markdown file based on wiki/bundle-monthly-charging-spec.md, following standard ticket structure. Pushed to Linear "product" team, Backlog status, assigned to Evangelos.
+
+**Note**: PRO-3563 was later edited externally in Linear (description altered, Figma board embedded in Figjam section) between sessions -- flagged to Evangelos rather than overwritten.
+
+**Created**: Tickets/bundle-monthly-charging-spec-proposal.md -- new, separate Linear ticket markdown file sourced directly from wiki/bundle-monthly-charging-spec.md (fuller spec detail than the original ticket file), created to avoid clobbering PRO-3563's externally-edited content.
+
+**Linear tickets created**:
+- PRO-3564 -- [Spec Proposal] Bundle Monthly Charging for Existing Customers: https://linear.app/instacar/issue/PRO-3564/spec-proposal-bundle-monthly-charging-for-existing-customers -- Team: product, Assignee: Evangelos, Status: Spec Phase.
+
+---
+
+## 2026-09-10 (Session - Bundle Monthly Charging Multi-Channel Notification)
+
+**Source**: User correction that monthly bundle charging already exists in production (charged with the car's monthly rent), narrowing the real gap to customer notification/opt-out/termination enforcement. Follow-up research into available communication channels ([[instacar-api]], [[unified-view]], [[design-system]], [[subscriptions]], [[booking]]) surfaced an existing `/v3/notifications` API endpoint and an in-flight mobile initiative (PRO-3533, Buy New Bundle / View Existing Bundle flows) that could serve as the in-app notification destination.
+
+**Updated**:
+- wiki/bundle-monthly-charging-spec.md -- Sections 1-3 marked as already live in production (not new scope); status section updated to narrow the gap to Sections 4-6 (notification, opt-out, termination enforcement).
+- wiki/bundle-sales-spec.md -- Component 2 status and prioritization table updated to reflect that billing is live; blocker reframed as notification/opt-out/enforcement design only.
+- PRO-3563 (Linear) -- "What we currently do" corrected via patch (preserving the externally-added Figma embed); removed the now-resolved "combine billing into one charge" open decision.
+
+**Created**: Tickets/bundle-monthly-charging-customer-notification.md -- multi-channel notification plan (email primary, in-app via `/v3/notifications` deep-linking to PRO-3533's bundle screen, SMS nudge, CS heads-up), with a mermaid flow diagram.
+
+**Linear tickets created**:
+- PRO-3566 -- Bundle Monthly Charging — Customer Notification (multi-channel): https://linear.app/instacar/issue/PRO-3566/bundle-monthly-charging-customer-notification-multi-channel -- Team: product, Assignee: Evangelos, Status: Spec Phase. Linked as related to PRO-3533 and PRO-3563.
+
+**Summary**: Narrowed and re-specced the customer notification problem after learning monthly bundle billing already ships in production. Proposed a multi-channel plan (email + in-app + SMS) instead of email-only, leveraging an already-existing notifications API and an in-flight mobile bundle-detail screen (PRO-3533) as the in-app destination. New ticket PRO-3566 captures this and links to the related tickets.
+

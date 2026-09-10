@@ -3,7 +3,7 @@
 **Summary**: Spec for the instacar premium bundle offering — three delivery components: upfront bundle at booking, monthly charging for existing customers, and commercial override controls.
 **Context**: [instacar]
 **Sources**: raw/instacar/Premium Changes in Pricing.md, raw/instacar/chris-noulis-instafleet-projects-2026-04-20.md
-**Last updated**: 2026-04-23
+**Last updated**: 2026-09-09
 
 ---
 
@@ -27,6 +27,8 @@ Lift MRR on the existing customer base without new acquisition. Bundle sales is 
 
 ## Component 2: Monthly Charging for Existing Customers
 
+**Update (2026-09-09, source: Evangelos)**: monthly bundle charging is already live in production — the bundle is charged every month together with the car's monthly rent/lease payment. The remaining gap is narrower than originally scoped: customer notification, opt-out, and apalagi-based termination enforcement. See [[bundle-monthly-charging-spec]] for the full breakdown.
+
 **What**: Upsell bundle via contract renewal when remaining duration is below 12 months. Once the 12-month bundle period completes, it rolls into a silent monthly extension unless customer opts out.
 
 **Termination rules**:
@@ -35,12 +37,7 @@ Lift MRR on the existing customer base without new acquisition. Bundle sales is 
 
 **Legal**: Polina has prepared the relevant legal wording. (source: Premium Changes in Pricing.md)
 
-**Status**: Not yet spec'd for engineering. Needs answers before scoping:
-- Payment mechanism for monthly charging (Viva, SEPA, direct debit?)
-- How is "remaining duration below 12 months" detected? Automated or agent-initiated trigger?
-- What does the "silent monthly extension" look like operationally? Who charges, when, how tracked in instafleet?
-- What does customer opt-out look like?
-- How is the termination restriction enforced in the system?
+**Status**: Billing mechanism already live in production. Draft spec written for the remaining gap — see [[bundle-monthly-charging-spec]] (customer notification, opt-out, termination enforcement). Not yet validated with Chris, Togias, Zoi, or Polina.
 
 **Blocker**: Requires alignment with Togias on capacity alongside Kill Pipedrive, UK, CarSwaps, mobile releases, and Overview screens.
 
@@ -61,13 +58,14 @@ Lift MRR on the existing customer base without new acquisition. Bundle sales is 
 | Component | Effort | Status | Blocker |
 |-----------|--------|--------|---------|
 | Upfront bundle at booking | ~1-2 weeks | In progress | None (confirm with Togias) |
-| Monthly charging for existing | TBD | Blocked on spec | Payment mechanism + system design questions |
+| Monthly charging for existing | Billing: done. Notification/opt-out/enforcement: TBD | Billing live; notification layer pending sign-off | Customer notification, opt-out, and apalagi enforcement design |
 | Commercial overrides | Part of approval mechanism | Pending spec | Async approval design |
 
 ---
 
 ## Related pages
 - [[roadmap]]
+- [[bundle-monthly-charging-spec]]
 - [[instafleet-approval-mechanism]]
 - [[kill-pipedrive]]
 - [[instafleet]]
