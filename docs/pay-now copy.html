@@ -1541,7 +1541,7 @@
             position: fixed;
             left: 50%;
             bottom: 24px;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateY(0);
             z-index: 1500;
             display: flex;
             align-items: center;
@@ -1555,17 +1555,21 @@
             border: 1px solid var(--border-light);
             border-radius: 9999px;
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
-            transition: gap 0.3s ease;
+            opacity: 1;
+            transition: gap 0.3s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
         }
 
         .mobile-sticky-bar.hidden {
             display: none !important;
         }
 
-        /* No button = no gap to reserve, otherwise the total sits
-           off-center inside the shrunk pill/bar. */
+        /* No button enabled = nothing left to act on, so snap the whole pill
+           away below the fold instead of just shrinking the button away —
+           and snap it back up the same way once a button is needed again. */
         .mobile-sticky-bar.msb-compact {
-            gap: 0;
+            transform: translateX(-50%) translateY(150%);
+            opacity: 0;
+            pointer-events: none;
         }
 
         .mobile-sticky-bar .msb-total {
@@ -1615,16 +1619,6 @@
 
         .mobile-sticky-bar .msb-btn:active {
             transform: translateY(1px);
-        }
-
-        /* Compact state: button shrinks away instead of snapping out,
-           keeping the bar's height fixed throughout. */
-        .mobile-sticky-bar.msb-compact .msb-btn {
-            width: 0;
-            padding-left: 0;
-            padding-right: 0;
-            opacity: 0;
-            pointer-events: none;
         }
 
         @media screen and (max-width: 768px) {
