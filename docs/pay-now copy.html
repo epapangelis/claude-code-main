@@ -1,0 +1,2813 @@
+<!DOCTYPE html>
+<html lang="el">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Προσφορά instacar - BMYXE08SZZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <style>
+        :root {
+            --primary: #FF6500;
+            --primary-light: #FFF0E5;
+            --bg-base: #E5E7EB;
+            --bg-paper: #FFFFFF;
+            --bg-surface: #F9FAFB;
+            --bg-surface-dark: #F3F4F6;
+            --text-main: #111827;
+            --text-muted: #6B7280;
+            --border-light: #E5E7EB;
+            --border-dark: #D1D5DB;
+            --font-main: "Geologica", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            margin: 0;
+            padding: 40px 20px 120px;
+            display: flex;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .checkout-card {
+            background-color: var(--bg-paper);
+            max-width: 640px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Header --- */
+        .header {
+            padding: 40px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 32px;
+            width: auto;
+            display: block;
+        }
+
+        .badge-pill {
+            background-color: var(--bg-surface-dark);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge-pill span {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 11px;
+        }
+
+        /* --- Content Area --- */
+        .content {
+            padding: 0 48px 48px;
+        }
+
+        /* --- Subscription card (compact vehicle summary) --- */
+        .subscription-card {
+            background-color: var(--bg-paper);
+            padding: 0;
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        .sub-card-img {
+            position: relative;
+            flex-shrink: 0;
+            width: 136px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sub-card-img img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.08));
+        }
+
+        .sub-card-img img.vehicle-promo-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 40px;
+            max-width: 40px;
+            height: auto;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+        }
+
+        .sub-card-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .sub-card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.2;
+            margin-bottom: 2px;
+        }
+
+        .sub-card-trim {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .sub-card-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .sub-card-price-unit {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+
+        .info-banner {
+            background-color: #eff6ff;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            border-radius: 12px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-main);
+            font-size: 12px;
+            margin-bottom: 32px;
+            line-height: 1.4;
+        }
+
+        .info-banner svg {
+            color: #2563EB;
+            flex-shrink: 0;
+        }
+
+        /* --- Financials Grid --- */
+        .section-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* --- Collapsible "Ποσά εκκίνησης" section --- */
+        .breakdown-details {
+            margin-bottom: 24px;
+        }
+
+        .breakdown-details summary.section-title {
+            cursor: pointer;
+            justify-content: space-between;
+            margin-bottom: 0;
+            list-style: none;
+        }
+
+        .breakdown-details summary.section-title::-webkit-details-marker {
+            display: none;
+        }
+
+        .breakdown-details .section-title-chevron {
+            color: var(--text-muted);
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .breakdown-details[open] summary.section-title {
+            margin-bottom: 20px;
+        }
+
+        .breakdown-details[open] .section-title-chevron {
+            transform: rotate(180deg);
+        }
+
+        .modern-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-bottom: 24px;
+        }
+
+        .modern-table th {
+            text-align: right;
+            padding: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .modern-table th:first-child {
+            text-align: left;
+        }
+
+        .modern-table td {
+            padding: 20px 16px;
+            text-align: right;
+            border-bottom: 1px solid var(--bg-surface-dark);
+            font-size: 15px;
+        }
+
+        .modern-table td:first-child {
+            text-align: left;
+        }
+
+        .item-name {
+            font-weight: 700;
+            color: var(--text-main);
+            display: block;
+        }
+
+        .item-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            display: block;
+        }
+
+        .val-net,
+        .val-vat {
+            color: var(--text-muted);
+        }
+
+        .val-total {
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        /* --- Total Row --- */
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--primary);
+            color: white;
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+
+        .total-row .t-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        .total-row .t-value {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- Benefits Grid --- */
+        .benefits-wrapper {
+            background-color: var(--bg-surface);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .benefit-card {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .b-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .b-icon img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .b-content {
+            padding-top: 2px;
+        }
+
+        .b-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .b-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* --- Digital Signup System --- */
+        .signup-section {
+            margin-top: 32px;
+        }
+
+        /* Acceptance row */
+        .acceptance-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        /* Payment method options */
+        .payment-methods-section {
+            width: 100%;
+        }
+
+        .pm-section-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 28px;
+        }
+
+        .payment-methods {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+        }
+
+        .payment-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+            padding: 24px;
+            border: 2px solid var(--border-light);
+            border-radius: 16px;
+            background: white;
+            cursor: pointer;
+            font-family: var(--font-main);
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+
+        .payment-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 6px 16px rgba(255, 101, 0, 0.1);
+        }
+
+        .payment-card.recommended {
+            background: white;
+        }
+
+        .pm-badge {
+            position: absolute;
+            top: -13px;
+            left: 20px;
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            padding: 6px 12px;
+            border-radius: 9999px;
+            box-shadow: 0 2px 6px rgba(255, 101, 0, 0.3);
+        }
+
+        .pm-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: white;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .pm-card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .pm-card-icon.pm-icon-wide {
+            width: auto;
+            padding: 0;
+            background: white;
+            justify-content: flex-start;
+        }
+
+        .pm-card-icon.pm-icon-wide img {
+            width: auto;
+            height: 26px;
+        }
+
+        .payment-card:not(.recommended) .pm-card-icon {
+            background: var(--bg-surface-dark);
+        }
+
+        .payment-card:not(.recommended) .pm-card-icon.pm-icon-wide {
+            background: white;
+        }
+
+        .payment-card.recommended .pm-card-icon {
+            background: white;
+            color: var(--primary);
+        }
+
+        .pm-card-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .pm-card-desc {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .pm-card-footer {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: auto;
+        }
+
+        .pm-card-footer svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        .pm-footer-instant {
+            color: #16a34a;
+        }
+
+        .pm-footer-pending {
+            color: var(--primary);
+        }
+
+        .payment-card:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* Confirmation state */
+        .signup-confirmed {
+            display: none;
+            padding: 32px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            border-radius: 12px;
+        }
+
+        .signup-confirmed.visible {
+            display: flex;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .confirmed-icon {
+            width: 44px;
+            height: 44px;
+            background: #16a34a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .confirmed-text h4 {
+            font-size: 15px;
+            font-weight: 800;
+            color: #15803d;
+            margin: 0 0 4px;
+        }
+
+        .confirmed-text p {
+            font-size: 13px;
+            color: #166534;
+            margin: 0;
+        }
+
+        .confirmed-badge {
+            background: #16a34a;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 999px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Action circle buttons */
+        .action-btns {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .action-btns.stacked {
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        .action-btns.stacked .action-btn-text,
+        .action-btns.stacked .upload-modal-primary-btn {
+            width: 100%;
+            flex: none;
+        }
+
+        .action-btns.stacked .action-btn-text,
+        .action-btns.stacked .action-btn-text:hover,
+        .action-btns.stacked .upload-modal-primary-btn,
+        .action-btns.stacked .upload-modal-primary-btn:hover {
+            box-shadow: none;
+        }
+
+        .action-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border-light);
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .action-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 101, 0, 0.15);
+        }
+
+        .action-btn-text {
+            height: 44px;
+            padding: 0 20px;
+            border-radius: 999px;
+            border: 1.5px solid var(--border-light);
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .action-btn-text:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 101, 0, 0.15);
+        }
+
+        /* ── Upload Documents Modal ─────────────────────────── */
+        .upload-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        .upload-modal-overlay.open {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .upload-modal-card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px 28px 24px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.08);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            animation: slideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(32px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .upload-modal-icon-wrap {
+            width: 102px;
+            height: 102px;
+            border-radius: 50%;
+            background: var(--bg-paper);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .upload-modal-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border: 1.5px solid rgba(255, 101, 0, 0.25);
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            padding: 5px 12px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .upload-modal-card h2 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0 0 10px;
+            line-height: 1.2;
+        }
+
+        .upload-modal-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0 0 28px;
+            line-height: 1.6;
+        }
+
+        .upload-doc-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .upload-doc-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #f8fafc;
+            border: 1.5px solid var(--border-light);
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .upload-doc-item-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--primary);
+        }
+
+        .upload-modal-primary-btn {
+            flex: 1 1 auto;
+            min-width: 0;
+            height: 44px;
+            padding: 0 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 9999px;
+            font-family: var(--font-main);
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 20px rgba(255, 101, 0, 0.3);
+            letter-spacing: 0.3px;
+        }
+
+        .upload-modal-primary-btn:hover {
+            background: #e55a00;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 28px rgba(255, 101, 0, 0.4);
+        }
+
+        .upload-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--bg-surface);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+
+        .upload-modal-close:hover {
+            background: var(--bg-surface-dark);
+            color: var(--text-main);
+        }
+
+        /* ── IRIS Payment Modal ─────────────────────────────────── */
+        .iris-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        .iris-overlay.open {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .iris-card {
+            background: white;
+            border-radius: 24px;
+            padding: 28px 24px 24px;
+            width: 100%;
+            max-width: 460px;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25);
+            position: relative;
+            animation: slideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .iris-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--bg-surface);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: all 0.2s;
+            z-index: 2;
+        }
+
+        .iris-close:hover {
+            background: var(--bg-surface-dark);
+            color: var(--text-main);
+        }
+
+        .iris-view {
+            display: none;
+        }
+
+        .iris-view.active {
+            display: block;
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        /* Bank selection view */
+        .iris-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            color: var(--text-main);
+            border: 1.5px solid var(--text-main);
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 500;
+            padding: 5px 14px;
+            margin-bottom: 14px;
+        }
+
+        .iris-card h2 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0 0 6px;
+            line-height: 1.2;
+        }
+
+        .iris-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin: 0 0 22px;
+            line-height: 1.6;
+        }
+
+        .iris-bank-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .iris-bank-option {
+            border: 1.5px solid var(--border-light);
+            border-radius: 12px;
+            padding: 14px 6px;
+            text-align: center;
+            cursor: pointer;
+            background: white;
+            transition: all 0.2s;
+        }
+
+        .iris-bank-option:hover,
+        .iris-bank-option.selected {
+            border-color: var(--primary);
+            background: #fffaf7;
+        }
+
+        .iris-bank-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+            color: white;
+            margin: 0 auto 8px;
+        }
+
+        .iris-bank-name {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* Loading (redirect simulation) view */
+        .iris-loading-view {
+            text-align: center;
+            padding: 20px 0 8px;
+        }
+
+        .iris-spinner {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-light);
+            border-top-color: var(--primary);
+            margin: 0 auto 20px;
+            animation: iris-spin 0.8s linear infinite;
+        }
+
+        @keyframes iris-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .iris-loading-view h2 {
+            text-align: center;
+        }
+
+        .iris-loading-view .iris-subtitle {
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        /* Success view */
+        .iris-success-view {
+            text-align: center;
+            padding: 8px 0;
+        }
+
+        .iris-success-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #16a34a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .iris-success-view h2 {
+            text-align: center;
+            color: #15803d;
+        }
+
+        .iris-success-view .iris-subtitle {
+            text-align: center;
+        }
+
+        .iris-success-detail {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin: 20px 0 24px;
+            text-align: left;
+        }
+
+        .iris-success-detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 6px 0;
+            font-size: 13px;
+        }
+
+        .iris-success-detail-row .label {
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        .iris-success-detail-row .value {
+            font-weight: 700;
+            color: var(--text-main);
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .iris-card .upload-modal-primary-btn {
+            flex: none;
+            width: 100%;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: none;
+        }
+
+        .iris-card .upload-modal-primary-btn:hover {
+            box-shadow: none;
+        }
+
+        /* ── Bank Transfer Modal ────────────────────────────────── */
+        .bank-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        .bank-overlay.open {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .bank-card {
+            background: white;
+            border-radius: 24px;
+            padding: 28px 24px 8px;
+            width: 100%;
+            max-width: 460px;
+            max-height: 88vh;
+            overflow: hidden;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            animation: slideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Scrolls independently so the footer below stays put */
+        .bank-scroll-content {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            padding-bottom: 4px;
+        }
+
+        .bank-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--bg-surface);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: all 0.2s;
+            z-index: 2;
+        }
+
+        .bank-close:hover {
+            background: var(--bg-surface-dark);
+            color: var(--text-main);
+        }
+
+        .bank-card h2 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0 0 4px;
+            line-height: 1.2;
+        }
+
+        .bank-eyebrow {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 16px;
+        }
+
+        .bank-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0 0 18px;
+        }
+
+        .bank-payee {
+            font-size: 13px;
+            color: var(--text-main);
+            margin: 0 0 18px;
+        }
+
+        .bank-payee b {
+            font-weight: 700;
+        }
+
+        .bank-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .bank-entry-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .bank-entry-value {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        .bank-entry.code .bank-entry-label {
+            color: var(--primary);
+        }
+
+        .bank-copy-btn {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: none;
+            background: none;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .bank-copy-btn:hover {
+            background: var(--primary-light);
+        }
+
+        .bank-copy-btn.copied {
+            color: #16a34a;
+        }
+
+        .bank-sticky-footer {
+            position: sticky;
+            bottom: 0;
+            /* Pins flush to the bottom of the card even when the content
+               above doesn't fill the full height (e.g. full-screen mobile) —
+               without this, unused flex space shows up as a gap below it. */
+            margin-top: auto;
+            /* Always render at its natural content height — never let the
+               flex layout compress it when the list above needs to scroll. */
+            flex-shrink: 0;
+            background: white;
+            margin-left: -24px;
+            margin-right: -24px;
+            margin-bottom: -8px;
+            padding: 12px 24px calc(6px + env(safe-area-inset-bottom));
+            border-top: 1px solid var(--border-light);
+        }
+
+        .bank-amount-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .bank-amount-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .bank-amount-value {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .bank-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .bank-card .upload-modal-primary-btn {
+            flex: none;
+            width: 100%;
+            height: 40px;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: none;
+        }
+
+        .bank-card .upload-modal-primary-btn:hover {
+            box-shadow: none;
+        }
+
+        .bank-card .action-btn-text {
+            width: 100%;
+            font-weight: 600;
+            box-shadow: none;
+        }
+
+        .bank-card .action-btn-text:hover {
+            box-shadow: none;
+        }
+
+        #bank-view-file-btn[hidden] {
+            display: none;
+        }
+
+        .bank-secondary-btn {
+            width: 100%;
+            padding: 8px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-family: var(--font-main);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .bank-secondary-btn:hover {
+            color: var(--text-main);
+        }
+
+        /* Bank modal views: main form vs. result states */
+        .bank-view {
+            display: none;
+        }
+
+        .bank-view.active {
+            display: block;
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        #bank-view-main.active {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .bank-result-view {
+            text-align: center;
+            padding: 8px 0;
+        }
+
+        .result-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .result-icon.success {
+            background: #16a34a;
+        }
+
+        .result-icon.pending {
+            background: #b45309;
+        }
+
+        #bank-view-success h2 {
+            color: #15803d;
+        }
+
+        #bank-view-pending h2 {
+            color: #92400e;
+        }
+
+        /* Newsletter modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(3px);
+        }
+
+        .modal-overlay.open {
+            display: flex;
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: 20px;
+            padding: 26px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
+            position: relative;
+        }
+
+        .modal-card h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0 0 6px;
+        }
+
+        .modal-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin: 0 0 24px;
+            line-height: 1.5;
+        }
+
+        .modal-option {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            border: 1.5px solid var(--border-light);
+            border-radius: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-option:hover {
+            border-color: var(--primary);
+            background: #fffaf7;
+        }
+
+        .modal-option input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-dark);
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            position: relative;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .modal-option input[type="checkbox"]:checked {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .modal-option input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            width: 5px;
+            height: 9px;
+            border: 2px solid white;
+            border-top: none;
+            border-left: none;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .modal-option-text strong {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .modal-option-text span {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--bg-surface);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        .modal-subscribe-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+            background: var(--text-main);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: var(--font-main);
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-subscribe-btn:hover {
+            background: var(--primary);
+        }
+
+        .modal-input-group {
+            margin-bottom: 14px;
+        }
+
+        .modal-input-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--border-dark);
+            border-radius: 10px;
+            font-family: var(--font-main);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-main);
+            background: white;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+
+        .modal-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 101, 0, 0.1);
+        }
+
+        /* Submitted preview signature */
+        .sig-preview-img {
+            display: none;
+            width: 100%;
+            border-radius: 12px;
+            border: 1.5px solid #bbf7d0;
+            background: #f0fdf4;
+        }
+
+        /* Footer Note */
+        .doc-footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 10px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-light);
+            padding-top: 24px;
+        }
+
+        /* Sticky bottom bar — floating "island", same on desktop and mobile (see media query below for sizing) */
+        .mobile-sticky-bar {
+            position: fixed;
+            left: 50%;
+            bottom: 24px;
+            transform: translateX(-50%);
+            z-index: 1500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            min-height: 52px;
+            width: max-content;
+            max-width: calc(100vw - 48px);
+            padding: 14px 20px;
+            background: var(--bg-paper);
+            border: 1px solid var(--border-light);
+            border-radius: 9999px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+            transition: gap 0.3s ease;
+        }
+
+        .mobile-sticky-bar.hidden {
+            display: none !important;
+        }
+
+        /* No button = no gap to reserve, otherwise the total sits
+           off-center inside the shrunk pill/bar. */
+        .mobile-sticky-bar.msb-compact {
+            gap: 0;
+        }
+
+        .mobile-sticky-bar .msb-total {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-width: 0;
+        }
+
+        .mobile-sticky-bar .msb-label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .mobile-sticky-bar .msb-value {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+
+        .mobile-sticky-bar .msb-btn {
+            flex-shrink: 0;
+            padding: 12px 22px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 9999px;
+            font-family: var(--font-main);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            opacity: 1;
+            transition: opacity 0.3s ease, padding-left 0.3s ease, padding-right 0.3s ease, width 0.3s ease;
+        }
+
+        .mobile-sticky-bar .msb-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Compact state: button shrinks away instead of snapping out,
+           keeping the bar's height fixed throughout. */
+        .mobile-sticky-bar.msb-compact .msb-btn {
+            width: 0;
+            padding-left: 0;
+            padding-right: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @media screen and (max-width: 768px) {
+
+            body {
+                padding: 0;
+            }
+
+            .checkout-card {
+                border-radius: 0;
+                box-shadow: none;
+                padding-bottom: 76px;
+            }
+
+            /* Header responsive */
+            .header {
+                padding: 20px 20px;
+                gap: 12px;
+            }
+
+            .badge-pill {
+                font-size: 11px;
+                padding: 6px 12px;
+                gap: 5px;
+            }
+
+            .logo img {
+                height: 24px;
+            }
+
+            /* Cost table → stacked cards on mobile, no horizontal scroll */
+            .table-scroll-wrap {
+                overflow-x: visible;
+                margin: 0;
+                padding: 0;
+            }
+
+            .modern-table {
+                min-width: 0;
+                width: 100%;
+                border-spacing: 0 10px;
+            }
+
+            .modern-table thead {
+                display: none;
+            }
+
+            .modern-table tbody,
+            .modern-table tr,
+            .modern-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .modern-table tr {
+                background: var(--bg-surface);
+                border: 1px solid var(--border-light);
+                border-radius: 12px;
+                padding: 16px;
+                margin-bottom: 10px;
+            }
+
+            .modern-table tr:last-child {
+                margin-bottom: 0;
+            }
+
+            .modern-table td {
+                border-bottom: none;
+                padding: 0;
+                text-align: left;
+            }
+
+            .modern-table td:first-child {
+                padding-bottom: 12px;
+                margin-bottom: 12px;
+                border-bottom: 1px dashed var(--border-dark);
+            }
+
+            .modern-table td.val-net,
+            .modern-table td.val-vat,
+            .modern-table td.val-total {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+                padding: 5px 0;
+                font-size: 13px;
+            }
+
+            .modern-table td.val-total {
+                margin-top: 4px;
+                padding-top: 10px;
+                border-top: 1px solid var(--border-light);
+            }
+
+            .modern-table td.val-net::before,
+            .modern-table td.val-vat::before,
+            .modern-table td.val-total::before {
+                font-size: 11px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.3px;
+                color: var(--text-muted);
+            }
+
+            .modern-table td.val-net::before {
+                content: "Καθαρή Αξία";
+            }
+
+            .modern-table td.val-vat::before {
+                content: "ΦΠΑ (24%)";
+            }
+
+            .modern-table td.val-total::before {
+                content: "Τελική Αξία";
+            }
+
+            .subscription-card {
+                padding: 0;
+                gap: 16px;
+            }
+
+            .sub-card-img {
+                width: 120px;
+            }
+
+            .benefits-grid,
+            .signatures {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+            }
+
+            .content {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .total-row {
+                gap: 8px;
+            }
+
+            /* --- Signup system mobile --- */
+            .signup-body {
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+            }
+
+            .signup-col-info {
+                grid-template-columns: 1fr;
+                flex: none;
+                width: 100%;
+            }
+
+            .acceptance-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 16px;
+            }
+
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-card {
+                padding: 20px;
+            }
+
+            .signup-confirmed {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+                gap: 12px;
+            }
+
+            .confirmed-badge {
+                margin-left: 0;
+            }
+
+            .action-btns {
+                justify-content: center;
+            }
+
+            .upload-modal-card {
+                padding: 26px 18px 16px;
+            }
+
+            .upload-modal-primary-btn {
+                font-size: 14px;
+            }
+
+            /* --- Bank transfer modal: full screen on mobile --- */
+            .bank-overlay {
+                padding: 0;
+            }
+
+            .bank-card {
+                max-width: 100%;
+                width: 100%;
+                height: 100%;
+                max-height: 100%;
+                border-radius: 0;
+                padding: 24px 20px 8px;
+            }
+
+            .bank-sticky-footer {
+                margin-left: -20px;
+                margin-right: -20px;
+                margin-bottom: -8px;
+                padding: 12px 20px calc(6px + env(safe-area-inset-bottom));
+            }
+
+            /* --- Αποδεικτικό κατάθεσης result screens: icon/title centered
+               in the middle of the screen, button pinned to the bottom —
+               mobile only. --- */
+            #bank-view-success.active,
+            #bank-view-pending.active {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                min-height: 0;
+            }
+
+            .bank-result-content {
+                flex: 1;
+                min-height: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            /* --- Sticky CTA bar: same floating island, sized for small screens --- */
+            .mobile-sticky-bar {
+                bottom: calc(16px + env(safe-area-inset-bottom));
+                max-width: calc(100vw - 32px);
+                padding: 12px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="checkout-card" id="checkout-card-root">
+
+        <!-- Mobile-only sticky bottom bar -->
+        <div class="mobile-sticky-bar" id="mobile-sticky-bar">
+            <div class="msb-total">
+                <span class="msb-label">αρχικο συνολο</span>
+                <span class="msb-value">787,40€</span>
+            </div>
+            <button class="msb-btn" onclick="scrollToPaymentMethods()">
+                Διάλεξε τρόπο πληρωμής
+            </button>
+        </div>
+
+        <div class="header">
+            <div class="logo">
+                <img src="assets/instacar_logo.png" alt="instacar logo" />
+            </div>
+            <div class="badge-pill">
+                <span>ΠΡΟΣΦΟΡΑ</span> BMYXE08SZZ
+            </div>
+        </div>
+
+        <div class="content" style="padding-bottom: 0;">
+
+                <div class="subscription-card">
+
+                    <div class="sub-card-img">
+                        <img src="assets/land-rover-defender-2024.png" alt="Land Rover Defender"
+                            onerror="this.src='https://d10ax2wcinhk08.cloudfront.net/images/11fc8eaf-0a35-4c4f-9df2-aca979f50440_mercedes-glc-300d-4matic-2024.webp'" />
+                        <img class="vehicle-promo-badge"
+                            src="assets/https___d10ax2wcinhk08.cloudfront.net_campaigns_summer-deals_27c05797-eb8f-44ac-90be-7f7babcd505e_badge.webp"
+                            alt="Summer Deals" />
+                    </div>
+
+                    <div class="sub-card-content">
+                        <div class="sub-card-title">Land Rover Defender</div>
+                        <div class="sub-card-trim">110 X-Dynamic SE</div>
+                        <div class="sub-card-price">
+                            <span
+                                style="text-decoration: line-through; font-size: 11px; font-weight: 500; color: var(--text-muted); margin-right: 4px;">2.613€</span>
+                            1.306,50€<span class="sub-card-price-unit">/μήνα + ΦΠΑ</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--
+                <div class="info-banner">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    <span>Μετά την πάροδο της προσφοράς των 3 μηνών, το μίσθωμα διαμορφώνεται στο αρχικό ποσό των
+                        <b>2.613€ + ΦΠΑ</b>.</span>
+                </div>
+                -->
+
+                <details class="breakdown-details">
+                    <summary class="section-title">
+                        Ποσά εκκίνησης
+                        <svg class="section-title-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </summary>
+
+                    <div class="table-scroll-wrap">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>Περιγραφή</th>
+                                    <th>Καθαρή Αξία</th>
+                                    <th>ΦΠΑ (24%)</th>
+                                    <th>Τελική Αξία</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="item-name">Εγγραφή</span>
+                                        <span class="item-desc">Εφάπαξ χρέωση εγγραφής στην υπηρεσία instacar.</span>
+                                    </td>
+                                    <td class="val-net">270,00€</td>
+                                    <td class="val-vat">64,80€</td>
+                                    <td class="val-total">334,80€</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="item-name">instastart</span>
+                                        <span class="item-desc">Εγγύηση μισθωμάτων που επιστρέφεται στη λήξη της
+                                            μίσθωσης.</span>
+                                    </td>
+                                    <td class="val-net">-</td>
+                                    <td class="val-vat">-</td>
+                                    <td class="val-total">452,60€</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+
+                <div class="total-row">
+                    <span class="t-label">αρχικο συνολο</span>
+                    <span class="t-value">787,40€</span>
+                </div>
+
+            </div>
+
+        <div class="content" style="padding-top: 0;">
+
+                <!-- Digital Signup System -->
+                <div class="signup-section" id="signup-section">
+
+                    <!-- Acceptance row -->
+                    <div class="acceptance-row" id="acceptance-row">
+                        <div class="payment-methods-section">
+                            <div class="pm-section-title">Επίλεξε τρόπο πληρωμής</div>
+                            <div class="payment-methods" id="payment-methods">
+                                <button class="payment-card recommended" onclick="selectPaymentMethod('iris', this)">
+                                    <span class="pm-badge">ΠΡΟΤΕΙΝΟΜΕΝΟ</span>
+                                    <div class="pm-card-icon">
+                                        <img src="assets/iris-logo.webp" alt="IRIS" />
+                                    </div>
+                                    <div class="pm-card-title">Πληρωμή με IRIS</div>
+                                    <div class="pm-card-desc">Εξουσιοδότησε την πληρωμή μέσα από την τραπεζική σου
+                                        εφαρμογή μέσω DIAS. Η κράτηση ενημερώνεται αυτόματα.</div>
+                                    <div class="pm-card-footer pm-footer-instant">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" />
+                                        </svg>
+                                        Άμεση επιβεβαίωση
+                                    </div>
+                                </button>
+
+                                <!--
+                                <button class="payment-card" onclick="selectPaymentMethod('card', this)">
+                                    <div class="pm-card-icon pm-icon-wide">
+                                        <img src="assets/card-payment-logos.jpg" alt="Πληρωμή με Κάρτα" />
+                                    </div>
+                                    <div class="pm-card-title">Πληρωμή με Κάρτα</div>
+                                    <div class="pm-card-desc">Χρέωση χρεωστικής ή πιστωτικής κάρτας online, μέσω
+                                        ασφαλούς σελίδας πληρωμής.</div>
+                                    <div class="pm-card-footer pm-footer-pending">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="9"></circle>
+                                            <polyline points="12 7 12 12 16 14"></polyline>
+                                        </svg>
+                                        1-2 εργάσιμες
+                                    </div>
+                                </button>
+                                -->
+
+                                <button class="payment-card" onclick="selectPaymentMethod('bank-transfer', this)">
+                                    <div class="pm-card-icon pm-icon-wide">
+                                        <img src="assets/bank-transfer-logo.png" alt="Τραπεζική Κατάθεση" />
+                                    </div>
+                                    <div class="pm-card-title">Τραπεζική Κατάθεση</div>
+                                    <div class="pm-card-desc">Κατάθεσε το ποσό στο IBAN της instacar και ανέβασε την
+                                        απόδειξη κατάθεσης. Η πληρωμή ελέγχεται και επιβεβαιώνεται χειροκίνητα.</div>
+                                    <div class="pm-card-footer pm-footer-pending">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="9"></circle>
+                                            <polyline points="12 7 12 12 16 14"></polyline>
+                                        </svg>
+                                        1-2 εργάσιμες
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Confirmation banner (hidden until submit) -->
+                    <div class="signup-confirmed" id="signup-confirmed">
+                        <div class="confirmed-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <div class="confirmed-text" style="flex: 1;">
+                            <h4>Η προσφορά αποδέχτηκε επιτυχώς!</h4>
+                            <p id="confirmed-details"></p>
+                        </div>
+                        <!-- Action button -->
+                        <div class="action-btns">
+                            <!-- Upload Documents (Text + Icon) -->
+                            <button class="action-btn-text" onclick="openUploadModal()">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="17 8 12 3 7 8" />
+                                    <line x1="12" y1="3" x2="12" y2="15" />
+                                </svg>
+                                Ανέβασμα Εγγράφων
+                            </button>
+                        </div>
+                        <div class="confirmed-badge"
+                            style="position: absolute; top: -12px; right: 24px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);">
+                            ΕΓΚΕΚΡΙΜΕΝΗ</div>
+                    </div>
+
+                </div>
+
+                <div class="doc-footer" id="doc-footer">
+                    H παρούσα προσφορά είναι εμπιστευτική. Η εγγραφή δεν επιστρέφεται σε περίπτωση υπαναχώρησης.
+                </div>
+            </div>
+
+        <!-- Share via Email Modal -->
+        <div class="modal-overlay" id="share-modal">
+            <div class="modal-card">
+                <button class="modal-close" onclick="closeShareModal()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <h3>Κοινοποίηση μέσω Email</h3>
+                <p>Απόστειλε την αποδεκτή προσφορά σε τρίτο πρόσωπο ή απόθεσε τη για αρχείο.</p>
+                <div class="modal-input-group">
+                    <label class="modal-input-label" for="share-to">Προς</label>
+                    <input class="modal-input" id="share-to" type="email" placeholder="recipient@example.com" />
+                </div>
+                <div class="modal-input-group">
+                    <label class="modal-input-label" for="share-msg">Σημείωση (πραιρετικό)</label>
+                    <input class="modal-input" id="share-msg" type="text" placeholder="Προσθέστε μήνυμα..." />
+                </div>
+                <button class="modal-subscribe-btn" onclick="sendShareEmail()">
+                    <svg style="display:inline;margin-right:8px;vertical-align:middle" width="15" height="15"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    Αποστολή
+                </button>
+            </div>
+        </div>
+
+        <!-- Newsletter/Viber Modal -->
+        <div class="modal-overlay" id="newsletter-modal">
+            <div class="modal-card">
+                <button class="modal-close" onclick="closeNewsletterModal()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <h3>Ενημερώσεις instacar</h3>
+                <p>Επέλεξε τι ειδοποιήσεις θέλεις να λαμβάνεις από το instacar.</p>
+                <div class="modal-input-group">
+                    <label class="modal-input-label" for="nl-email">Email</label>
+                    <input class="modal-input" id="nl-email" type="email" placeholder="email@example.com" />
+                </div>
+                <div class="modal-input-group">
+                    <label class="modal-input-label" for="nl-phone">Τηλέφωνο (Viber)</label>
+                    <input class="modal-input" id="nl-phone" type="tel" placeholder="+30 690 000 0000" />
+                </div>
+                <label class="modal-option">
+                    <input type="checkbox" id="opt-email" checked />
+                    <div class="modal-option-text">
+                        <strong>Newsletter μέσω Email</strong>
+                        <span>Προσφορές, νέα οχήματα και ενημερωτικά email</span>
+                    </div>
+                </label>
+                <label class="modal-option">
+                    <input type="checkbox" id="opt-viber" />
+                    <div class="modal-option-text">
+                        <strong>Viber ειδοποιήσεις</strong>
+                        <span>Άμεσες ειδοποιήσεις μέσω Viber</span>
+                    </div>
+                </label>
+                <button class="modal-subscribe-btn" onclick="subscribeNewsletter()">Εγγραφή</button>
+            </div>
+        </div>
+
+        <!-- Upload Documents Modal -->
+        <div class="upload-modal-overlay" id="upload-modal">
+            <div class="upload-modal-card">
+                <button class="upload-modal-close" onclick="closeUploadModal()" title="Κλείσιμο">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <div class="upload-modal-icon-wrap">
+                    <dotlottie-player src="assets/Uploading.lottie" background="transparent" speed="1"
+                        style="width: 102px; height: 102px;" loop autoplay></dotlottie-player>
+                </div>
+                <div class="upload-modal-badge">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="12" r="10" />
+                    </svg>
+                    Επόμενο Βήμα
+                </div>
+                <h2>Μεταφόρτωση Εγγράφων</h2>
+                <p>Για να ολοκληρωθεί η αίτησή σου, χρειάζεται να ανεβάσεις τα παρακάτω δικαιολογητικά.</p>
+
+                <div class="upload-doc-list">
+                    <div class="upload-doc-item">
+                        <div class="upload-doc-item-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                                <circle cx="8" cy="12" r="3"></circle>
+                                <line x1="14" y1="10" x2="20" y2="10"></line>
+                                <line x1="14" y1="14" x2="20" y2="14"></line>
+                            </svg>
+                        </div>
+                        Αστυνομική Ταυτότητα / Διαβατήριο
+                    </div>
+                    <div class="upload-doc-item">
+                        <div class="upload-doc-item-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                                <circle cx="8" cy="12" r="3"></circle>
+                                <line x1="14" y1="10" x2="20" y2="10"></line>
+                                <line x1="14" y1="14" x2="20" y2="14"></line>
+                            </svg>
+                        </div>
+                        Άδεια Οδήγησης
+                    </div>
+                    <div class="upload-doc-item">
+                        <div class="upload-doc-item-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                        </div>
+                        Οικονομικά Έγγραφα
+                    </div>
+                </div>
+                <div class="action-btns stacked">
+                    <button class="upload-modal-primary-btn" onclick="goToDocUpload()">
+                        Ανέβασμα Εγγράφων
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- IRIS Payment Modal -->
+        <div class="iris-overlay" id="iris-modal">
+            <div class="iris-card">
+                <button class="iris-close" onclick="closeIrisModal()" title="Κλείσιμο">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+
+                <!-- Step 1: pick a bank -->
+                <div class="iris-view active" id="iris-view-banks">
+                    <div class="iris-badge">Πληρωμή με IRIS</div>
+                    <h2>Επίλεξε την τράπεζά σου</h2>
+                    <p class="iris-subtitle">Θα μεταφερθείς στην τραπεζική σου εφαρμογή για να
+                        εξουσιοδοτήσεις την πληρωμή.</p>
+                    <div class="iris-bank-grid" id="iris-bank-grid">
+                        <div class="iris-bank-option selected" data-bank="Alpha Bank"
+                            onclick="selectIrisBank('Alpha Bank', this)">
+                            <div class="iris-bank-logo"
+                                style="background:white; border:1px solid var(--border-light); padding:0;">
+                                <img src="assets/alphabank-logo.svg" alt="Alpha Bank"
+                                    style="width:100%; height:100%; object-fit:cover;" />
+                            </div>
+                            <div class="iris-bank-name">Alpha Bank</div>
+                        </div>
+                        <div class="iris-bank-option" data-bank="Eurobank" onclick="selectIrisBank('Eurobank', this)">
+                            <div class="iris-bank-logo"
+                                style="background:white; border:1px solid var(--border-light); padding:0;">
+                                <img src="assets/eurobank-logo.png" alt="Eurobank"
+                                    style="width:100%; height:100%; object-fit:cover;" />
+                            </div>
+                            <div class="iris-bank-name">Eurobank</div>
+                        </div>
+                        <div class="iris-bank-option" data-bank="Τράπεζα Πειραιώς"
+                            onclick="selectIrisBank('Τράπεζα Πειραιώς', this)">
+                            <div class="iris-bank-logo"
+                                style="background:white; border:1px solid var(--border-light); padding:0;">
+                                <img src="assets/piraeus-logo.jpeg" alt="Τράπεζα Πειραιώς"
+                                    style="width:100%; height:100%; object-fit:cover;" />
+                            </div>
+                            <div class="iris-bank-name">Πειραιώς</div>
+                        </div>
+                        <div class="iris-bank-option" data-bank="Εθνική Τράπεζα"
+                            onclick="selectIrisBank('Εθνική Τράπεζα', this)">
+                            <div class="iris-bank-logo"
+                                style="background:white; border:1px solid var(--border-light); padding:0;">
+                                <img src="assets/ethniki-logo.jpeg" alt="Εθνική Τράπεζα"
+                                    style="width:100%; height:100%; object-fit:cover;" />
+                            </div>
+                            <div class="iris-bank-name">Εθνική</div>
+                        </div>
+                        <div class="iris-bank-option" data-bank="Optima" onclick="selectIrisBank('Optima', this)">
+                            <div class="iris-bank-logo"
+                                style="background:white; border:1px solid var(--border-light); padding:0;">
+                                <img src="assets/optima-logo.png" alt="Optima"
+                                    style="width:100%; height:100%; object-fit:cover;" />
+                            </div>
+                            <div class="iris-bank-name">Optima</div>
+                        </div>
+                        <div class="iris-bank-option" data-bank="Viva Wallet"
+                            onclick="selectIrisBank('Viva Wallet', this)">
+                            <div class="iris-bank-logo"
+                                style="background:white; border:1px solid var(--border-light); padding:0;">
+                                <img src="assets/viva-logo.png" alt="Viva Wallet"
+                                    style="width:100%; height:100%; object-fit:cover;" />
+                            </div>
+                            <div class="iris-bank-name">Viva Wallet</div>
+                        </div>
+                    </div>
+                    <button class="upload-modal-primary-btn" onclick="continueIrisPayment()">
+                        Συνέχεια στην τράπεζα
+                    </button>
+                </div>
+
+                <!-- Step 2: redirect simulation -->
+                <div class="iris-view iris-loading-view" id="iris-view-loading">
+                    <div class="iris-spinner"></div>
+                    <h2>Μεταφορά στην <span id="iris-loading-bank">Alpha Bank</span>...</h2>
+                    <p class="iris-subtitle">Ολοκλήρωσε την εξουσιοδότηση μέσα στην τραπεζική σου εφαρμογή.</p>
+                </div>
+
+                <!-- Step 3: success -->
+                <div class="iris-view iris-success-view" id="iris-view-success">
+                    <div class="iris-success-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </div>
+                    <h2>Η πληρωμή ολοκληρώθηκε!</h2>
+                    <p class="iris-subtitle">Η κράτηση μεταφέρθηκε αυτόματα σε <b>Customer Paid</b>, χωρίς ανάγκη
+                        χειροκίνητου ελέγχου.</p>
+                    <div class="iris-success-detail">
+                        <div class="iris-success-detail-row">
+                            <span class="label">Τράπεζα</span>
+                            <span class="value" id="iris-success-bank">Alpha Bank</span>
+                        </div>
+                        <div class="iris-success-detail-row">
+                            <span class="label">Ποσό</span>
+                            <span class="value">787,40€</span>
+                        </div>
+                        <div class="iris-success-detail-row">
+                            <span class="label">Κατάσταση</span>
+                            <span class="value" style="color:#16a34a;">Πληρώθηκε</span>
+                        </div>
+                    </div>
+                    <button class="upload-modal-primary-btn" onclick="closeIrisModal()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        Τέλος
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bank Transfer Modal -->
+        <div class="bank-overlay" id="bank-modal">
+            <div class="bank-card">
+                <button class="bank-close" onclick="closeBankModal()" title="Κλείσιμο">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+
+                <div class="bank-view active" id="bank-view-main">
+                    <div class="bank-scroll-content">
+                        <h2>Τραπεζική κατάθεση</h2>
+                        <p class="bank-desc">Θα χρειαστούμε το αποδεικτικό κατάθεσης από τα αρχικά κόστη της υπηρεσίας.
+                            Παρακάτω θα βρεις τους τρόπους εξώφλησης.</p>
+                        <p class="bank-payee">Δικαιούχος: <b>instacar ΑΕ</b></p>
+
+                        <div class="bank-list">
+                            <div class="bank-entry">
+                                <div class="bank-entry-label">Eurobank:</div>
+                                <div class="bank-entry-value">
+                                    <span>GR85 0260 0270 0003 4020 2180 074</span>
+                                    <button class="bank-copy-btn"
+                                        onclick="copyBankValue('GR8502600270000340202180074', this)" title="Αντιγραφή">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="9" y="9" width="12" height="12" rx="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bank-entry">
+                                <div class="bank-entry-label">Alpha Bank:</div>
+                                <div class="bank-entry-value">
+                                    <span>GR63 0140 1460 1460 0200 2025 547</span>
+                                    <button class="bank-copy-btn"
+                                        onclick="copyBankValue('GR6301401460146002002025547', this)" title="Αντιγραφή">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="9" y="9" width="12" height="12" rx="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bank-entry">
+                                <div class="bank-entry-label">Τράπεζα Πειραιώς:</div>
+                                <div class="bank-entry-value">
+                                    <span>GR30 0172 0130 0050 1309 7449 719</span>
+                                    <button class="bank-copy-btn"
+                                        onclick="copyBankValue('GR3001720130005013097449719', this)" title="Αντιγραφή">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="9" y="9" width="12" height="12" rx="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bank-entry">
+                                <div class="bank-entry-label">Εθνική Τράπεζα:</div>
+                                <div class="bank-entry-value">
+                                    <span>GR41 0110 7100 0000 7100 0308 057</span>
+                                    <button class="bank-copy-btn"
+                                        onclick="copyBankValue('GR4101107100000071000308057', this)" title="Αντιγραφή">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="9" y="9" width="12" height="12" rx="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bank-entry">
+                                <div class="bank-entry-label">Optima:</div>
+                                <div class="bank-entry-value">
+                                    <span>GR24 0340 0010 0100 2152 4027 197</span>
+                                    <button class="bank-copy-btn"
+                                        onclick="copyBankValue('GR2403400010010021524027197', this)" title="Αντιγραφή">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="9" y="9" width="12" height="12" rx="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bank-entry">
+                                <div class="bank-entry-label">Viva Wallet:</div>
+                                <div class="bank-entry-value">
+                                    <span>GR35 0701 0000 0008 4536 6851 982</span>
+                                    <button class="bank-copy-btn"
+                                        onclick="copyBankValue('GR3507010000000845366851982', this)" title="Αντιγραφή">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="9" y="9" width="12" height="12" rx="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bank-entry code">
+                                <div class="bank-entry-label">Αιτιολογία κατάθεσης:</div>
+                                <div class="bank-entry-value">
+                                    <span>GR10432</span>
+                                    <button class="bank-copy-btn" onclick="copyBankValue('GR10432', this)"
+                                        title="Αντιγραφή">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="9" y="9" width="12" height="12" rx="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bank-sticky-footer">
+                        <div class="bank-amount-row">
+                            <span class="bank-amount-label">Ποσό κατάθεσης</span>
+                            <span class="bank-amount-value">
+                                <button class="bank-copy-btn" onclick="copyBankValue('787.40', this)" title="Αντιγραφή">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="12" height="12" rx="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                                787,40€
+                            </span>
+                        </div>
+
+                        <div class="bank-actions">
+                            <input type="file" id="bank-file-input" accept="image/*,.pdf" style="display:none"
+                                onchange="handleBankFileSelect(event)" />
+                            <button class="upload-modal-primary-btn"
+                                onclick="document.getElementById('bank-file-input').click()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8" />
+                                    <line x1="12" y1="3" x2="12" y2="15" />
+                                </svg>
+                                Ανέβασμα αποδεικτικού κατάθεσης
+                            </button>
+                            <button class="bank-secondary-btn" onclick="bankSkipUpload()">Συνέχεια χωρίς
+                                ανέβασμα</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success view: proof uploaded, awaiting review -->
+                <div class="bank-view bank-result-view" id="bank-view-success">
+                    <div class="bank-result-content">
+                        <div class="result-icon success">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <h2>Λάβαμε τα δικαιολογητικά σου!</h2>
+                        <p class="iris-subtitle">θα σε ενημερώσουμε μόλις ολοκληρωθεί ο
+                            έλεγχος.</p>
+                        <div class="iris-success-detail">
+                            <div class="iris-success-detail-row">
+                                <span class="label">Αρχείο</span>
+                                <span class="value" id="bank-uploaded-filename">—</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bank-actions">
+                        <button class="action-btn-text" id="bank-view-file-btn" onclick="viewUploadedBankFile()" hidden>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            Προβολή αρχείου
+                        </button>
+                        <button class="upload-modal-primary-btn" onclick="closeBankModal()">Τέλος</button>
+                    </div>
+                </div>
+
+                <!-- Pending view: no proof uploaded, deposit still needs confirming -->
+                <div class="bank-view bank-result-view" id="bank-view-pending">
+                    <div class="bank-result-content">
+                        <div class="result-icon pending">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 7 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h2>Η κατάθεση καταγράφηκε</h2>
+                        <p class="iris-subtitle">Χρειάζεται να επιβεβαιώσουμε την κατάθεσή σου. Θα σε ενημερώσουμε
+                            μόλις ολοκληρωθεί ο έλεγχος.</p>
+                    </div>
+                    <button class="upload-modal-primary-btn" onclick="closeBankModal()">Τέλος</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // ── Body scroll lock: keep the page behind a modal from
+            // scrolling while it's open ────────────────────────────
+            let openModalCount = 0;
+
+            function lockBodyScroll() {
+                openModalCount++;
+                document.body.style.overflow = 'hidden';
+            }
+
+            function unlockBodyScroll() {
+                openModalCount = Math.max(0, openModalCount - 1);
+                if (openModalCount === 0) document.body.style.overflow = '';
+            }
+
+            // Hide the sticky button whenever the real submit button is already
+            // visible on screen — no need for the shortcut when the user can
+            // already tap the real one.
+            const stickyBar = document.getElementById('mobile-sticky-bar');
+            const paymentMethods = document.getElementById('payment-methods');
+            const stickyVisibilityObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    stickyBar.classList.toggle('msb-compact', entry.isIntersecting);
+                });
+            }, { threshold: 0.15 });
+            stickyVisibilityObserver.observe(paymentMethods);
+
+            // ── Sticky bar: jump to payment methods ───────────────
+            function scrollToPaymentMethods() {
+                paymentMethods.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            // ── Payment method selection ──────────────────────────
+            // TODO: each method should navigate to its own flow (IRIS /
+            // card / bank transfer) in a later step.
+            function selectPaymentMethod(method, cardEl) {
+                if (method === 'iris') openIrisModal();
+                if (method === 'bank-transfer') openBankModal();
+                // TODO: card gets its own flow in a later step.
+            }
+
+            // ── IRIS payment modal ─────────────────────────────────
+            function openIrisModal() {
+                document.getElementById('iris-view-banks').classList.add('active');
+                document.getElementById('iris-view-loading').classList.remove('active');
+                document.getElementById('iris-view-success').classList.remove('active');
+                document.getElementById('iris-modal').classList.add('open');
+                lockBodyScroll();
+            }
+
+            function closeIrisModal() {
+                document.getElementById('iris-modal').classList.remove('open');
+                unlockBodyScroll();
+            }
+
+            document.getElementById('iris-modal').addEventListener('click', function (e) {
+                if (e.target === this) closeIrisModal();
+            });
+
+            let irisSelectedBank = 'Alpha Bank';
+
+            function selectIrisBank(bank, el) {
+                irisSelectedBank = bank;
+                document.querySelectorAll('.iris-bank-option').forEach(function (o) { o.classList.remove('selected'); });
+                el.classList.add('selected');
+            }
+
+            function continueIrisPayment() {
+                document.getElementById('iris-view-banks').classList.remove('active');
+                document.getElementById('iris-view-loading').classList.add('active');
+                document.getElementById('iris-loading-bank').textContent = irisSelectedBank;
+
+                setTimeout(function () {
+                    document.getElementById('iris-view-loading').classList.remove('active');
+                    document.getElementById('iris-view-success').classList.add('active');
+                    document.getElementById('iris-success-bank').textContent = irisSelectedBank;
+                }, 1400);
+            }
+
+            // ── Bank transfer modal ────────────────────────────────
+            // The selected proof-of-deposit file, kept only for the "Προβολή
+            // αρχείου" preview link on the success screen — never uploaded
+            // anywhere in this mockup.
+            let bankUploadedFileUrl = null;
+
+            function resetBankUpload() {
+                if (bankUploadedFileUrl) URL.revokeObjectURL(bankUploadedFileUrl);
+                bankUploadedFileUrl = null;
+                document.getElementById('bank-file-input').value = '';
+                document.getElementById('bank-uploaded-filename').textContent = '—';
+                document.getElementById('bank-view-file-btn').hidden = true;
+            }
+
+            function openBankModal() {
+                document.getElementById('bank-view-main').classList.add('active');
+                document.getElementById('bank-view-success').classList.remove('active');
+                document.getElementById('bank-view-pending').classList.remove('active');
+                resetBankUpload();
+                document.getElementById('bank-modal').classList.add('open');
+                lockBodyScroll();
+            }
+
+            function handleBankFileSelect(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                if (bankUploadedFileUrl) URL.revokeObjectURL(bankUploadedFileUrl);
+                bankUploadedFileUrl = URL.createObjectURL(file);
+                const filenameEl = document.getElementById('bank-uploaded-filename');
+                filenameEl.textContent = file.name;
+                filenameEl.title = file.name;
+                document.getElementById('bank-view-file-btn').hidden = false;
+                bankUploadComplete();
+            }
+
+            function viewUploadedBankFile() {
+                if (bankUploadedFileUrl) window.open(bankUploadedFileUrl, '_blank');
+            }
+
+            function bankUploadComplete() {
+                document.getElementById('bank-view-main').classList.remove('active');
+                document.getElementById('bank-view-success').classList.add('active');
+            }
+
+            function bankSkipUpload() {
+                document.getElementById('bank-view-main').classList.remove('active');
+                document.getElementById('bank-view-pending').classList.add('active');
+            }
+
+            function closeBankModal() {
+                document.getElementById('bank-modal').classList.remove('open');
+                unlockBodyScroll();
+            }
+
+            document.getElementById('bank-modal').addEventListener('click', function (e) {
+                if (e.target === this) closeBankModal();
+            });
+
+            function copyBankValue(value, btn) {
+                const doCopiedState = function () {
+                    const original = btn.innerHTML;
+                    btn.classList.add('copied');
+                    btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+                    setTimeout(function () {
+                        btn.classList.remove('copied');
+                        btn.innerHTML = original;
+                    }, 1500);
+                };
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(value).then(doCopiedState).catch(doCopiedState);
+                } else {
+                    doCopiedState();
+                }
+            }
+
+            // ── Submit ────────────────────────────────────────────
+            function submitOffer() {
+                document.querySelectorAll('.payment-card').forEach(function (btn) {
+                    btn.disabled = true;
+                });
+
+                const acceptanceRow = document.getElementById('acceptance-row');
+                const confirmed = document.getElementById('signup-confirmed');
+                acceptanceRow.style.display = 'none';
+                confirmed.classList.add('visible');
+                document.getElementById('mobile-sticky-bar').classList.add('hidden');
+
+                const now = new Date();
+                const formatted = now.toLocaleDateString('el-GR', {
+                    day: '2-digit', month: '2-digit', year: 'numeric',
+                    hour: '2-digit', minute: '2-digit', second: '2-digit'
+                });
+                document.getElementById('confirmed-details').textContent = `Η αποδοχή καταγράφηκε (${formatted}).`;
+                confirmed.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                setTimeout(openUploadModal, 1200);
+            }
+
+            // ── Upload Documents Modal ────────────────────────────
+            function openUploadModal() {
+                document.getElementById('upload-modal').classList.add('open');
+                lockBodyScroll();
+            }
+
+            function closeUploadModal() {
+                document.getElementById('upload-modal').classList.remove('open');
+                unlockBodyScroll();
+            }
+
+            function goToDocUpload() {
+                // Replace with the actual document upload page URL
+                const uploadUrl = 'https://staging.my-ui-6vz.pages.dev/booking/financialcontrol/eyJpdiI6Im4xWnhSNUdDNFNkWk42WkNNcHFMWWc9PSIsInZhbHVlIjoiUGphRWdiWm14NHVNQ2UrSW5ac3ZhMkZMV3FzbkZESDZsZE1NTVg5WmVJSnBaMjc5WnYrUWhQWmlldGNoSnkyNW1CVGlsYnMzaXdLSnU1QzdVZWdZbEh2ei9JWjMvemFKN2JYSExGVWFGdHJoS0FKSWVlL1BOY1dDYVJhN21CMnNFcUdNN29EblU0azJLZnJMdkd2c3R1TG91cnRRTSsxcmhxT3BDaEVxTkxGejd5ZDdkZXVXMk5QL3ZaeEJsdDljRmJ2ZmZhRC9NNk1IT2ZqdUY3QXZYVXp1R0owYWUrUDFtbVl0L1NsTldJM0VMRzBJM2U0VVN1QUlFZG9NYWFEd2NzYWlCQUMvY045aUZzTEZXRHFVOVhNVmZIUDFjN0FZMHB4b2dZWmhjVml4Z25acXZQWC8rZGw5d1hpanQzbDdFL25OU0UzMXZiTmRmd1laS3BZQ3F2Y1lSQ0pXSW5LV2pkTkxBRHllQUNKSmx2VWVaNUY2c1hPalEvWmMyOHl3MzljbkI1aFhkWEhpSTBDRnh2QjRqQT09IiwibWFjIjoiMTEzYjU0N2Q0ZTVkODE3ZTQwZDgxM2Q1YTdjODNkMGQxOTk5ZTg3YTcyOTk5NjRjNjI4ZDM3NDE0YzhiYTMyYiIsInRhZyI6IiJ9?lang=el';
+                window.open(uploadUrl, '_blank');
+                closeUploadModal();
+            }
+
+            document.getElementById('upload-modal').addEventListener('click', function (e) {
+                if (e.target === this) closeUploadModal();
+            });
+
+            // ── Share via Email modal ────────────────────────────
+            function shareViaEmail() {
+                document.getElementById('share-modal').classList.add('open');
+                lockBodyScroll();
+            }
+
+            function closeShareModal() {
+                document.getElementById('share-modal').classList.remove('open');
+                unlockBodyScroll();
+            }
+
+            function sendShareEmail() {
+                const to = document.getElementById('share-to').value.trim();
+                const msg = document.getElementById('share-msg').value.trim();
+                if (!to) { document.getElementById('share-to').focus(); return; }
+                const subject = encodeURIComponent('Προσφορά instacar – BMYXE08SZZ');
+                const body = encodeURIComponent(`${msg ? msg + '\n\n' : ''}Προσφορά instacar με κωδικό BMYXE08SZZ.`);
+                window.location.href = `mailto:${encodeURIComponent(to)}?subject=${subject}&body=${body}`;
+                closeShareModal();
+            }
+
+            document.getElementById('share-modal').addEventListener('click', function (e) {
+                if (e.target === this) closeShareModal();
+            });
+
+            // ── 3. Newsletter / Viber Modal ───────────────────────
+            function openNewsletterModal() {
+                document.getElementById('newsletter-modal').classList.add('open');
+                lockBodyScroll();
+            }
+
+            function closeNewsletterModal() {
+                document.getElementById('newsletter-modal').classList.remove('open');
+                unlockBodyScroll();
+            }
+
+            function subscribeNewsletter() {
+                const email = document.getElementById('nl-email').value.trim();
+                const phone = document.getElementById('nl-phone').value.trim();
+                const wantsEmail = document.getElementById('opt-email').checked;
+                const wantsViber = document.getElementById('opt-viber').checked;
+
+                if (!email) { document.getElementById('nl-email').focus(); return; }
+                if (wantsViber && !phone) { document.getElementById('nl-phone').focus(); return; }
+
+                closeNewsletterModal();
+                const channels = [wantsEmail && 'email', wantsViber && 'Viber'].filter(Boolean).join(' & ');
+                if (channels) alert(`Εγγραφήκες επιτυχώς για ειδοποιήσεις μέσω ${channels}.`);
+            }
+
+            document.getElementById('newsletter-modal').addEventListener('click', function (e) {
+                if (e.target === this) closeNewsletterModal();
+            });
+        </script>
+
+    </div>
+
+</body>
+
+</html>
