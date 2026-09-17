@@ -33,7 +33,7 @@
             color: var(--text-main);
             font-family: var(--font-main);
             margin: 0;
-            padding: 40px 20px 120px;
+            padding: 40px 20px;
             display: flex;
             justify-content: center;
             -webkit-font-smoothing: antialiased;
@@ -1638,7 +1638,7 @@
             .checkout-card {
                 border-radius: 0;
                 box-shadow: none;
-                padding-bottom: 76px;
+                padding-bottom: 32px;
             }
 
             /* Header responsive — sticks to the top while scrolling */
@@ -1678,6 +1678,7 @@
             .content {
                 padding-left: 20px;
                 padding-right: 20px;
+                padding-bottom: 0;
             }
 
             .total-row {
@@ -2494,9 +2495,13 @@
                     } else {
                         details.open = true;
                         details.classList.add('is-open');
-                        requestAnimationFrame(function () {
-                            content.style.gridTemplateRows = '1fr';
-                        });
+                        // Force a reflow so the browser commits the collapsed
+                        // (0fr) state before we change it — otherwise the two
+                        // style changes can get batched into one frame and the
+                        // transition never runs.
+                        content.style.gridTemplateRows = '0fr';
+                        content.offsetHeight;
+                        content.style.gridTemplateRows = '1fr';
                     }
                 });
             });
