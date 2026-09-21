@@ -159,25 +159,6 @@
             margin-left: 4px;
         }
 
-        .info-banner {
-            background-color: #eff6ff;
-            border: 1px solid rgba(37, 99, 235, 0.2);
-            border-radius: 12px;
-            padding: 10px 14px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--text-main);
-            font-size: 12px;
-            margin-bottom: 32px;
-            line-height: 1.4;
-        }
-
-        .info-banner svg {
-            color: #2563EB;
-            flex-shrink: 0;
-        }
-
         /* --- Order summary card (checkout-style breakdown + total) --- */
         .order-summary {
             background-color: var(--bg-surface);
@@ -1354,186 +1335,6 @@
             color: #92400e;
         }
 
-        /* Newsletter modal */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.45);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(3px);
-        }
-
-        .modal-overlay.open {
-            display: flex;
-            animation: fadeIn 0.25s ease-out;
-        }
-
-        .modal-card {
-            background: white;
-            border-radius: 20px;
-            padding: 26px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
-            position: relative;
-        }
-
-        .modal-card h3 {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--text-main);
-            margin: 0 0 6px;
-        }
-
-        .modal-card p {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin: 0 0 24px;
-            line-height: 1.5;
-        }
-
-        .modal-option {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 14px 16px;
-            border: 1.5px solid var(--border-light);
-            border-radius: 12px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .modal-option:hover {
-            border-color: var(--primary);
-            background: #fffaf7;
-        }
-
-        .modal-option input[type="checkbox"] {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--border-dark);
-            border-radius: 6px;
-            background: white;
-            cursor: pointer;
-            position: relative;
-            flex-shrink: 0;
-            transition: all 0.2s;
-        }
-
-        .modal-option input[type="checkbox"]:checked {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .modal-option input[type="checkbox"]:checked::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 45%;
-            width: 5px;
-            height: 9px;
-            border: 2px solid white;
-            border-top: none;
-            border-left: none;
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-
-        .modal-option-text strong {
-            display: block;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .modal-option-text span {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: none;
-            background: var(--bg-surface);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-        }
-
-        .modal-subscribe-btn {
-            width: 100%;
-            margin-top: 20px;
-            padding: 14px;
-            background: var(--text-main);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-family: var(--font-main);
-            font-size: 14px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .modal-subscribe-btn:hover {
-            background: var(--primary);
-        }
-
-        .modal-input-group {
-            margin-bottom: 14px;
-        }
-
-        .modal-input-label {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-            display: block;
-        }
-
-        .modal-input {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1.5px solid var(--border-dark);
-            border-radius: 10px;
-            font-family: var(--font-main);
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-main);
-            background: white;
-            outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            box-sizing: border-box;
-        }
-
-        .modal-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(255, 101, 0, 0.1);
-        }
-
-        /* Submitted preview signature */
-        .sig-preview-img {
-            display: none;
-            width: 100%;
-            border-radius: 12px;
-            border: 1.5px solid #bbf7d0;
-            background: #f0fdf4;
-        }
-
         /* Footer Note */
         .doc-footer {
             margin-top: 40px;
@@ -1669,8 +1470,7 @@
                 width: 120px;
             }
 
-            .benefits-grid,
-            .signatures {
+            .benefits-grid {
                 grid-template-columns: 1fr;
                 flex-direction: column;
             }
@@ -1686,18 +1486,6 @@
             }
 
             /* --- Signup system mobile --- */
-            .signup-body {
-                flex-direction: column;
-                padding: 20px;
-                gap: 20px;
-            }
-
-            .signup-col-info {
-                grid-template-columns: 1fr;
-                flex: none;
-                width: 100%;
-            }
-
             .acceptance-row {
                 flex-direction: column;
                 align-items: stretch;
@@ -1835,19 +1623,6 @@
 
             </div>
 
-            <!--
-                <div class="info-banner">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="16" x2="12" y2="12"></line>
-                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                    </svg>
-                    <span>Μετά την πάροδο της προσφοράς των 3 μηνών, το μίσθωμα διαμορφώνεται στο αρχικό ποσό των
-                        <b>2.613€ + ΦΠΑ</b>.</span>
-                </div>
-                -->
-
             <div class="order-summary" id="breakdown-toggle" role="button" tabindex="0" aria-expanded="false"
                 aria-controls="summary-items">
                 <div class="total-toggle">
@@ -1913,26 +1688,6 @@
                                 </div>
                             </button>
 
-                            <!--
-                                <button class="payment-card" onclick="selectPaymentMethod('card', this)">
-                                    <div class="pm-card-icon pm-icon-wide">
-                                        <img src="assets/card-payment-logos.jpg" alt="Πληρωμή με Κάρτα" />
-                                    </div>
-                                    <div class="pm-card-title">Πληρωμή με Κάρτα</div>
-                                    <div class="pm-card-desc">Χρέωση χρεωστικής ή πιστωτικής κάρτας online, μέσω
-                                        ασφαλούς σελίδας πληρωμής.</div>
-                                    <div class="pm-card-footer pm-footer-pending">
-                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <circle cx="12" cy="12" r="9"></circle>
-                                            <polyline points="12 7 12 12 16 14"></polyline>
-                                        </svg>
-                                        1-2 εργάσιμες
-                                    </div>
-                                </button>
-                                -->
-
                             <button class="payment-card" onclick="selectPaymentMethod('bank-transfer', this)">
                                 <div class="pm-card-icon pm-icon-wide">
                                     <img src="assets/bank-transfer-logo.png" alt="Τραπεζική Κατάθεση" />
@@ -1987,76 +1742,6 @@
 
             <div class="doc-footer" id="doc-footer">
                 H παρούσα προσφορά είναι εμπιστευτική. Η εγγραφή δεν επιστρέφεται σε περίπτωση υπαναχώρησης.
-            </div>
-        </div>
-
-        <!-- Share via Email Modal -->
-        <div class="modal-overlay" id="share-modal">
-            <div class="modal-card">
-                <button class="modal-close" onclick="closeShareModal()">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-                <h3>Κοινοποίηση μέσω Email</h3>
-                <p>Απόστειλε την αποδεκτή προσφορά σε τρίτο πρόσωπο ή απόθεσε τη για αρχείο.</p>
-                <div class="modal-input-group">
-                    <label class="modal-input-label" for="share-to">Προς</label>
-                    <input class="modal-input" id="share-to" type="email" placeholder="recipient@example.com" />
-                </div>
-                <div class="modal-input-group">
-                    <label class="modal-input-label" for="share-msg">Σημείωση (πραιρετικό)</label>
-                    <input class="modal-input" id="share-msg" type="text" placeholder="Προσθέστε μήνυμα..." />
-                </div>
-                <button class="modal-subscribe-btn" onclick="sendShareEmail()">
-                    <svg style="display:inline;margin-right:8px;vertical-align:middle" width="15" height="15"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                    Αποστολή
-                </button>
-            </div>
-        </div>
-
-        <!-- Newsletter/Viber Modal -->
-        <div class="modal-overlay" id="newsletter-modal">
-            <div class="modal-card">
-                <button class="modal-close" onclick="closeNewsletterModal()">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-                <h3>Ενημερώσεις instacar</h3>
-                <p>Επέλεξε τι ειδοποιήσεις θέλεις να λαμβάνεις από το instacar.</p>
-                <div class="modal-input-group">
-                    <label class="modal-input-label" for="nl-email">Email</label>
-                    <input class="modal-input" id="nl-email" type="email" placeholder="email@example.com" />
-                </div>
-                <div class="modal-input-group">
-                    <label class="modal-input-label" for="nl-phone">Τηλέφωνο (Viber)</label>
-                    <input class="modal-input" id="nl-phone" type="tel" placeholder="+30 690 000 0000" />
-                </div>
-                <label class="modal-option">
-                    <input type="checkbox" id="opt-email" checked />
-                    <div class="modal-option-text">
-                        <strong>Newsletter μέσω Email</strong>
-                        <span>Προσφορές, νέα οχήματα και ενημερωτικά email</span>
-                    </div>
-                </label>
-                <label class="modal-option">
-                    <input type="checkbox" id="opt-viber" />
-                    <div class="modal-option-text">
-                        <strong>Viber ειδοποιήσεις</strong>
-                        <span>Άμεσες ειδοποιήσεις μέσω Viber</span>
-                    </div>
-                </label>
-                <button class="modal-subscribe-btn" onclick="subscribeNewsletter()">Εγγραφή</button>
             </div>
         </div>
 
@@ -2510,12 +2195,9 @@
             }
 
             // ── Payment method selection ──────────────────────────
-            // TODO: each method should navigate to its own flow (IRIS /
-            // card / bank transfer) in a later step.
             function selectPaymentMethod(method, cardEl) {
                 if (method === 'iris') openIrisModal();
                 if (method === 'bank-transfer') openBankModal();
-                // TODO: card gets its own flow in a later step.
             }
 
             // ── IRIS payment modal ─────────────────────────────────
@@ -2676,59 +2358,6 @@
                 if (e.target === this) closeUploadModal();
             });
 
-            // ── Share via Email modal ────────────────────────────
-            function shareViaEmail() {
-                document.getElementById('share-modal').classList.add('open');
-                lockBodyScroll();
-            }
-
-            function closeShareModal() {
-                document.getElementById('share-modal').classList.remove('open');
-                unlockBodyScroll();
-            }
-
-            function sendShareEmail() {
-                const to = document.getElementById('share-to').value.trim();
-                const msg = document.getElementById('share-msg').value.trim();
-                if (!to) { document.getElementById('share-to').focus(); return; }
-                const subject = encodeURIComponent('Προσφορά instacar – BMYXE08SZZ');
-                const body = encodeURIComponent(`${msg ? msg + '\n\n' : ''}Προσφορά instacar με κωδικό BMYXE08SZZ.`);
-                window.location.href = `mailto:${encodeURIComponent(to)}?subject=${subject}&body=${body}`;
-                closeShareModal();
-            }
-
-            document.getElementById('share-modal').addEventListener('click', function (e) {
-                if (e.target === this) closeShareModal();
-            });
-
-            // ── 3. Newsletter / Viber Modal ───────────────────────
-            function openNewsletterModal() {
-                document.getElementById('newsletter-modal').classList.add('open');
-                lockBodyScroll();
-            }
-
-            function closeNewsletterModal() {
-                document.getElementById('newsletter-modal').classList.remove('open');
-                unlockBodyScroll();
-            }
-
-            function subscribeNewsletter() {
-                const email = document.getElementById('nl-email').value.trim();
-                const phone = document.getElementById('nl-phone').value.trim();
-                const wantsEmail = document.getElementById('opt-email').checked;
-                const wantsViber = document.getElementById('opt-viber').checked;
-
-                if (!email) { document.getElementById('nl-email').focus(); return; }
-                if (wantsViber && !phone) { document.getElementById('nl-phone').focus(); return; }
-
-                closeNewsletterModal();
-                const channels = [wantsEmail && 'email', wantsViber && 'Viber'].filter(Boolean).join(' & ');
-                if (channels) alert(`Εγγραφήκες επιτυχώς για ειδοποιήσεις μέσω ${channels}.`);
-            }
-
-            document.getElementById('newsletter-modal').addEventListener('click', function (e) {
-                if (e.target === this) closeNewsletterModal();
-            });
         </script>
 
     </div>
