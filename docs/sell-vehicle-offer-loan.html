@@ -100,7 +100,7 @@
             display: flex;
             gap: 40px;
             align-items: stretch;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
 
         /* Left: brand text + image stacked */
@@ -176,14 +176,20 @@
             font-weight: 700;
         }
 
-        /* Right: bento grid — one wide price tile on top, two even tiles below, filling the full hero height */
+        /* Right: 2×2 stat grid — fills full hero height */
         .hero-stats {
             flex: 1;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto 1fr;
+            grid-template-rows: 1fr 1fr;
             gap: 12px;
             align-self: stretch;
+        }
+
+        .hero-stats .stat-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .mini-stats {
@@ -194,18 +200,14 @@
         .stat-box {
             background-color: var(--bg-paper);
             border: 1px solid var(--border-light);
-            padding: 14px 16px;
+            padding: 12px 16px;
             border-radius: 12px;
+            flex: 1;
         }
 
-        .hero-stats .stat-box:not(.bento-price) {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            text-align: left;
-            padding: 18px 16px;
-            gap: 8px;
+        .stat-box.highlight {
+            background-color: var(--primary-light);
+            border-color: rgba(255, 101, 0, 0.2);
         }
 
         .stat-box .s-icon {
@@ -218,33 +220,24 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            margin-bottom: 8px;
         }
 
-        .hero-stats .stat-box:not(.bento-price) .s-label {
-            white-space: nowrap;
-            font-weight: 500;
-            color: #9CA3AF;
-            margin-bottom: 0;
+        .stat-box.highlight .s-icon {
+            background: #FFDDC2;
+            color: var(--primary);
         }
 
-        .hero-stats .stat-box:not(.bento-price) .s-value {
-            font-size: 20px;
-        }
-
-        .hero-stats .stat-box:not(.bento-price) .s-sub {
-            margin-top: 0;
-        }
-
-        .stat-box.highlight {
-            background-color: var(--primary-light);
-            border-color: rgba(255, 101, 0, 0.2);
+        .s-icon.s-icon-santander {
+            background: #FCE4E4;
+            color: #EA1D25;
         }
 
         .stat-box .s-label {
             font-size: 11px;
             text-transform: uppercase;
-            color: var(--text-muted);
-            font-weight: 700;
+            color: #9CA3AF;
+            font-weight: 500;
             margin-bottom: 4px;
         }
 
@@ -261,20 +254,6 @@
         .stat-box .s-sub {
             font-size: 11px;
             color: var(--text-muted);
-            margin-top: 2px;
-        }
-
-        .bento-price {
-            grid-column: 1 / -1;
-            padding: 22px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .bento-price .s-value {
-            font-size: 30px;
         }
 
         .info-banner {
@@ -294,15 +273,6 @@
         .info-banner svg {
             color: var(--primary);
             flex-shrink: 0;
-        }
-
-        .info-banner.info-banner-blue {
-            background-color: #eff6ff;
-            border-color: rgba(37, 99, 235, 0.2);
-        }
-
-        .info-banner.info-banner-blue svg {
-            color: #2563eb;
         }
 
         /* --- Financials Grid --- */
@@ -904,54 +874,6 @@
             opacity: 1;
         }
 
-        /* ── Redirect-to-payment loader ─────────────────────────── */
-        .redirect-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 4000;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            background: rgba(255, 255, 255, 0.97);
-            text-align: center;
-        }
-
-        .redirect-overlay.open {
-            display: flex;
-            animation: fadeIn 0.25s ease-out;
-        }
-
-        .redirect-spinner {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 4px solid var(--primary-light);
-            border-top-color: var(--primary);
-            margin: 0 auto 24px;
-            animation: redirect-spin 0.8s linear infinite;
-        }
-
-        @keyframes redirect-spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .redirect-overlay h2 {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--text-main);
-            margin: 0 0 8px;
-        }
-
-        .redirect-overlay p {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin: 0;
-            max-width: 320px;
-        }
-
         /* Newsletter modal */
         .modal-overlay {
             display: none;
@@ -1131,6 +1053,14 @@
             color: var(--text-muted);
             border-top: 1px solid var(--border-light);
             padding-top: 24px;
+        }
+
+        .doc-footer p {
+            margin: 0 0 4px;
+        }
+
+        .doc-footer p:last-child {
+            margin-bottom: 0;
         }
 
         /* Print optimization */
@@ -1361,6 +1291,7 @@
                 margin-top: 4px;
                 padding-top: 10px;
                 border-top: 1px solid var(--border-light);
+                font-size: 15px;
             }
 
             .modern-table td.val-net::before,
@@ -1378,7 +1309,7 @@
             }
 
             .modern-table td.val-vat::before {
-                content: "ΦΠΑ";
+                content: "ΦΠΑ (24%)";
             }
 
             .modern-table td.val-total::before {
@@ -1402,6 +1333,11 @@
             .hero-stats {
                 width: 100%;
                 grid-template-columns: 1fr 1fr;
+            }
+
+            .stat-box .s-icon {
+                width: 32px;
+                height: 32px;
             }
 
             .mini-stats {
@@ -1485,40 +1421,6 @@
                 padding: 12px 16px;
             }
         }
-
-        /* --- Narrow phones: keep the bento tiles side by side, just tighter --- */
-        @media screen and (max-width: 400px) {
-            .hero-stats {
-                gap: 8px;
-            }
-
-            .bento-price {
-                padding: 18px 16px;
-            }
-
-            .bento-price .s-value {
-                font-size: 26px;
-            }
-
-            .hero-stats .stat-box:not(.bento-price) {
-                padding: 12px;
-                gap: 6px;
-            }
-
-            .stat-box .s-icon {
-                width: 32px;
-                height: 32px;
-            }
-
-            .hero-stats .stat-box:not(.bento-price) .s-label {
-                white-space: normal;
-                font-size: 10px;
-            }
-
-            .hero-stats .stat-box:not(.bento-price) .s-value {
-                font-size: 16px;
-            }
-        }
     </style>
 </head>
 
@@ -1529,8 +1431,8 @@
         <!-- Mobile-only sticky bottom bar -->
         <div class="mobile-sticky-bar" id="mobile-sticky-bar">
             <div class="msb-total">
-                <span class="msb-label">τελική τιμή</span>
-                <span class="msb-value">24.950€</span>
+                <span class="msb-label">αρχικό κόστος</span>
+                <span class="msb-value">5.445€</span>
             </div>
             <button class="msb-btn" onclick="scrollToAcceptance()">
                 Συνέχεια στην Αποδοχή
@@ -1571,36 +1473,59 @@
                         </div>
                     </div>
 
-                    <!-- Right: bento stat grid -->
+                    <!-- Right: 2×2 stat boxes -->
                     <div class="hero-stats">
-                        <div class="stat-box highlight bento-price">
-                            <div class="s-label">Τελική Τιμή Αγοράς</div>
-                            <div class="s-value">24.950€</div>
+                        <div class="stat-box">
+                            <div class="s-icon s-icon-santander">
+                                <svg width="18" height="16" viewBox="0 0 10 9" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.68301 4.05224C6.66179 3.734 6.57693 3.41576 6.4072 3.13995L4.96452 0.615261C4.85844 0.424318 4.77358 0.212159 4.73115 0L4.6675 0.106079C4.30683 0.721341 4.30683 1.50633 4.6675 2.12159L5.83437 4.1371C6.19504 4.75236 6.19504 5.53735 5.83437 6.15261L5.77072 6.25869C5.72829 6.04653 5.64343 5.83437 5.53735 5.64343L4.47655 3.79765L3.79765 2.60956C3.69157 2.41861 3.6067 2.20645 3.56427 1.99429L3.50062 2.10037C3.13995 2.71564 3.13995 3.47941 3.50062 4.11588L4.6675 6.13139C5.02817 6.74666 5.02817 7.53164 4.6675 8.1469L4.60385 8.25298C4.56142 8.04082 4.47655 7.82867 4.37048 7.63772L2.90658 5.11303C2.71563 4.77358 2.63077 4.39169 2.63077 4.0098C1.08201 4.41291 0 5.28276 0 6.27991C0 7.68016 2.07916 8.8046 4.64628 8.8046C7.21341 8.8046 9.29256 7.68016 9.29256 6.27991C9.31378 5.32519 8.25298 4.45534 6.68301 4.05224Z" />
+                                </svg>
+                            </div>
+                            <div class="s-label">Προνομιακή δανειοδότηση</div>
+                            <div class="s-value">84 Δόσεις</div>
+                        </div>
+                        <div class="stat-box highlight">
+                            <div class="s-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    <circle cx="12" cy="15.5" r="2.25"></circle>
+                                </svg>
+                            </div>
+                            <div class="s-label">Δόση <br> Δανείου</div>
+                            <div class="s-value">235€
+                                <span style="font-size: 12px; color: var(--primary); font-weight: 600;">/μήνα</span>
+                            </div>
                         </div>
                         <div class="stat-box">
                             <div class="s-icon">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="2" y="5" width="20" height="14" rx="2"></rect>
-                                    <line x1="2" y1="10" x2="22" y2="10"></line>
+                                    <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path>
+                                    <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path>
+                                    <path d="M18 12a2 2 0 0 0 0 4h4v-4z"></path>
                                 </svg>
                             </div>
-                            <div class="s-label">Τρόπος<br>Πληρωμής</div>
-                            <div class="s-value" style="font-size: 16px;">Εφάπαξ Εξόφληση</div>
-                            <div class="s-sub">Χωρίς δόσεις</div>
+                            <div class="s-label">Ποσό Προκαταβολής</div>
+                            <div class="s-value">5.000€</div>
                         </div>
                         <div class="stat-box">
                             <div class="s-icon">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                    <polyline points="14 2 14 8 20 8" />
-                                    <line x1="9" y1="13" x2="15" y2="13"></line>
-                                    <line x1="9" y1="17" x2="15" y2="17"></line>
+                                    <path
+                                        d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z">
+                                    </path>
+                                    <line x1="7" y1="7" x2="7.01" y2="7"></line>
                                 </svg>
                             </div>
-                            <div class="s-label">Έξοδα<br> Μεταβίβασης</div>
-                            <div class="s-value">210€</div>
+                            <div class="s-label">Συνολική τιμή αγοράς</div>
+                            <div class="s-value">22.640€</div>
                         </div>
                     </div>
 
@@ -1609,12 +1534,11 @@
                 <div class="info-banner">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="16" x2="12" y2="12"></line>
-                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                        <line x1="2" y1="10" x2="22" y2="10"></line>
                     </svg>
-                    <span>Η προσφορά ισχύει για <b>30 ημέρες</b>, υπόκειται στη διαθεσιμότητα του οχήματος και δεν
-                        είναι δεσμευτική.</span>
+                    <span>Η διαδικασία γίνεται εξ' ολοκλήρου online από το instacar,
+                        με ανταγωνιστικό επιτόκιο, προκαταβολή από <b>10%</b> και έως <b>84 δόσεις</b>.</span>
                 </div>
 
                 <div class="section-title">Ανάλυση Κόστους Αγοράς</div>
@@ -1624,21 +1548,28 @@
                         <thead>
                             <tr>
                                 <th>Περιγραφή</th>
-                                <th>Καθαρή Αξία</th>
+                                <th>Καθαρή<br>Αξία</th>
                                 <th>ΦΠΑ<br>(24%)</th>
-                                <th>Τελική Αξία</th>
+                                <th>Τελική<br>Αξία</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
-                                    <span class="item-name">Τιμή Οχήματος</span>
-                                    <span class="item-desc">Τιμή αγοράς του OPEL MOKKA PURE TURBO, κωδικός
-                                        οχήματος 75VYV.</span>
+                                    <span class="item-name">Προκαταβολή</span>
                                 </td>
-                                <td class="val-net">19.951,61€</td>
-                                <td class="val-vat">4.788,39€</td>
-                                <td class="val-total">24.740€</td>
+                                <td class="val-net">-</td>
+                                <td class="val-vat">-</td>
+                                <td class="val-total">5.000€</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="item-name">Μηνιαία Δόση</span>
+                                    <span class="item-desc">84 Μήνες</span>
+                                </td>
+                                <td class="val-net">-</td>
+                                <td class="val-vat">-</td>
+                                <td class="val-total">235€</td>
                             </tr>
                             <tr>
                                 <td>
@@ -1664,26 +1595,14 @@
                 </div>
 
                 <div class="total-row">
-                    <span class="t-label">τελική τιμή αγοράς</span>
-                    <span class="t-value">24.950€</span>
-                </div>
-
-                <div class="info-banner info-banner-blue" style="margin-bottom: 40px;">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="16" x2="12" y2="12"></line>
-                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                    </svg>
-                    <span>Σε περίπτωση που αλλάξεις γνώμη για τον τρόπο εξόφλησης, υπάρχει και η επιλογή
-                        προνομιακής δανειοδότησης! Η διαδικασία γίνεται εξ' ολοκλήρου online από το instacar, με
-                        ανταγωνιστικό επιτόκιο, προκαταβολή <b>από 10% και έως 84 δόσεις.</b></span>
+                    <span class="t-label">αρχικό κόστος αγοράς</span>
+                    <span class="t-value">5.445€</span>
                 </div>
 
                 <div class="benefits-wrapper">
                     <div class="section-title"
-                        style="margin-bottom: 32px; font-size: 16px; justify-content: center; text-align: center;">Τι
-                        εξασφαλίζεις για έναν χρόνο με την αγορά</div>
+                        style="margin-bottom: 32px; font-size: 16px; justify-content: center; text-align: center;">
+                        Τι εξασφαλίζεις για έναν χρόνο μετά την αγορά</div>
                     <div class="benefits-grid">
                         <div class="benefit-card">
                             <div class="b-icon">
@@ -1716,6 +1635,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -1737,7 +1657,7 @@
                                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="20 6 9 17 4 12" />
                             </svg>
-                            Αποδοχή και συνέχεια στην πληρωμή
+                            Αποδοχή Προσφοράς
                         </button>
                     </div>
 
@@ -1784,7 +1704,9 @@
                 </div>
 
                 <div class="doc-footer" id="doc-footer">
-                    H παρούσα προσφορά είναι εμπιστευτική. Η εγγραφή δεν επιστρέφεται σε περίπτωση υπαναχώρησης.
+                    <p>Η προσφορά ισχύει για 30 ημέρες, υπόκειται στη διαθεσιμότητα του οχήματος και δεν είναι
+                        δεσμευτική.</p>
+                    <p>Οι τελικοί όροι χρηματοδότησης θα καθοριστούν μετά την αξιολόγηση των εγγράφων σας.</p>
                 </div>
             </div>
         </div>
@@ -1903,7 +1825,7 @@
                                 <polyline points="14 2 14 8 20 8" />
                             </svg>
                         </div>
-                        Αποδεικτικό Εξόφλησης
+                        Αποδεικτικό Εισοδήματος
                     </div>
                     <div class="upload-doc-item">
                         <div class="upload-doc-item-icon">
@@ -1942,15 +1864,6 @@
             Το PDF κατέβηκε επιτυχώς!
         </div>
 
-        <!-- Redirect-to-payment loader -->
-        <div class="redirect-overlay" id="redirect-overlay">
-            <div>
-                <div class="redirect-spinner"></div>
-                <h2>Μεταφορά στην πληρωμή...</h2>
-                <p>Ολοκληρώνουμε την αποδοχή της προσφοράς σου και σε μεταφέρουμε στην ασφαλή σελίδα πληρωμής.</p>
-            </div>
-        </div>
-
         <script>
             // ── Form validation ───────────────────────────────────
             function updateSubmitBtn() {
@@ -1982,14 +1895,24 @@
             function submitOffer() {
                 document.getElementById('accept-checkbox').disabled = true;
                 document.getElementById('submit-btn').disabled = true;
+
+                const acceptanceRow = document.getElementById('acceptance-row');
+                const confirmed = document.getElementById('signup-confirmed');
+                acceptanceRow.style.display = 'none';
+                confirmed.classList.add('visible');
                 document.getElementById('mobile-sticky-bar').classList.add('hidden');
 
-                // Show a redirection loader, then hand off to the payment page
-                // with this offer's values.
-                document.getElementById('redirect-overlay').classList.add('open');
-                setTimeout(function () {
-                    window.location.href = 'pay-now-vsl-07352.html';
-                }, 1800);
+                const now = new Date();
+                const formatted = now.toLocaleDateString('el-GR', {
+                    day: '2-digit', month: '2-digit', year: 'numeric',
+                    hour: '2-digit', minute: '2-digit', second: '2-digit'
+                });
+                document.getElementById('confirmed-details').textContent = `Η αποδοχή καταγράφηκε (${formatted}).`;
+                confirmed.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // No automatic PDF download — the person downloads explicitly via
+                // the "Λήψη PDF" button (confirmation banner or upload modal).
+                setTimeout(openUploadModal, 1200);
             }
 
             // ── PDF export ────────────────────────────────────────
