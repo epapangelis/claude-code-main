@@ -275,10 +275,21 @@
             table-layout: fixed;
         }
 
-        .modern-table th:nth-child(1) { width: 28%; }
-        .modern-table th:nth-child(2) { width: 18%; }
-        .modern-table th:nth-child(3) { width: 24%; }
-        .modern-table th:nth-child(4) { width: 30%; }
+        .modern-table th:nth-child(1) {
+            width: 28%;
+        }
+
+        .modern-table th:nth-child(2) {
+            width: 18%;
+        }
+
+        .modern-table th:nth-child(3) {
+            width: 24%;
+        }
+
+        .modern-table th:nth-child(4) {
+            width: 30%;
+        }
 
         .modern-table th:not(:first-child),
         .modern-table td:not(:first-child) {
@@ -671,10 +682,10 @@
             <table class="modern-table" id="history-table">
                 <thead>
                     <tr>
-                        <th>Ημερομηνία</th>
+                        <th>Ημ/νία</th>
                         <th>Χιλιόμετρα</th>
-                        <th>Σημείο Service</th>
-                        <th>Αιτία Service</th>
+                        <th>Σημείο</th>
+                        <th>Περιγραφή</th>
                     </tr>
                 </thead>
                 <tbody id="history-body"></tbody>
@@ -691,7 +702,8 @@
                     <div class="stamp-line">ΑΦΜ: 801141110 - ΔΟΥ: Κεφόδε Αττικής</div>
                     <svg class="stamp-sign" viewBox="0 0 190 64" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round" aria-label="Υπογραφή">
-                        <path d="M10 44c8-22 16-34 22-30s-6 28-2 30 12-20 20-20-2 16 4 16 10-10 16-10 0 10 8 10 12-14 20-14-4 12 2 12 14-8 24-10 18-6 28-8" />
+                        <path
+                            d="M10 44c8-22 16-34 22-30s-6 28-2 30 12-20 20-20-2 16 4 16 10-10 16-10 0 10 8 10 12-14 20-14-4 12 2 12 14-8 24-10 18-6 28-8" />
                         <path d="M120 50c14-4 36-6 58-6" />
                     </svg>
                 </div>
@@ -763,10 +775,10 @@
 
         document.getElementById('history-body').innerHTML = rows.map(function (r) {
             return '<tr>' +
-                '<td class="val-date" data-label="Ημερομηνία">' + fmtDate(r.date) + '</td>' +
+                '<td class="val-date" data-label="Ημ/νία">' + fmtDate(r.date) + '</td>' +
                 '<td class="val-km" data-label="Χιλιόμετρα">' + fmtKm(r.km) + '</td>' +
-                '<td class="val-point" data-label="Σημείο Service">' + esc(r.point) + '</td>' +
-                '<td data-label="Αιτία Service"><span class="reason-chip chip-' + (r.type || 'check') + '">' + esc(r.reason) + '</span></td>' +
+                '<td class="val-point" data-label="Σημείο">' + esc(r.point) + '</td>' +
+                '<td data-label="Περιγραφή"><span class="reason-chip chip-' + (r.type || 'check') + '">' + esc(r.reason) + '</span></td>' +
                 '</tr>';
         }).join('');
 
