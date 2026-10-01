@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "id": "69c671db0000000000000002",
+      "internal_id": "SUB-0AB12C34DE",
+      "type": "standard",
+      "status": "ended",
+      "vehicle": {
+        "id": "2023060100012",
+        "make": "Fiat",
+        "model": "500",
+        "plate": "IKA4567",
+        "image_url": "https://example.com/images/sub_vehicle_002.jpg"
+      },
+      "amount": 289.0,
+      "currency": "EUR",
+      "tags": ["returning_customer"],
+      "delivery_status": "delivery_ready",
+      "delivery_date": "2023-06-15",
+      "end_contract_date": "2025-06-15",
+      "next_payment": null
+    }
+  ],
+  "meta": {
+    "total": 1,
+    "page": 1,
+    "page_size": 20
+  }
+}

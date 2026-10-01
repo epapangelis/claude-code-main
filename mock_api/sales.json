@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "id": "sale_001",
+      "make": "Peugeot",
+      "model": "2008",
+      "year": 2023,
+      "category": "suv",
+      "fuel_type": "petrol",
+      "transmission": "manual",
+      "mileage_km": 28500,
+      "price": 16900.0,
+      "currency": "EUR",
+      "location": "instacar-hq",
+      "image_url": "https://example.com/images/sale_001.jpg",
+      "financing_available": true,
+      "availability": "available"
+    }
+  ],
+  "meta": {
+    "total": 1,
+    "page": 1,
+    "page_size": 20
+  }
+}

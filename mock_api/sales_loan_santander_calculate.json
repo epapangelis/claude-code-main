@@ -1,0 +1,13 @@
+{
+  "data": {
+    "provider": "santander",
+    "vehicle_id": "sale_001",
+    "currency": "EUR",
+    "price": 16900.0,
+    "down_payment": 3000.0,
+    "term_months": 60,
+    "monthly_installment": 261.0,
+    "total_repayable": 18660.0,
+    "apr_percent": 7.2
+  }
+}

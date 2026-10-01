@@ -1,0 +1,34 @@
+{
+  "data": {
+    "id": "69c671db0000000000000001",
+    "internal_id": "SUB-0GP29Y77BQ",
+    "type": "standard",
+    "status": "active",
+    "vehicle": {
+      "id": "2024111500073",
+      "make": "Peugeot",
+      "model": "2008",
+      "plate": "XHY1325",
+      "image_url": "https://example.com/images/sub_vehicle_001.jpg"
+    },
+    "amount": 416.0,
+    "currency": "EUR",
+    "tags": ["new_customer"],
+    "location": "instacar-hq",
+    "delivery_status": "delivery_planned",
+    "promised_delivery_date_range": {
+      "from": "2025-02-25",
+      "to": "2025-03-05"
+    },
+    "delivery_date": "2025-03-01",
+    "promised_returned_date": "2029-03-01",
+    "return_date": null,
+    "end_contract_date": "2029-03-01",
+    "planned_downpayment_date": "2025-02-20",
+    "next_payment": {
+      "date": "2026-10-01",
+      "amount": 416.0,
+      "currency": "EUR"
+    }
+  }
+}

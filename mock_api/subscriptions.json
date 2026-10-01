@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "id": "69c671db0000000000000001",
+      "internal_id": "SUB-0GP29Y77BQ",
+      "type": "standard",
+      "status": "active",
+      "vehicle": {
+        "id": "2024111500073",
+        "make": "Peugeot",
+        "model": "2008",
+        "plate": "XHY1325",
+        "image_url": "https://example.com/images/sub_vehicle_001.jpg"
+      },
+      "amount": 416.0,
+      "currency": "EUR",
+      "tags": ["new_customer"],
+      "delivery_status": "delivery_planned",
+      "delivery_date": "2025-03-01",
+      "end_contract_date": "2029-03-01",
+      "next_payment": {
+        "date": "2026-10-01",
+        "amount": 416.0,
+        "currency": "EUR"
+      }
+    }
+  ],
+  "meta": {
+    "total": 1,
+    "page": 1,
+    "page_size": 20
+  }
+}

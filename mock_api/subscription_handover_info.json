@@ -1,0 +1,8 @@
+{
+  "data": {
+    "type": "delivery",
+    "status": "pending",
+    "scheduled_at": "2025-03-01T10:00:00Z",
+    "location": "instacar-hq"
+  }
+}

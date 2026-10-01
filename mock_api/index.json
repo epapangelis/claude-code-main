@@ -1,0 +1,68 @@
+{
+  "version": "0.2.0",
+  "description": "Routing map for the instacar mock API. Routes mirror the real v3 API so the mock can be swapped for the backend without client changes. Each route maps to a static JSON file in this folder.",
+  "base_path": "mock_api/",
+  "conventions": {
+    "success_envelope": "Payloads are wrapped in a top level \"data\" key. Lists also include a \"meta\" key with total, page and page_size.",
+    "error_envelope": "Errors use a top level \"error\" key with code and message. See the \"errors\" folder.",
+    "naming": "snake_case keys, ISO 8601 dates, ISO 4217 currency codes",
+    "language": "Default content is Greek (el). The real API takes a lang query parameter (el or en). For an English variant, add a file with the same name under en/ and read it when lang=en.",
+    "auth": "auth_required routes expect a Bearer token. Serve errors/401_unauthorized.json when the token is missing or expired.",
+    "states": "The \"states\" folder holds alternate responses (empty, ended, sold out, awaiting documents) for testing edge cases on device.",
+    "adding_endpoints": "Add the JSON file, then add an entry to \"endpoints\" below."
+  },
+  "endpoints": [
+    {"method": "POST", "path": "/v3/login", "file": "auth_login.json", "auth_required": false, "description": "Successful login: token, refresh token and user."},
+    {"method": "POST", "path": "/v3/register", "file": "auth_register.json", "auth_required": false, "description": "New account created, verification code required."},
+    {"method": "POST", "path": "/v3/social", "file": "auth_login.json", "auth_required": false, "description": "Social login. Same response shape as login."},
+    {"method": "POST", "path": "/v3/verifyCode", "file": "auth_verify_code.json", "auth_required": false, "description": "Code accepted, returns tokens."},
+    {"method": "POST", "path": "/v3/resendCode", "file": "auth_message.json", "auth_required": false, "description": "Verification code resent."},
+    {"method": "POST", "path": "/v3/password/forgot", "file": "auth_message.json", "auth_required": false, "description": "Password reset email sent."},
+    {"method": "POST", "path": "/v3/password/reset", "file": "auth_message.json", "auth_required": false, "description": "Password updated."},
+    {"method": "GET", "path": "/v3/me", "file": "me.json", "auth_required": true, "description": "Current user profile."},
+
+    {"method": "GET", "path": "/v3/sales", "file": "sales.json", "auth_required": false, "description": "Used cars for sale."},
+    {"method": "GET", "path": "/v3/sales/{id}", "file": "sales_detail.json", "auth_required": false, "description": "Used car detail. Sold variant in states/sales_out_of_stock.json."},
+    {"method": "GET", "path": "/v3/sales/{id}/loans/calculate", "file": "sales_loan_calculate.json", "auth_required": false, "description": "Generic loan calculation. Query: down_payment, term_months."},
+    {"method": "GET", "path": "/v3/sales/{id}/loans/santander/calculate", "file": "sales_loan_santander_calculate.json", "auth_required": false, "description": "Santander loan calculation. Query: down_payment, term_months."},
+
+    {"method": "GET", "path": "/v3/leasing", "file": "leasing.json", "auth_required": false, "description": "Vehicles available for leasing."},
+    {"method": "GET", "path": "/v3/leasing/{id}", "file": "leasing_detail.json", "auth_required": false, "description": "Leasing vehicle detail."},
+    {"method": "GET", "path": "/v3/leasing/downpayment", "file": "leasing_downpayment.json", "auth_required": false, "description": "Down payment options."},
+    {"method": "GET", "path": "/v3/leasing/ebikes", "file": "leasing_ebikes.json", "auth_required": false, "description": "Ebike leasing list."},
+
+    {"method": "GET", "path": "/v3/bookings", "file": "bookings.json", "auth_required": true, "description": "User bookings (paginated). Status 3 means documents uploaded."},
+    {"method": "GET", "path": "/v3/bookings/{id}", "file": "booking_detail.json", "auth_required": true, "description": "Booking and offer detail. Awaiting documents variant in states/booking_awaiting_documents.json."},
+    {"method": "POST", "path": "/v3/bookings", "file": "booking_create.json", "auth_required": true, "description": "Quote or booking request created. Endpoint is assumed, verify against swagger."},
+
+    {"method": "GET", "path": "/v3/subscriptions", "file": "subscriptions.json", "auth_required": true, "description": "User subscriptions (active leases). Empty and ended variants in states/."},
+    {"method": "GET", "path": "/v3/subscriptions/{id}", "file": "subscription_detail.json", "auth_required": true, "description": "Subscription detail with contract, delivery and return dates."},
+    {"method": "GET", "path": "/v3/subscriptions/{id}/delivery", "file": "subscription_delivery.json", "auth_required": true, "description": "Delivery info."},
+    {"method": "GET", "path": "/v3/subscriptions/{id}/documents", "file": "subscription_documents.json", "auth_required": true, "description": "Subscription documents."},
+    {"method": "GET", "path": "/v3/subscriptions/{id}/drivers", "file": "subscription_drivers.json", "auth_required": true, "description": "Drivers on the subscription."},
+    {"method": "GET", "path": "/v3/subscriptions/{id}/services", "file": "subscription_services.json", "auth_required": true, "description": "Services linked to the subscription."},
+    {"method": "GET", "path": "/v3/subscriptions/{id}/handover/{type}/info", "file": "subscription_handover_info.json", "auth_required": true, "description": "Handover info."},
+    {"method": "GET", "path": "/v3/subscriptions/{id}/handover/{type}/form", "file": "subscription_handover_form.json", "auth_required": true, "description": "Handover form definition."},
+
+    {"method": "GET", "path": "/v3/drivers", "file": "drivers.json", "auth_required": true, "description": "User drivers."},
+    {"method": "GET", "path": "/v3/documents", "file": "documents.json", "auth_required": true, "description": "User documents."},
+    {"method": "GET", "path": "/v3/brands", "file": "brands.json", "auth_required": false, "description": "Car brands."},
+    {"method": "GET", "path": "/v3/notifications", "file": "notifications.json", "auth_required": true, "description": "User notifications."},
+    {"method": "GET", "path": "/v3/deliveries/options", "file": "delivery_options.json", "auth_required": true, "description": "Delivery options."},
+    {"method": "GET", "path": "/v3/deliveries/boxnow/locations", "file": "delivery_boxnow_locations.json", "auth_required": true, "description": "BoxNow locker locations."},
+    {"method": "GET", "path": "/v3/maps/geocode", "file": "maps_geocode.json", "auth_required": true, "description": "Address geocoding."},
+    {"method": "GET", "path": "/v3/invitations", "file": "invitations.json", "auth_required": true, "description": "Invitations."}
+  ],
+  "errors": [
+    {"status": 401, "file": "errors/401_unauthorized.json"},
+    {"status": 404, "file": "errors/404_not_found.json"},
+    {"status": 422, "file": "errors/422_validation.json"},
+    {"status": 500, "file": "errors/500_server_error.json"}
+  ],
+  "states": [
+    {"file": "states/subscriptions_empty.json", "variant_of": "/v3/subscriptions", "description": "User with no subscriptions."},
+    {"file": "states/subscriptions_ended.json", "variant_of": "/v3/subscriptions", "description": "User with an ended subscription."},
+    {"file": "states/sales_out_of_stock.json", "variant_of": "/v3/sales/{id}", "description": "Vehicle already sold."},
+    {"file": "states/booking_awaiting_documents.json", "variant_of": "/v3/bookings/{id}", "description": "Booking at status 2, no documents yet."}
+  ]
+}

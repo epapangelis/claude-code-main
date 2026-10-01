@@ -1,0 +1,13 @@
+{
+  "data": [
+    {
+      "id": "inv_001",
+      "email": "friend@example.com",
+      "status": "pending",
+      "created_at": "2026-09-25T10:00:00Z"
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}

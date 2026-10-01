@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "id": "notif_001",
+      "type": "payment_reminder",
+      "title": "Upcoming payment",
+      "body": "Your next payment is due on 2026-10-01.",
+      "read": false,
+      "created_at": "2026-09-28T08:00:00Z"
+    }
+  ],
+  "meta": {
+    "total": 1,
+    "unread": 1
+  }
+}

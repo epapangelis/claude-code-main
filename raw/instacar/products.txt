@@ -1,0 +1,805 @@
+ "products": [
+      {
+        "id": "662123a16f2097db71a1ecd8",
+        "order": 0,
+        "name": "Normal",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "Sign Up Fee",
+            "features": [
+              "Κανονικό",
+              "Σκούτερ",
+              "Ποδήλατο"
+            ],
+            "name": "Εγγραφή"
+          },
+          "en-US": {
+            "description": "Sign Up Fee",
+            "features": [
+              "Normal",
+              "Scooter",
+              "Bike"
+            ],
+            "name": "Sign Up Fee"
+          }
+        },
+        "slug": "sign-up-fee",
+        "images": [],
+        "customFields": {
+          "vehiclePrice": "<1500 €",
+          "vehicleTypes": [
+            "car",
+            "van"
+          ]
+        },
+        "skuId": "66151855426ed1ca9cae46e7",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": {
+          "number": "270.00",
+          "currency": "EUR"
+        },
+        "discount": 0,
+        "finalPrice": {
+          "number": "216.00",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "Sign Up Fee",
+        "billingFrequency": "One Time",
+        "vat": 0.24,
+        "pos": [
+          "Leasing"
+        ],
+        "quantity": 1,
+        "mandatory": true,
+        "rac": null,
+        "display": true,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "vzagoras@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "668f8d198e52d62701204dd0",
+        "order": 1,
+        "name": "Car/Van",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "Monthly Fee",
+            "name": "Μηνιαίο Μίσθωμα"
+          },
+          "en-US": {
+            "description": "Monthly Fee",
+            "name": "Monthly Fee"
+          }
+        },
+        "slug": "monthly-fee",
+        "images": null,
+        "customFields": {
+          "skuMonthlyPrice": 380,
+          "skuOpenPrice": 434,
+          "vehicleTypes": [
+            "car",
+            "van"
+          ]
+        },
+        "skuId": "66151a96426ed1ca9cae46f9",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": {
+          "number": "337.00",
+          "currency": "EUR"
+        },
+        "discount": 0,
+        "finalPrice": {
+          "number": "269.60",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "Monthly Fee",
+        "billingFrequency": "Recurring",
+        "vat": 0.24,
+        "pos": [
+          "Leasing"
+        ],
+        "quantity": 1,
+        "mandatory": true,
+        "rac": null,
+        "display": true,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "vzagoras@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "662123ae6f2097db71a1ece0",
+        "order": 2,
+        "name": "User's Deposit",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "User's Deposit",
+            "name": "Επαυξημένο Μίσθωμα"
+          },
+          "en-US": {
+            "description": "User's Deposit",
+            "name": "User's Deposit"
+          }
+        },
+        "slug": "users-deposit",
+        "images": null,
+        "customFields": {
+          "catalogId": "IC01006",
+          "pricingId": "c434668c-d42a-4230-bc2a-a58e63c70ccb"
+        },
+        "skuId": "661518fa426ed1ca9cae46eb",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": null,
+        "discount": 0,
+        "finalPrice": {
+          "number": "1000.00",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "User's Deposit",
+        "billingFrequency": "One Time",
+        "vat": 0.24,
+        "pos": [
+          "Leasing"
+        ],
+        "quantity": 1,
+        "mandatory": true,
+        "rac": null,
+        "display": true,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "vzagoras@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "662123dc6f2097db71a1ecfc",
+        "order": 3,
+        "name": "instastart",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "instastart",
+            "features": [
+              "instastart"
+            ],
+            "name": "instastart"
+          },
+          "en-US": {
+            "description": "instastart",
+            "features": [
+              "instastart"
+            ],
+            "name": "instastart"
+          }
+        },
+        "slug": "instastart",
+        "images": null,
+        "customFields": {
+          "months": [
+            12,
+            24
+          ]
+        },
+        "skuId": "6620d2f49ae81a3fca4f406d",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": {
+          "number": "674.00",
+          "currency": "EUR"
+        },
+        "discount": 0,
+        "finalPrice": {
+          "number": "539.20",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "instastart",
+        "billingFrequency": "One Time",
+        "vat": 0.24,
+        "pos": [
+          "Leasing"
+        ],
+        "quantity": 1,
+        "mandatory": true,
+        "rac": null,
+        "display": true,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "vzagoras@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "66f2a5b991582b3603e90ee9",
+        "order": 4,
+        "name": "Extra Months",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "Extra Months",
+            "features": [
+              "Extra Months"
+            ],
+            "name": "Επιπρόσθετοι Μήνες"
+          },
+          "en-US": {
+            "description": "Extra Months",
+            "features": [
+              "Extra Months"
+            ],
+            "name": "Extra Months"
+          }
+        },
+        "slug": "extra-months",
+        "images": null,
+        "customFields": null,
+        "skuId": "6620d2f49ae81a3fca4f406d",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": null,
+        "discount": 0,
+        "finalPrice": {
+          "number": "0.00",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "Extra Months",
+        "billingFrequency": "One Time",
+        "vat": 0.24,
+        "pos": [
+          "Leasing"
+        ],
+        "quantity": 1,
+        "mandatory": true,
+        "rac": null,
+        "display": false,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "vzagoras@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "662123c16f2097db71a1ecec",
+        "order": 5,
+        "name": "Cars",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "Price/Km",
+            "features": [
+              "Κανονικό",
+              "Βαν",
+              "Ποδήλατο"
+            ],
+            "name": "Χιλιόμετρα"
+          },
+          "en-US": {
+            "description": "Price/Km",
+            "features": [
+              "Default",
+              "Van",
+              "Bike"
+            ],
+            "name": "Default kms"
+          }
+        },
+        "slug": "price-km",
+        "images": null,
+        "customFields": {
+          "vehicleTypes": [
+            "car"
+          ]
+        },
+        "skuId": "66151a59426ed1ca9cae46f7",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": {
+          "number": "0.08",
+          "currency": "EUR"
+        },
+        "discount": 0,
+        "finalPrice": {
+          "number": "0.08",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "Price/Km",
+        "billingFrequency": "Recurring",
+        "vat": 0.24,
+        "pos": [
+          "Leasing"
+        ],
+        "quantity": 1667,
+        "mandatory": true,
+        "rac": null,
+        "display": false,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "vzagoras@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "6707a60eb30b179733174b40",
+        "order": 6,
+        "name": "Extra Kms",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "Extra Kms",
+            "name": "Επιπρόσθετα Χιλιόμετρα"
+          },
+          "en-US": {
+            "description": "Extra Kms",
+            "name": "Extra Kms"
+          }
+        },
+        "slug": "extra-kms",
+        "images": null,
+        "customFields": null,
+        "skuId": "6707a578b30b179733174b3e",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": null,
+        "discount": 0,
+        "finalPrice": {
+          "number": "0.00",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "Extra Kms",
+        "billingFrequency": "One Time",
+        "vat": 0.24,
+        "pos": [
+          "Leasing",
+          "driveHome"
+        ],
+        "quantity": null,
+        "mandatory": true,
+        "rac": null,
+        "display": false,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "vzagoras@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "6a0d839dbcfb1f7284ff534c",
+        "order": 101,
+        "name": "Premium Insurance",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "Premium Insurance",
+            "name": "Premium Insurance"
+          },
+          "en-US": {
+            "description": "Premium Insurance",
+            "name": "Premium Insurance"
+          }
+        },
+        "slug": "bundle-premium-insurance",
+        "images": null,
+        "customFields": {
+          "bundleTypesInternalId": "BTYP-KHBQJQCYBS",
+          "vehicleTypes": [
+            "car",
+            "van"
+          ]
+        },
+        "skuId": "6a10089461ec873b24fe1ffc",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": {
+          "number": "190.00",
+          "currency": "EUR"
+        },
+        "discount": 0,
+        "finalPrice": {
+          "number": "190.00",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "Bundle Premium Insurance",
+        "billingFrequency": "One Time",
+        "vat": 0.24,
+        "pos": [
+          "Leasing"
+        ],
+        "quantity": 1,
+        "mandatory": true,
+        "rac": null,
+        "display": false,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "apanagopoulos@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "6a0d839dbcfb1f7284ff534d",
+        "order": 102,
+        "name": "Premium Insurance, Kilometers",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "Premium Insurance, Kilometers",
+            "name": "Premium Insurance, Kilometers"
+          },
+          "en-US": {
+            "description": "Premium Insurance, Kilometers",
+            "name": "Premium Insurance, Kilometers"
+          }
+        },
+        "slug": "bundle-premium-insurance-kilometers",
+        "images": null,
+        "customFields": {
+          "bundleTypesInternalId": "BTYP-32RDHGPCM8",
+          "vehicleTypes": [
+            "car",
+            "van"
+          ]
+        },
+        "skuId": "6a10093161ec873b24fe1ffd",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": {
+          "number": "190.00",
+          "currency": "EUR"
+        },
+        "discount": 0,
+        "finalPrice": {
+          "number": "190.00",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "Bundle Premium Insurance, Kilometers",
+        "billingFrequency": "One Time",
+        "vat": 0.24,
+        "pos": [
+          "Leasing"
+        ],
+        "quantity": 1,
+        "mandatory": true,
+        "rac": null,
+        "display": false,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "apanagopoulos@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "6a0d839dbcfb1f7284ff534e",
+        "order": 103,
+        "name": "Premium Insurance, Sales",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "Premium Insurance, Sales",
+            "name": "Premium Insurance, Sales"
+          },
+          "en-US": {
+            "description": "Premium Insurance, Sales",
+            "name": "Premium Insurance, Sales"
+          }
+        },
+        "slug": "bundle-premium-insurance-sales",
+        "images": null,
+        "customFields": {
+          "bundleTypesInternalId": "BTYP-669N1C7Y7J",
+          "vehicleTypes": [
+            "car",
+            "van"
+          ]
+        },
+        "skuId": "6a100c6061ec873b24fe2006",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": {
+          "number": "190.00",
+          "currency": "EUR"
+        },
+        "discount": 0,
+        "finalPrice": {
+          "number": "190.00",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "Bundle Premium Insurance, Sales",
+        "billingFrequency": "One Time",
+        "vat": 0.24,
+        "pos": [
+          "Leasing"
+        ],
+        "quantity": 1,
+        "mandatory": true,
+        "rac": null,
+        "display": false,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "apanagopoulos@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "6a0d839dbcfb1f7284ff534f",
+        "order": 104,
+        "name": "Premium Insurance, Kilometers, Sales",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "Premium Insurance, Kilometers, Sales",
+            "name": "Premium Insurance, Kilometers, Sales"
+          },
+          "en-US": {
+            "description": "Premium Insurance, Kilometers, Sales",
+            "name": "Premium Insurance, Kilometers, Sales"
+          }
+        },
+        "slug": "bundle-premium-insurance-kilometers-sales",
+        "images": null,
+        "customFields": {
+          "bundleTypesInternalId": "BTYP-YMPJ9LFPKM",
+          "vehicleTypes": [
+            "car",
+            "van"
+          ]
+        },
+        "skuId": "6a10099a61ec873b24fe2002",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": {
+          "number": "190.00",
+          "currency": "EUR"
+        },
+        "discount": 0,
+        "finalPrice": {
+          "number": "190.00",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "Bundle Premium Insurance, Kilometers, Sales",
+        "billingFrequency": "One Time",
+        "vat": 0.24,
+        "pos": [
+          "Leasing"
+        ],
+        "quantity": 1,
+        "mandatory": true,
+        "rac": null,
+        "display": false,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "apanagopoulos@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "6a0d839dbcfb1f7284ff5350",
+        "order": 105,
+        "name": "Premium Insurance, Kilometers, Delivery",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "Premium Insurance, Kilometers, Delivery",
+            "name": "Premium Insurance, Kilometers, Delivery"
+          },
+          "en-US": {
+            "description": "Premium Insurance, Kilometers, Delivery",
+            "name": "Premium Insurance, Kilometers, Delivery"
+          }
+        },
+        "slug": "bundle-premium-insurance-kilometers-delivery",
+        "images": [],
+        "customFields": {
+          "bundleTypesInternalId": "BTYP-1B1R7FDB4D",
+          "vehicleTypes": [
+            "car",
+            "van"
+          ]
+        },
+        "skuId": "6a100c0961ec873b24fe2005",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": {
+          "number": "190.00",
+          "currency": "EUR"
+        },
+        "discount": 0,
+        "finalPrice": {
+          "number": "190.00",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "Bundle Premium Insurance, Kilometers, Delivery",
+        "billingFrequency": "One Time",
+        "vat": 0.24,
+        "pos": [
+          "Leasing"
+        ],
+        "quantity": 1,
+        "mandatory": true,
+        "rac": null,
+        "display": false,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "apanagopoulos@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "6a0d839dbcfb1f7284ff5351",
+        "order": 106,
+        "name": "Premium Full",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "Premium Full",
+            "name": "Premium Full"
+          },
+          "en-US": {
+            "description": "Premium Full",
+            "name": "Premium Full"
+          }
+        },
+        "slug": "bundle-premium-full",
+        "images": [],
+        "customFields": {
+          "bundleTypesInternalId": "BTYP-Y53GC5E2O0",
+          "vehicleTypes": [
+            "car",
+            "van"
+          ]
+        },
+        "skuId": "6a100bc261ec873b24fe2004",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": {
+          "number": "190.00",
+          "currency": "EUR"
+        },
+        "discount": 0,
+        "finalPrice": {
+          "number": "190.00",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "Bundle Premium Full",
+        "billingFrequency": "One Time",
+        "vat": 0.24,
+        "pos": [
+          "Leasing"
+        ],
+        "quantity": 4,
+        "mandatory": true,
+        "rac": null,
+        "display": false,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "apanagopoulos@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "662123ab6f2097db71a1ecde",
+        "order": 999,
+        "name": "Extra Guarantee",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "Extra Guarantee",
+            "name": "Εγγύηση"
+          },
+          "en-US": {
+            "description": "Extra Guarantee",
+            "name": "Extra Guarantee"
+          }
+        },
+        "slug": "extra-guarantee",
+        "images": null,
+        "customFields": null,
+        "skuId": "661518c2426ed1ca9cae46e9",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": null,
+        "discount": 0,
+        "finalPrice": {
+          "number": "0.00",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "Extra Guarantee",
+        "billingFrequency": "One Time",
+        "vat": 0,
+        "pos": [
+          "Leasing",
+          "driveHome"
+        ],
+        "quantity": 1,
+        "mandatory": true,
+        "rac": null,
+        "display": false,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "vzagoras@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "6983542aee8f4b8cb2f31620",
+        "order": 999,
+        "name": "Free Fuel",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "Free Fuel",
+            "name": "Δωρεάν Καύσιμο"
+          },
+          "en-US": {
+            "description": "Free Fuel",
+            "name": "Free Fuel"
+          }
+        },
+        "slug": "free-fuel",
+        "images": null,
+        "customFields": null,
+        "skuId": "698352a9ee8f4b8cb2f3161a",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": null,
+        "discount": 0,
+        "finalPrice": {
+          "number": "0.00",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "Free Fuel",
+        "billingFrequency": "One Time",
+        "vat": 0.24,
+        "pos": [
+          "Leasing"
+        ],
+        "quantity": 0,
+        "mandatory": true,
+        "rac": null,
+        "display": false,
+        "createdAt": null,
+        "updatedAt": "2026-09-30T11:28:23.519Z",
+        "createdBy": "akanellakopoulos@instacar.gr",
+        "updatedBy": "system"
+      },
+      {
+        "id": "691dcbd79b5a026e99fe5c8b",
+        "order": 999,
+        "name": "Deposit from Vehicle Sale",
+        "type": 1,
+        "metaData": {
+          "el-GR": {
+            "description": "Deposit from Vehicle Sale",
+            "name": "Κατάθεση απο Πώληση Οχήματος"
+          },
+          "en-US": {
+            "description": "Deposit from Vehicle Sale",
+            "name": "Deposit from Vehicle For Sale"
+          }
+        },
+        "slug": "deposit-from-vehicle-sale",
+        "images": null,
+        "customFields": null,
+        "skuId": "691dccb39b5a026e99fe5c8f",
+        "vendorId": "66151593ae4de12f6a0080af",
+        "status": 1,
+        "price": null,
+        "discount": 0,
+        "finalPrice": {
+          "number": "0.00",
+          "currency": "EUR"
+        },
+        "description": null,
+        "category": "Deposit from Vehicle Sale",
+        "billingFrequency": "One Time",
+        "vat": 0.24,
+        "pos": [
+          "Leasing"
+        ],

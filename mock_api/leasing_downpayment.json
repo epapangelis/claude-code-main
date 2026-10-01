@@ -1,0 +1,10 @@
+{
+  "data": [
+    {
+      "id": "dp_001",
+      "down_payment": 2500.0,
+      "monthly_amount": 329.0,
+      "currency": "EUR"
+    }
+  ]
+}

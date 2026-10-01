@@ -1,0 +1,12 @@
+{
+  "data": {
+    "user": {
+      "id": "usr_002",
+      "first_name": "Nikos",
+      "last_name": "Georgiou",
+      "email": "nikos@example.com",
+      "email_verified": false
+    },
+    "verification_required": true
+  }
+}

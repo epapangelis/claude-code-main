@@ -1,0 +1,17 @@
+{
+  "data": [
+    {
+      "id": "ebike_001",
+      "make": "Example",
+      "model": "City E1",
+      "monthly_amount": 49.0,
+      "currency": "EUR",
+      "term_months": 24,
+      "image_url": "https://example.com/images/ebike_001.jpg",
+      "availability": "available"
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}

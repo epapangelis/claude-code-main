@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "id": "drv_001",
+      "first_name": "Maria",
+      "last_name": "Papadopoulou",
+      "is_primary": true,
+      "license_expiry": "2032-05-10"
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}

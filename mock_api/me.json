@@ -1,0 +1,13 @@
+{
+  "data": {
+    "id": "usr_001",
+    "first_name": "Maria",
+    "last_name": "Papadopoulou",
+    "email": "maria@example.com",
+    "phone": "+306900000000",
+    "locale": "el",
+    "email_verified": true,
+    "customer_type": "b2c",
+    "tags": ["new_customer"]
+  }
+}

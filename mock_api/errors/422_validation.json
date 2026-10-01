@@ -1,0 +1,9 @@
+{
+  "error": {
+    "code": "validation_failed",
+    "message": "Some fields are invalid",
+    "fields": {
+      "email": ["Email is not valid"]
+    }
+  }
+}

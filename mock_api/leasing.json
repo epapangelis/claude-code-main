@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "id": "lease_001",
+      "make": "Toyota",
+      "model": "Yaris",
+      "year": 2025,
+      "category": "hatchback",
+      "fuel_type": "hybrid",
+      "transmission": "automatic",
+      "monthly_amount": 329.0,
+      "currency": "EUR",
+      "term_months": 48,
+      "down_payment": 2500.0,
+      "annual_km_limit": 15000,
+      "image_url": "https://example.com/images/lease_001.jpg",
+      "availability": "available"
+    }
+  ],
+  "meta": {
+    "total": 1,
+    "page": 1,
+    "page_size": 20
+  }
+}

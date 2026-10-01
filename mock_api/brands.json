@@ -1,0 +1,12 @@
+{
+  "data": [
+    {
+      "id": "brand_001",
+      "name": "Toyota",
+      "logo_url": "https://example.com/brands/toyota.png"
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "id": "box_001",
+      "name": "BoxNow Example Locker",
+      "address": "Example Street 10, Thessaloniki",
+      "latitude": 40.6401,
+      "longitude": 22.9444
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}

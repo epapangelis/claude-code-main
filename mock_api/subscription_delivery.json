@@ -1,0 +1,13 @@
+{
+  "data": {
+    "status": "delivery_planned",
+    "method": "home_delivery",
+    "date": "2025-03-01",
+    "time_window": "10:00-12:00",
+    "address": {
+      "street": "Example Street 1",
+      "city": "Thessaloniki",
+      "postal_code": "54622"
+    }
+  }
+}

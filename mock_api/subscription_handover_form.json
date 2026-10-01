@@ -1,0 +1,20 @@
+{
+  "data": {
+    "type": "delivery",
+    "fields": [
+      {
+        "key": "odometer_km",
+        "label": "Odometer (km)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "key": "fuel_level",
+        "label": "Fuel level",
+        "type": "select",
+        "options": ["empty", "quarter", "half", "three_quarters", "full"],
+        "required": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "data": [
+    {
+      "id": "svc_001",
+      "type": "maintenance",
+      "name": "Maintenance",
+      "status": "included"
+    }
+  ],
+  "meta": {
+    "total": 1
+  }
+}
